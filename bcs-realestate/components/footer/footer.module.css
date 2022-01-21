@@ -1,0 +1,27 @@
+.container {
+    height: auto;
+    background-color: #500000;
+    padding: 20px;   
+}
+
+.topRow {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.li {
+    display: inline-block;
+}
+
+.link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 5px 16px;
+    text-decoration: none;
+}

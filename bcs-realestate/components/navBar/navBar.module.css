@@ -1,0 +1,39 @@
+
+.container {
+    height: auto;
+}
+
+.list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+}
+
+.li {
+    display: inline-block;
+}
+
+.link {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 30px 16px;
+    text-decoration: none;
+}
+
+.navLinks {
+    float: right;
+}
+
+.title {
+    float: left;
+}
+
+.link:hover {
+    color: grey;
+    text-decoration: none;
+}
