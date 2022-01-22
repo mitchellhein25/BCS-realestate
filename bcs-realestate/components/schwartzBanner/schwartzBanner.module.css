@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    place-content: center;
+    padding: 5px 0 20px 0;
+}
+
+.topContainer {
+    display: flex;
+    place-content: center;
+    padding: 0px;
+}
+
+.padding {
+    padding: 0 30px;
+}
+
+.imageRounded {
+    border-radius: 50%;
+}
+
+.vertCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

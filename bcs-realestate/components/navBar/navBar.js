@@ -2,9 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import navBarStyles from './navBar.module.css'
 
-export const websiteTitle = "Bryan-College Station Real Estate"
-
-export default function NavBar() {
+export default function NavBar({ websiteTitle, links }) {
     return (
         <div className={navBarStyles.container}>
             <ul className={navBarStyles.list}>
@@ -16,16 +14,14 @@ export default function NavBar() {
                 </li>
 
                 <div className={navBarStyles.navLinks}>
-                    <li className={navBarStyles.li}>
-                        <Link href="/">
-                            <a className={navBarStyles.link}>Home</a>
-                        </Link>
-                    </li>
-                    <li className={navBarStyles.li}>
-                        <Link href="/rehab">
-                            <a className={navBarStyles.link} >Rehab</a>
-                        </Link>
-                    </li>
+                    {
+                        links.map((link) => (
+                            <li className={navBarStyles.li}>
+                                <Link href={link.link}>
+                                    <a className={navBarStyles.link}>{link.name}</a>
+                                </Link>
+                            </li>
+                    ))}
                 </div>
             </ul>
         </div>
