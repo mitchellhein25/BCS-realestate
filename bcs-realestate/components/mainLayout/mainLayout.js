@@ -4,7 +4,7 @@ import Footer from '../../components/footer/footer'
 import SimpleBanner from '../../components/simpleBanner/simpleBanner'
 import SchwartzBanner from '../../components/schwartzBanner/schwartzBanner'
 
-export const bannerTitle1 = "Everything you need to know to invest in BCS real estate!";
+export const bannerTitle1 = "Everything you need to invest in BCS real estate!";
 export const links = [
     { name: "Home", link: "/" },
     { name: "Rehab", link: "/rehab" }

@@ -8,7 +8,7 @@ export default function SchwartzBanner() {
     return (
         <div>
             <div className={schwartzBannerStyles.topContainer}>
-                <p>{schwartzBannerText}</p>
+                <p className={schwartzBannerStyles.noMargin}>{schwartzBannerText}</p>
             </div>
             <div className={schwartzBannerStyles.container}>
                 <div className={schwartzBannerStyles.padding}>

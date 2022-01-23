@@ -3,7 +3,9 @@ import Image from 'next/image'
 import footerStyles from './footer.module.css'
 
 export const bpLink = "https://biggerpockets.com/users/gregschwartz"
+export const bpText = "Bigger Pockets - Greg Schwartz"
 export const precisionApartmentsLink = "http://precisionapartments.managebuilding.com/"
+export const precisionApartmentsText = "Precision Apartments"
 
 
 export default function Footer() {
@@ -42,8 +44,8 @@ export default function Footer() {
                 </li>
             </div>
             <div>
-                <a href={bpLink} className={footerStyles.link}>{bpLink}</a>
-                <a href={precisionApartmentsLink} className={footerStyles.link}>{precisionApartmentsLink}</a>
+                <a href={bpLink} className={footerStyles.link}>{bpText}</a>
+                <a href={precisionApartmentsLink} className={footerStyles.link}>{precisionApartmentsText}</a>
             </div>
         </div>
     )
