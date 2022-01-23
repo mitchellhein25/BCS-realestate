@@ -16,7 +16,7 @@ export default function NavBar({ websiteTitle, links }) {
                 <div className={navBarStyles.navLinks}>
                     {
                         links.map((link) => (
-                            <li className={navBarStyles.li}>
+                            <li className={navBarStyles.li} key={link.name}>
                                 <Link href={link.link}>
                                     <a className={navBarStyles.link}>{link.name}</a>
                                 </Link>
