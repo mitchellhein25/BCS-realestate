@@ -1,9 +1,16 @@
 import MainLayout from '../components/mainLayout/mainLayout'
+import RehabListView from '../components/rehabListView/rehabListView'
+import rehabStyles from '../styles/rehab.module.css'
 
-export default function Home() {
+export default function Rehab() {
+
     return (
         <>
-            <MainLayout></MainLayout>
+            <MainLayout>
+                <div className={rehabStyles.container}>
+                    <RehabListView></RehabListView>
+                </div>
+            </MainLayout>
         </>
     )
 }

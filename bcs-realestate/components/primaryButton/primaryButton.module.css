@@ -12,6 +12,7 @@
     border: 1px solid transparent;
     transition: 0.3s;
     padding: 5px;
+    margin: 10px;
     min-width: 200px;
 }
 

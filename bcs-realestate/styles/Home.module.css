@@ -1,8 +1,8 @@
 .mainContainer {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-content: space-around;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -10,6 +10,7 @@
     .mainContainer {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 }
 

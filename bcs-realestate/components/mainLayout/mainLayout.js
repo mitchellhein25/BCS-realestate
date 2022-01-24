@@ -7,7 +7,8 @@ import SchwartzBanner from '../../components/schwartzBanner/schwartzBanner'
 export const bannerTitle1 = "Everything you need to invest in BCS real estate!";
 export const links = [
     { name: "Home", link: "/" },
-    { name: "Rehab", link: "/rehab" }
+    { name: "Rehab", link: "/rehab" },
+    { name: "Banks", link: "/banks" }
 ]
 
 export const websiteTitle = "Bryan-College Station Real Estate";

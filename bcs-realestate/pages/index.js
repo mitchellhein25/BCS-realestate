@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import MainLayout from "../components/mainLayout/mainLayout"
 import PrimaryButton from "../components/primaryButton/primaryButton"
 import homeStyles from "../styles/Home.module.css"
@@ -23,12 +22,17 @@ export default function Home() {
                         </div>
                     : null}
                     <div className={homeStyles.column}>
-                        <Image
-                            src="/images/bryan college-station map 1.82 .55.png"
-                            alt="Map of Bryan/College Station"
-                            height={546}
-                            width={300}
-                        ></Image>
+                        <a href="https://www.google.com/maps/place/30.634364,-96.342782/">
+                            {width <= breakpoint ?
+                                <img
+                                    src="https://maps.googleapis.com/maps/api/staticmap?center=30.634364,-96.342782&zoom=11&scale=1&size=300x300&maptype=roadmap&key=AIzaSyD7w_H5zEpuDjT3XhCTiiMvBhKOq5zGJhU&format=png&visual_refresh=true"
+                                    alt="Google Map of Bryan-College Station, TX"
+                                /> :
+                                <img
+                                    src="https://maps.googleapis.com/maps/api/staticmap?center=30.634364,-96.342782&zoom=12&scale=1&size=600x600&maptype=roadmap&key=AIzaSyD7w_H5zEpuDjT3XhCTiiMvBhKOq5zGJhU&format=png&visual_refresh=true"
+                                    alt="Google Map of Bryan-College Station, TX"
+                            />}
+                        </a>
                     </div>
                     <div className={homeStyles.column}>
                         {width <= breakpoint ?
