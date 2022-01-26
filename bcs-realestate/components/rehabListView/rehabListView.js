@@ -13,11 +13,13 @@ export default function RehabListView() {
     return (
         <div className={rehabListViewStyles.container}>
             {itemList.map((li, idx) => (
-                <div key={idx} className={rehabListViewStyles.listItem} onClick={() => setOpen(true)}>
-                    <p>{li.name}</p>
-                </div>
+                <button key={idx} className={rehabListViewStyles.listItem} onClick={() => setOpen(true)}>
+                    {/*<button>*/}
+                        <p>{li.name}</p>
+                    {/*</button>*/}
+                </button>
             ))}
-            {open ? <RehabModal></RehabModal> : null}
+            {open ? <RehabModal setOpen={setOpen}></RehabModal> : null}
         </div>
         )
 }
