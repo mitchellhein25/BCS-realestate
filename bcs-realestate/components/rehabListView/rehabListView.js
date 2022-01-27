@@ -1,25 +1,23 @@
 import React, { useState } from 'react'
-import rehabListViewStyles from './rehabListView.module.css'
 import RehabModal from '../rehabModal/rehabModal'
+import rehabListViewStyles from './rehabListView.module.css'
 
-export default function RehabListView() {
+export default function RehabListView({ title, itemList, modal }) {
     const [open, setOpen] = useState(false);
 
-    const itemList = [
-        { name: "Flooring" },
-        { name: "Lighting" }
-    ]
-
     return (
-        <div className={rehabListViewStyles.container}>
-            {itemList.map((li, idx) => (
-                <button key={idx} className={rehabListViewStyles.listItem} onClick={() => setOpen(true)}>
-                    {/*<button>*/}
+            <div className={rehabListViewStyles.columnContainer}>
+            <h2 className={rehabListViewStyles.header2}>{title}</h2>
+                {itemList.map((li, idx) => (
+                    <button key={idx}
+                        className={`${rehabListViewStyles.listItem} ${idx % 2 != 0 ? rehabListViewStyles.lightRed : rehabListViewStyles.white}`}
+                        onClick={() => setOpen  (true)}>
                         <p>{li.name}</p>
-                    {/*</button>*/}
-                </button>
-            ))}
-            {open ? <RehabModal setOpen={setOpen}></RehabModal> : null}
-        </div>
+                    </button>
+                ))}
+            {modal == "Rehab" ?
+                (open ? <RehabModal setOpen={setOpen}></RehabModal> : null) :
+                (open ? <RehabModal setOpen={setOpen}></RehabModal> : null)}
+            </div>
         )
 }

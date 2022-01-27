@@ -1,19 +1,51 @@
-.container {
+.outerContainer {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+.columnContainer {
     display: flex;
     align-content: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
+    margin: 0 20px;
+    min-width: 40%; 
+}
+
+.header2 {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: 0;
 }
 
 .listItem {
     display: flex;
     align-content: center;
     justify-content: center;
-    border-bottom: none;
-    border-top: solid 1px black;
-    border-left: none;
-    border-right: none;
-    box-shadow: 3px 3px 3px rgba(0,0,0,0.4);
+    border: none;
     font-size: 1rem;
+    height: 40px;
+    align-items: center;
+    border-radius: 20px;
 }
+
+.lightRed {
+    background-color: rgba(80,0,0,.3)
+}
+
+.white {
+    background-color: rgb(209 209 209 / 0.30);
+}
+
+.lightRed:hover {
+    background-color: rgba(80,0,0,.4)
+}
+
+.white:hover {
+    background-color: rgb(209 209 209 / 0.80);
+}
+
