@@ -1,5 +1,5 @@
 import MainLayout from '../components/mainLayout/mainLayout'
-import RehabListView from '../components/rehabListView/rehabListView'
+import ListView from '../components/listView/listView'
 import rehabStyles from '../styles/rehab.module.css'
 
 export default function Rehab() {
@@ -18,16 +18,16 @@ export default function Rehab() {
         <>
             <MainLayout>
                 <div className={rehabStyles.container}>
-                    <RehabListView
+                    <ListView
                         title="Rehab Materials"
                         itemList={rehabItemList}
                         modal="Rehab"
-                    ></RehabListView>
-                    <RehabListView
+                    ></ListView>
+                    <ListView
                         title="Services"
                         itemList={servicesItemList}
                         modal="Service"
-                    ></RehabListView>
+                    ></ListView>
                 </div>
             </MainLayout>
         </>
