@@ -2,15 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import detailedListViewStyles from './detailedListView.module.css'
 
-export default function DetailedListView() {
-
-    const itemList = [
-        { name: "Item 1 Name", photo: "/images/gregHeadshot.jpg", price: "Item 1 Price", description: "Item 1 Description" },
-        { name: "Item 2 Name", photo: "/images/gregHeadshot.jpg", price: "Item 2 Price", description: "Item 2 Description" },
-        { name: "Item 2 Name", photo: "/images/gregHeadshot.jpg", price: "Item 2 Price", description: "Item 2 Description" },
-        { name: "Item 2 Name", photo: "/images/gregHeadshot.jpg", price: "Item 2 Price", description: "Item 2 Description" }
-    ]
-
+export default function DetailedListView({ itemList }) {
     return (
         <div className={detailedListViewStyles.container}>
             {itemList.map((li, idx) => (

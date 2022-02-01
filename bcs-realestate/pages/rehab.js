@@ -5,8 +5,47 @@ import rehabStyles from '../styles/rehab.module.css'
 export default function Rehab() {
 
     const rehabItemList = [
-        { name: "Flooring" },
-        { name: "Lighting" }
+        { name: "Flooring", 
+          list: [{
+                name: "F1",
+                photo: "/images/gregHeadshot.jpg",
+                price: "Item 1 Price",
+                description: "Item 1 Description"
+            },
+            {
+                name: "F2",
+                photo: "/images/gregHeadshot.jpg",
+                price: "Item 1 Price",
+                description: "Item 1 Description"
+            },
+            {
+                name: "F3",
+                photo: "/images/gregHeadshot.jpg",
+                price: "Item 1 Price",
+                description: "Item 1 Description"
+            }]
+        },
+        {
+            name: "Lighting",
+            list: [{
+                name: "L1",
+                photo: "/images/gregHeadshot.jpg",
+                price: "Item 1 Price",
+                description: "Item 1 Description"
+            },
+            {
+                name: "L2",
+                photo: "/images/gregHeadshot.jpg",
+                price: "Item 1 Price",
+                description: "Item 1 Description"
+            },
+            {
+                name: "L3",
+                photo: "/images/gregHeadshot.jpg",
+                price: "Item 1 Price",
+                description: "Item 1 Description"
+            }]
+        },
     ]
 
     const servicesItemList = [
@@ -21,12 +60,10 @@ export default function Rehab() {
                     <ListView
                         title="Rehab Materials"
                         itemList={rehabItemList}
-                        modal="Rehab"
                     ></ListView>
                     <ListView
                         title="Services"
                         itemList={servicesItemList}
-                        modal="Service"
                     ></ListView>
                 </div>
             </MainLayout>

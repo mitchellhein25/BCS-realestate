@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/Image'
 import modalStyles from './modal.module.css'
 
-export default function modal({ children, setOpen }) {
+export default function modal({ children, state, setState }) {
 
     return (
         <div className={modalStyles.modal}>
@@ -13,7 +13,7 @@ export default function modal({ children, setOpen }) {
                         alt="Exit navigation menu button"
                         width={30}
                         height={30}
-                        onClick={() => setOpen(false)}
+                        onClick={() => setState({...state, open: false})}
                     />
                 </div>
                 {children}
