@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import RehabModal from '../rehabModal/rehabModal'
+import DetailedListView from '../detailedListView/detailedListView'
+import Modal from '../modal/modal'
 import listViewStyles from './listView.module.css'
 
 export default function ListView({ title, itemList, modal }) {
@@ -16,9 +17,12 @@ export default function ListView({ title, itemList, modal }) {
                     </button>
                 ))}
             {modal == "Rehab" ?
-                (open ? <RehabModal setOpen={setOpen}></RehabModal> : null)
+                (open ?
+                    <Modal setOpen={setOpen}>
+                        <DetailedListView></DetailedListView>
+                    </Modal> : null)
                 :
-                (open ? <RehabModal setOpen={setOpen}></RehabModal> : null)
+                (open ? <Modal setOpen={setOpen}></Modal> : null)
             }
             </div>
         )
