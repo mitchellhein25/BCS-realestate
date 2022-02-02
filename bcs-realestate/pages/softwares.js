@@ -1,22 +1,22 @@
-import MainLayout from '../components/mainLayout/mainLayout'
-import DetailedListView from '../components/detailedListView/detailedListView'
+import MainLayout from "../components/mainLayout/mainLayout";
+import DetailedListView from "../components/detailedListView/detailedListView";
 
-export default function Banks() {
+export default function Softwares() {
 
-    const banksList = [{
-        name: "B1",
+    const softwareLinksList = [{
+        name: "S1",
         photo: "/images/gregHeadshot.jpg",
         price: "Item 1 Price",
         description: "Item 1 Description"
     },
     {
-        name: "B2",
+        name: "S2",
         photo: "/images/gregHeadshot.jpg",
         price: "Item 1 Price",
         description: "Item 1 Description"
     },
     {
-        name: "B3",
+        name: "S3",
         photo: "/images/gregHeadshot.jpg",
         price: "Item 1 Price",
         description: "Item 1 Description"
@@ -24,7 +24,7 @@ export default function Banks() {
 
     return (
         <MainLayout>
-            <DetailedListView itemList={banksList}></DetailedListView>
+            <DetailedListView itemList={softwareLinksList}></DetailedListView>
         </MainLayout>
-    )
+        )
 }

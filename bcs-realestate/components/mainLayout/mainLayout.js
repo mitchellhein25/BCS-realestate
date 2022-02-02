@@ -8,7 +8,9 @@ export const bannerTitle1 = "Everything you need to invest in BCS real estate!";
 export const links = [
     { name: "Home", link: "/" },
     { name: "Rehab", link: "/rehab" },
-    { name: "Banks", link: "/banks" }
+    { name: "Banks", link: "/banks" },
+    { name: "Software", link: "/softwares" },
+    { name: "Property Analysis", link: "/property-analysis" }
 ]
 
 export const websiteTitle = "Bryan-College Station Real Estate";

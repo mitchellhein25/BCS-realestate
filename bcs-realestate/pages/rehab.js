@@ -49,24 +49,60 @@ export default function Rehab() {
     ]
 
     const servicesItemList = [
-        { name: "Plumbing" },
-        { name: "AC/Heat" }
+        {
+            name: "General Contractors",
+            list: [{
+                name: "GC1",
+                photo: "/images/gregHeadshot.jpg",
+                price: "Item 1 Price",
+                description: "Item 1 Description"
+            },
+            {
+                name: "GC2",
+                photo: "/images/gregHeadshot.jpg",
+                price: "Item 1 Price",
+                description: "Item 1 Description"
+            },
+            {
+                name: "GC3",
+                photo: "/images/gregHeadshot.jpg",
+                price: "Item 1 Price",
+                description: "Item 1 Description"
+            }]
+        },
+        {
+            name: "Plumbing",
+            list: [{
+                name: "P1",
+                photo: "/images/gregHeadshot.jpg",
+                price: "Item 1 Price",
+                description: "Item 1 Description"
+            },
+            {
+                name: "P2",
+                photo: "/images/gregHeadshot.jpg",
+                price: "Item 1 Price",
+                description: "Item 1 Description"
+            },
+            {
+                name: "P3",
+                description: "Item 1 Description"
+            }]
+        },
     ]
 
     return (
-        <>
-            <MainLayout>
-                <div className={rehabStyles.container}>
-                    <ListView
-                        title="Rehab Materials"
-                        itemList={rehabItemList}
-                    ></ListView>
-                    <ListView
-                        title="Services"
-                        itemList={servicesItemList}
-                    ></ListView>
-                </div>
-            </MainLayout>
-        </>
+        <MainLayout>
+            <div className={rehabStyles.container}>
+                <ListView
+                    title="Rehab Materials"
+                    itemList={rehabItemList}
+                ></ListView>
+                <ListView
+                    title="Services"
+                    itemList={servicesItemList}
+                ></ListView>
+            </div>
+        </MainLayout>
     )
 }
