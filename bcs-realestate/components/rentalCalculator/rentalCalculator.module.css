@@ -1,0 +1,16 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.input {
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.header {
+    text-align: center;
+}
