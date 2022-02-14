@@ -1,16 +1,27 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import rentalCalculatorStyles from "./../rentalCalculator.module.css"
 
-export default function PurchaseSection() {
+export default function PurchaseSection({ state, setState }) {
+
+    useEffect(() => {
+        console.log(state.purchase.purchasePrice)
+    }, [])
 
     return (
         <div>
             <h2 className={rentalCalculatorStyles.header}>Purchase</h2>
-            <div class={rentalCalculatorStyles.row}>
+            <div className={rentalCalculatorStyles.row}>
                 <div>
-                    <input className={rentalCalculatorStyles.input} type="number" name="purchasePrice" placeholder="Purchase Price" />
+                    <input className={rentalCalculatorStyles.input} type="number" name="purchasePrice"
+                        placeholder="Purchase Price" onChange={(e) => setState(prevState => ({
+                        purchase: {
+                            ...prevState.purchase,
+                            purchasePrice: e.target.value
+                        }
+                        }))} />
+                    <p>{state.purchase.purchasePrice}</p>
                     <div>
-                        <input type="checkbox" id="purchPriceNAPSF" name="purchPriceNAPSF" value="purchPriceNAPSF" />
+                        <input type="checkbox" id="purchPriceNAPSF" name="purchPriceNAPSF" value="purchPriceNAPSF"/>
                         <label for="purchPriceNAPSF">Use neighborhood average per SF</label>
                     </div>
                 </div>

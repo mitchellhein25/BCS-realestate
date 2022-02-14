@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import rentalCalculatorStyles from "./../rentalCalculator.module.css"
 
-export default function ExpenseSection() {
+export default function ExpenseSection({ state, setState }) {
 
     return (
         <div>
@@ -67,7 +67,7 @@ export default function ExpenseSection() {
                         <label for="utilitiesCSAPSF">Use College Station Avg per SF</label>
                     </div>
                 </div>
-                <input className={rentalCalculatorStyles.input} type="number" name="hoa" placeholder="Hoa" />
+                <input className={rentalCalculatorStyles.input} type="number" name="hoa" placeholder="HOA" />
                 <input className={rentalCalculatorStyles.input} type="number" name="other" placeholder="Other" />
             </div>
         </div>

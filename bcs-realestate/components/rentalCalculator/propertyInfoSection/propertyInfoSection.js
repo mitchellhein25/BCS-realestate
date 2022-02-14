@@ -3,7 +3,7 @@ import { usStates } from '../../../staticData/states'
 import { neighborhoods } from '../../../staticData/neighborhoods'
 import rentalCalculatorStyles from "./../rentalCalculator.module.css"
 
-export default function PropertyInfoSection() {
+export default function PropertyInfoSection({ state, setState }) {
 
     return (
         <div>

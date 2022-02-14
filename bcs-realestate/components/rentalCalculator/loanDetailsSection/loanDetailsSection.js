@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import rentalCalculatorStyles from "./../rentalCalculator.module.css"
 
-export default function LoanDetailsSection() {
+export default function LoanDetailsSection({ state, setState }) {
 
     return (
         <div>
