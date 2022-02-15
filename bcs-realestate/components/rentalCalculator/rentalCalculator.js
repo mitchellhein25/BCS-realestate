@@ -18,7 +18,10 @@ export default function RentalCalculator() {
         },
         purchase: {
             purchasePrice: "",
+            purchasePriceCheckBox: false,
             closingCosts: "",
+            closingCostsCheckBox: false
+
         },
         rehab: {
             afterRepairValue: "",

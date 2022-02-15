@@ -19,16 +19,33 @@ export default function PurchaseSection({ state, setState }) {
                             purchasePrice: e.target.value
                         }
                         }))} />
-                    <p>{state.purchase.purchasePrice}</p>
                     <div>
-                        <input type="checkbox" id="purchPriceNAPSF" name="purchPriceNAPSF" value="purchPriceNAPSF"/>
+                        <input type="checkbox" name="purchPriceNAPSF" checked={state.purchase.purchasePriceCheckBox}
+                            onChange={(e) => setState(prevState => ({
+                                purchase: {
+                                    ...prevState.purchase,
+                                    purchasePriceCheckBox: !prevState.purchase.purchasePriceCheckBox
+                                }
+                            }))} />
                         <label for="purchPriceNAPSF">Use neighborhood average per SF</label>
                     </div>
                 </div>
                 <div>
-                    <input className={rentalCalculatorStyles.input} type="number" name="closingCosts" placeholder="Closing Costs" />
+                    <input className={rentalCalculatorStyles.input} type="number" name="closingCosts"
+                        placeholder="Closing Costs" onChange={(e) => setState(prevState => ({
+                            purchase: {
+                                ...prevState.purchase,
+                                closingCosts: e.target.value
+                            }
+                        }))} />
                     <div>
-                        <input type="checkbox" id="closeCostsUBCSAVG" name="closeCostsUBCSAVG" value="closeCostsUBCSAVG" />
+                        <input type="checkbox" name="closeCostsUBCSAVG" checked={state.purchase.closingCostsCheckBox}
+                            onChange={(e) => setState(prevState => ({
+                                purchase: {
+                                    ...prevState.purchase,
+                                    closingCostsCheckBox: !prevState.purchase.closingCostsCheckBox
+                                }
+                            }))} />
                         <label for="closeCostsUBCSAVG">Use BCS average %</label>
                     </div>
                 </div>
