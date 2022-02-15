@@ -2,10 +2,26 @@ import { useState,useEffect } from 'react'
 import rentalCalculatorStyles from "./../rentalCalculator.module.css"
 
 export default function PurchaseSection({ state, setState }) {
-
-    useEffect(() => {
-        console.log(state.purchase.purchasePrice)
-    }, [])
+    function handleChange(e) {
+        if (e.target.type == "checkbox") {
+            setState(prevState => ({
+                ...prevState,
+                purchase: {
+                    ...prevState.purchase,
+                    [e.target.name]: !state.purchase[e.target.name]
+                }
+            }))
+        }
+        else {
+            setState(prevState => ({
+                ...prevState,
+                purchase: {
+                    ...prevState.purchase,
+                    [e.target.name]: [e.target.value]
+                }
+            }))
+        }
+    }
 
     return (
         <div>
@@ -13,40 +29,20 @@ export default function PurchaseSection({ state, setState }) {
             <div className={rentalCalculatorStyles.row}>
                 <div>
                     <input className={rentalCalculatorStyles.input} type="number" name="purchasePrice"
-                        placeholder="Purchase Price" onChange={(e) => setState(prevState => ({
-                        purchase: {
-                            ...prevState.purchase,
-                            purchasePrice: e.target.value
-                        }
-                        }))} />
+                        placeholder="Purchase Price" onChange={handleChange} />
                     <div>
-                        <input type="checkbox" name="purchPriceNAPSF" checked={state.purchase.purchasePriceCheckBox}
-                            onChange={(e) => setState(prevState => ({
-                                purchase: {
-                                    ...prevState.purchase,
-                                    purchasePriceCheckBox: !prevState.purchase.purchasePriceCheckBox
-                                }
-                            }))} />
-                        <label for="purchPriceNAPSF">Use neighborhood average per SF</label>
+                        <input type="checkbox" name="purchasePriceCheckBox" checked={state.purchase.purchasePriceCheckBox}
+                            onChange={handleChange} />
+                        <label htmlFor="purchasePriceCheckBox">Use neighborhood average per SF</label>
                     </div>
                 </div>
                 <div>
                     <input className={rentalCalculatorStyles.input} type="number" name="closingCosts"
-                        placeholder="Closing Costs" onChange={(e) => setState(prevState => ({
-                            purchase: {
-                                ...prevState.purchase,
-                                closingCosts: e.target.value
-                            }
-                        }))} />
+                        placeholder="Closing Costs" onChange={handleChange} />
                     <div>
-                        <input type="checkbox" name="closeCostsUBCSAVG" checked={state.purchase.closingCostsCheckBox}
-                            onChange={(e) => setState(prevState => ({
-                                purchase: {
-                                    ...prevState.purchase,
-                                    closingCostsCheckBox: !prevState.purchase.closingCostsCheckBox
-                                }
-                            }))} />
-                        <label for="closeCostsUBCSAVG">Use BCS average %</label>
+                        <input type="checkbox" name="closingCostsCheckBox" checked={state.purchase.closingCostsCheckBox}
+                            onChange={handleChange} />
+                        <label htmlFor="closingCostsCheckBox">Use BCS average %</label>
                     </div>
                 </div>
             </div>

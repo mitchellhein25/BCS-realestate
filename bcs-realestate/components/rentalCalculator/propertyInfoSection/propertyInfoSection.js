@@ -5,14 +5,26 @@ import rentalCalculatorStyles from "./../rentalCalculator.module.css"
 
 export default function PropertyInfoSection({ state, setState }) {
 
+    function handleChange(e) {
+        setState(prevState => ({
+            ...prevState,
+            propertyInfo: {
+                ...prevState.propertyInfo,
+                [e.target.name]: [e.target.value]
+            }
+        }))
+    }
+
     return (
         <div>
             <h2 className={rentalCalculatorStyles.header}>Property Information</h2>
             {/* Row 1*/}
             <div className={rentalCalculatorStyles.row}>
-                <input className={rentalCalculatorStyles.input} type="text" name="address" placeholder="Address"/>
-                <input className={rentalCalculatorStyles.input} type="text" name="city" placeholder="City"/>
-                <select className={rentalCalculatorStyles.input} name="state">
+                <input className={rentalCalculatorStyles.input} type="text" name="address" placeholder="Address"
+                    onChange={handleChange} />
+                <input className={rentalCalculatorStyles.input} type="text" name="city" placeholder="City"
+                    onChange={handleChange} />
+                <select className={rentalCalculatorStyles.input} name="state" onChange={handleChange} >
                     <option value="none" selected disabled hidden>State</option>
                     {usStates.map(stateItem => {
                         return (
@@ -20,12 +32,13 @@ export default function PropertyInfoSection({ state, setState }) {
                             )
                     })}
                 </select>
-                <input className={rentalCalculatorStyles.input} type="text" name="zipCode" placeholder="Zip Code"/>
+                <input className={rentalCalculatorStyles.input} type="text" name="zipCode" placeholder="Zip Code"
+                    onChange={handleChange} />
             </div>
 
             {/* Row 2*/}
             <div className={rentalCalculatorStyles.row}>
-                <select className={rentalCalculatorStyles.input} name="neighborhood">
+                <select className={rentalCalculatorStyles.input} name="neighborhood" onChange={handleChange} >
                     <option value="none" selected disabled hidden>Neighborhood</option>
                     {neighborhoods.map(neighborhoodItem => {
                         return (
@@ -33,7 +46,8 @@ export default function PropertyInfoSection({ state, setState }) {
                         )
                     })}
                 </select>
-                <input className={rentalCalculatorStyles.input} type="number" name="squareFootage" placeholder="Square Footage"/>
+                <input className={rentalCalculatorStyles.input} type="number" name="squareFootage"
+                    placeholder="Square Footage" onChange={handleChange} />
             </div>
         </div>
     )

@@ -24,7 +24,9 @@ export default function RentalCalculator() {
 
         },
         rehab: {
+            rehabCheckbox: false,
             afterRepairValue: "",
+            afterRepairValueCheckBox: false,
             repairCosts: "",
         },
         loanDetails: {
@@ -33,16 +35,25 @@ export default function RentalCalculator() {
             loanLength: ""
         },
         rentalIncome: {
-            monthlyIncome: ""
+            monthlyIncome: "",
+            monthlyIncomeCheckbox: false
         },
         expense: {
             propertyTaxes: "",
+            propertyTaxesCheckbox: "",
             insurance: "",
+            insuranceCheckbox: "",
             repairMaintenance: "",
+            repairMaintenanceCheckbox: "",
             vacancy: "",
+            vacancyCheckbox: "",
             capEx: "",
+            capExCheckbox: "",
             propertyManagement: "",
+            propertyManagementCheckbox: "",
             utilities: "",
+            utilitiesCheckboxBryan: "",
+            utilitiesCheckboxCStat: "",
             hoa: "",
             other: "",
         }
