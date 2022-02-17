@@ -5,8 +5,11 @@ import RehabSection from './rehabSection/rehabSection'
 import LoanDetailsSection from './loanDetailsSection/loanDetailsSection'
 import RentalIncomeSection from './rentalIncomeSection/rentalIncomeSection'
 import ExpenseSection from './expenseSection/expenseSection'
+import ResultsSection from './resultsSection/resultsSection'
+import rentalCalculatorStyles from "./rentalCalculator.module.css"
 
 export default function RentalCalculator() {
+    const purchasePrice = 290000;
     const [state, setState] = useState({
         propertyInfo: {
             address: "",
@@ -14,59 +17,67 @@ export default function RentalCalculator() {
             state: "",
             zipCode: "",
             neighborhood: "",
-            squareFootage: "",
+            squareFootage: 0,
         },
         purchase: {
-            purchasePrice: "",
+            purchasePrice: purchasePrice,
             purchasePriceCheckBox: false,
-            closingCosts: "",
+            closingCosts: 6000,
             closingCostsCheckBox: false
 
         },
         rehab: {
             rehabCheckbox: false,
-            afterRepairValue: "",
+            afterRepairValue: purchasePrice,
             afterRepairValueCheckBox: false,
-            repairCosts: "",
+            repairCosts: 0,
         },
         loanDetails: {
-            downPayment: "",
-            interestRate: "",
-            loanLength: ""
+            downPayment: 10150,
+            interestRate: 2.75,
+            loanLength: 30
         },
         rentalIncome: {
-            monthlyIncome: "",
+            monthlyIncome: 2600,
             monthlyIncomeCheckbox: false
         },
         expense: {
-            propertyTaxes: "",
+            propertyTaxes: 536,
             propertyTaxesCheckbox: "",
-            insurance: "",
+            insurance: 125,
             insuranceCheckbox: "",
-            repairMaintenance: "",
+            repairMaintenance: 100,
             repairMaintenanceCheckbox: "",
-            vacancy: "",
+            vacancy: 7,
             vacancyCheckbox: "",
-            capEx: "",
+            capEx: 100,
             capExCheckbox: "",
-            propertyManagement: "",
+            propertyManagement: 0,
             propertyManagementCheckbox: "",
-            utilities: "",
+            utilities: 0,
             utilitiesCheckboxBryan: "",
             utilitiesCheckboxCStat: "",
-            hoa: "",
-            other: "",
+            hoa: 0,
+            other: 0,
         }
     });
 
     return (
         <div>
-            <PropertyInfoSection state={state} setState={setState} ></PropertyInfoSection>
-            <PurchaseSection state={state} setState={setState} ></PurchaseSection>
-            <RehabSection state={state} setState={setState} ></RehabSection>
-            <LoanDetailsSection state={state} setState={setState} ></LoanDetailsSection>
-            <RentalIncomeSection state={state} setState={setState} ></RentalIncomeSection>
-            <ExpenseSection state={state} setState={setState} ></ExpenseSection>
+            <h1 className={rentalCalculatorStyles.header}>Property Analysis Calculator</h1>
+            <div className={rentalCalculatorStyles.sectionColumnLeft}>
+                <PropertyInfoSection state={state} setState={setState} ></PropertyInfoSection>
+                <ExpenseSection state={state} setState={setState} ></ExpenseSection>
+            </div>
+            <div className={rentalCalculatorStyles.sectionColumnRight}>
+                <PurchaseSection state={state} setState={setState} ></PurchaseSection>
+                <LoanDetailsSection state={state} setState={setState} ></LoanDetailsSection>
+                {/*<div className={rentalCalculatorStyles.sectionColumnLeft}></div>*/}
+                <RehabSection state={state} setState={setState} ></RehabSection>
+                {/*<div className={rentalCalculatorStyles.sectionColumnLeft}></div>*/}
+                <RentalIncomeSection state={state} setState={setState} ></RentalIncomeSection>
+            </div>
+            <ResultsSection state={state} setState={setState} ></ResultsSection>
         </div>
     )
 }

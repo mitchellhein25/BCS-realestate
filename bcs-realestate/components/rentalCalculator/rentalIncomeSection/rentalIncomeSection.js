@@ -1,14 +1,14 @@
-import { useState } from 'react'
 import rentalCalculatorStyles from "./../rentalCalculator.module.css"
+import CurrencyInput from 'react-currency-input-field';
 
 export default function RentalIncomeSection({ state, setState }) {
-    function handleChange(e) {
-        if (e.target.type == "checkbox") {
+    function handleChange(value, name) {
+        if (name.includes("Checkbox")) {
             setState(prevState => ({
                 ...prevState,
                 rentalIncome: {
-                    ...prevState.purchase,
-                    [e.target.name]: !state.rentalIncome[e.target.name]
+                    ...prevState.rentalIncome,
+                    [name]: !state.rentalIncome[name]
                 }
             }))
         }
@@ -16,22 +16,36 @@ export default function RentalIncomeSection({ state, setState }) {
             setState(prevState => ({
                 ...prevState,
                 rentalIncome: {
-                    ...prevState.purchase,
-                    [e.target.name]: [e.target.value]
+                    ...prevState.rentalIncome,
+                    [name]: [value]
                 }
             }))
         }
     }
+
     return (
         <div>
             <h2 className={rentalCalculatorStyles.header}>Rental Income</h2>
             <div className={rentalCalculatorStyles.row}>
-                <input className={rentalCalculatorStyles.input} type="number" name="monthlyIncome"
-                    placeholder="Monthly Income" onChange={handleChange} />
                 <div>
-                    <input type="checkbox" name="monthlyIncomeCheckbox" checked={state.rentalIncome.monthlyIncomeCheckbox}
-                        onChange={handleChange} />
-                    <label for="monthlyIncomeCheckbox">Use neighborhood average per SF</label>
+                    <div className={rentalCalculatorStyles.inputLabel} >
+                        <label className={rentalCalculatorStyles.label} htmlFor="monthlyIncome">Monthly Income</label>
+                        <CurrencyInput
+                            type="text"
+                            className={rentalCalculatorStyles.input}
+                            name="monthlyIncome"
+                            prefix="$"
+                            defaultValue={state.rentalIncome.monthlyIncome}
+                            decimalsLimit={2}
+                            allowNegativeValue={false}
+                            onValueChange={(value, name) => handleChange(value, name)}
+                        />
+                    </div>
+                    {/*<div>*/}
+                    {/*    <input type="checkbox" name="monthlyIncomeCheckbox" checked={state.rentalIncome.monthlyIncomeCheckbox}*/}
+                    {/*        onChange={handleChange} />*/}
+                    {/*    <label for="monthlyIncomeCheckbox">Use neighborhood average per SF</label>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </div>
