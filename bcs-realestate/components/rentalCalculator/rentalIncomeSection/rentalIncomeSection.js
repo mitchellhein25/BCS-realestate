@@ -25,7 +25,7 @@ export default function RentalIncomeSection({ state, setState }) {
 
     return (
         <div>
-            <h2 className={rentalCalculatorStyles.header}>Rental Income</h2>
+            <h2 className={rentalCalculatorStyles.header}>Income</h2>
             <div className={rentalCalculatorStyles.row}>
                 <div>
                     <div className={rentalCalculatorStyles.inputLabel} >
@@ -44,7 +44,27 @@ export default function RentalIncomeSection({ state, setState }) {
                     {/*<div>*/}
                     {/*    <input type="checkbox" name="monthlyIncomeCheckbox" checked={state.rentalIncome.monthlyIncomeCheckbox}*/}
                     {/*        onChange={handleChange} />*/}
-                    {/*    <label for="monthlyIncomeCheckbox">Use neighborhood average per SF</label>*/}
+                    {/*    <label htmlFor="monthlyIncomeCheckbox">Use neighborhood average per SF</label>*/}
+                    {/*</div>*/}
+                </div>
+                <div>
+                    <div className={rentalCalculatorStyles.inputLabel} >
+                        <label className={rentalCalculatorStyles.label} htmlFor="appreciation">Yearly Appreciation</label>
+                        <CurrencyInput
+                            type="text"
+                            className={rentalCalculatorStyles.input}
+                            name="appreciation"
+                            suffix="%"
+                            defaultValue={state.rentalIncome.appreciation}
+                            decimalsLimit={2}
+                            allowNegativeValue={false}
+                            onValueChange={(value, name) => handleChange(value, name)}
+                        />
+                    </div>
+                    {/*<div>*/}
+                    {/*    <input type="checkbox" name="appreciationCheckbox" checked={state.rentalIncome.appreciationCheckbox}*/}
+                    {/*        onChange={handleChange} />*/}
+                    {/*    <label htmlFor="appreciationCheckbox">Use neighborhood average</label>*/}
                     {/*</div>*/}
                 </div>
             </div>

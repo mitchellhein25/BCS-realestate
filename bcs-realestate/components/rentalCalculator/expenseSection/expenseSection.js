@@ -46,7 +46,7 @@ export default function ExpenseSection({ state, setState }) {
                     </div>
                     <div className={rentalCalculatorStyles.inputLabel} >
                         <input type="checkbox" name="propertyTaxesCheckbox" onChange={handleChangeCheckbox} />
-                        <label className={rentalCalculatorStyles.checkboxText} for="propertyTaxesCheckbox">Use Percentage of Purchase Price</label>
+                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="propertyTaxesCheckbox">Use Percentage of Purchase Price</label>
                     </div>
                 </div>
                 <div>
@@ -67,7 +67,7 @@ export default function ExpenseSection({ state, setState }) {
                     </div>
                     <div className={rentalCalculatorStyles.inputLabel} >
                         <input type="checkbox" name="insuranceCheckbox" onChange={handleChangeCheckbox} />
-                        <label className={rentalCalculatorStyles.checkboxText} for="insuranceCheckbox">Use Percentage of Purchase Price</label>
+                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="insuranceCheckbox">Use Percentage of Purchase Price</label>
                     </div>
                 </div>
                 <div>
@@ -88,7 +88,7 @@ export default function ExpenseSection({ state, setState }) {
                     </div>
                     <div className={rentalCalculatorStyles.inputLabel} >
                         <input type="checkbox" name="repairMaintenanceCheckbox" onChange={handleChangeCheckbox} />
-                        <label className={rentalCalculatorStyles.checkboxText} for="repairMaintenanceCheckbox">Use Percentage of Purchase Price</label>
+                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="repairMaintenanceCheckbox">Use Percentage of Purchase Price</label>
                     </div>
                 </div>
             </div>
@@ -132,7 +132,7 @@ export default function ExpenseSection({ state, setState }) {
                     </div>
                     <div className={rentalCalculatorStyles.inputLabel} >
                         <input type="checkbox" name="capExCheckbox" onChange={handleChangeCheckbox} />
-                        <label className={rentalCalculatorStyles.checkboxText} for="capExCheckbox">Use Percentage of Purchase Price</label>
+                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="capExCheckbox">Use Percentage of Purchase Price</label>
                     </div>
                 </div>
                 <div>

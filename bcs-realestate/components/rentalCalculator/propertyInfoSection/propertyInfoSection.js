@@ -43,17 +43,17 @@ export default function PropertyInfoSection({ state, setState }) {
                     </div>
                 </div>
                 <div className={rentalCalculatorStyles.row}>
-                    <div className={rentalCalculatorStyles.inputLabel} >
-                        <label className={rentalCalculatorStyles.label} htmlFor="neighborhood">Neighborhood</label>
-                        <select className={rentalCalculatorStyles.input} name="neighborhood" onChange={handleChange} >
-                            <option value="none" selected disabled hidden>Choose Option</option>
-                            {neighborhoods.map(neighborhoodItem => {
-                                return (
-                                    <option value={neighborhoodItem.name}>{neighborhoodItem.name}</option>
-                                )
-                            })}
-                        </select>
-                    </div>
+                    {/*<div className={rentalCalculatorStyles.inputLabel} >*/}
+                    {/*    <label className={rentalCalculatorStyles.label} htmlFor="neighborhood">Neighborhood</label>*/}
+                    {/*    <select className={rentalCalculatorStyles.input} name="neighborhood" onChange={handleChange} >*/}
+                    {/*        <option value="none" selected disabled hidden>Choose Option</option>*/}
+                    {/*        {neighborhoods.map(neighborhoodItem => {*/}
+                    {/*            return (*/}
+                    {/*                <option value={neighborhoodItem.name}>{neighborhoodItem.name}</option>*/}
+                    {/*            )*/}
+                    {/*        })}*/}
+                    {/*    </select>*/}
+                    {/*</div>*/}
                     <div className={rentalCalculatorStyles.inputLabel} >
                         <label className={rentalCalculatorStyles.label} htmlFor="zipCode">Zip Code</label>
                         <input className={rentalCalculatorStyles.input} type="text" name="zipCode" placeholder="Enter Text Here"

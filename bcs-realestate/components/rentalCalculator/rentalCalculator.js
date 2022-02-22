@@ -9,7 +9,7 @@ import ResultsSection from './resultsSection/resultsSection'
 import rentalCalculatorStyles from "./rentalCalculator.module.css"
 
 export default function RentalCalculator() {
-    const purchasePrice = 290000;
+    const purchasePrice = 300000;
     const [state, setState] = useState({
         propertyInfo: {
             address: "",
@@ -33,30 +33,34 @@ export default function RentalCalculator() {
             repairCosts: 0,
         },
         loanDetails: {
-            downPayment: 10150,
-            interestRate: 2.75,
+            downPayment: 5,
+            downPaymentCheckbox: true,
+            interestRate: 4,
             loanLength: 30
         },
         rentalIncome: {
-            monthlyIncome: 2600,
-            monthlyIncomeCheckbox: false
+            monthlyIncome: 3000,
+            monthlyIncomeCheckbox: false,
+            appreciation: 4,
+            appreciationCheckbox: false,
+
         },
         expense: {
-            propertyTaxes: 536,
-            propertyTaxesCheckbox: "",
-            insurance: 125,
-            insuranceCheckbox: "",
-            repairMaintenance: 100,
-            repairMaintenanceCheckbox: "",
+            propertyTaxes: 2,
+            propertyTaxesCheckbox: true,
+            insurance: 150,
+            insuranceCheckbox: false,
+            repairMaintenance: 1,
+            repairMaintenanceCheckbox: true,
             vacancy: 7,
-            vacancyCheckbox: "",
-            capEx: 100,
-            capExCheckbox: "",
+            vacancyCheckbox: false,
+            capEx: 1,
+            capExCheckbox: true,
             propertyManagement: 0,
-            propertyManagementCheckbox: "",
+            propertyManagementCheckbox: false,
             utilities: 0,
-            utilitiesCheckboxBryan: "",
-            utilitiesCheckboxCStat: "",
+            utilitiesCheckboxBryan: false,
+            utilitiesCheckboxCStat: false,
             hoa: 0,
             other: 0,
         }

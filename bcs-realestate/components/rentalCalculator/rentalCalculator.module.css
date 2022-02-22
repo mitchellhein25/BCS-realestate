@@ -21,11 +21,11 @@
     border-radius: 10px;
     text-align: center;
     font-size: 1rem;
-    width: 225px
+    max-width: 200px;
 }
 
 .inputLabel {
-    margin: 10px;
+    margin: 10px 0;
     text-align: center;
 }
 
@@ -49,6 +49,7 @@
 
 .label {
     display: block;
+    margin: 0;
 }
 
 .resultsSection {
@@ -73,6 +74,7 @@
     padding: 20px;
     margin: 20px;
     height: fit-content;
+    min-width: 290px;
 }
 
 .expenseBreakdownItems {
