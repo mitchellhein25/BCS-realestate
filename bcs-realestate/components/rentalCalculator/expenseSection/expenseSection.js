@@ -153,7 +153,7 @@ export default function ExpenseSection({ state, setState }) {
                     </div>
                     <div className={rentalCalculatorStyles.inputLabel} >
                         <input type="checkbox" name="propertyManagementCheckbox" onChange={handleChangeCheckbox} checked={state.expense.propertyManagementCheckbox}/>
-                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="propertyManagementCheckbox">Use % of Purchase Price</label>
+                        <label className={rentalCalculatorStyles.checkboxText} for="propertyManagementCheckbox">Use % of Purchase Price</label>
                     </div>
                 </div>
             </div>
@@ -176,11 +176,11 @@ export default function ExpenseSection({ state, setState }) {
                     </div>
                     {/*<div>*/}
                     {/*    <input type="checkbox" name="utilitiesCheckboxBryan" onChange={handleChange} checked={state.expense.utilitiesCheckboxBryan}/>*/}
-                    {/*    <label htmlFor="utilitiesCheckboxBryan">Use Bryan Avg per SF</label>*/}
+                    {/*    <label for="utilitiesCheckboxBryan">Use Bryan Avg per SF</label>*/}
                     {/*</div>*/}
                     {/*<div>*/}
                     {/*    <input type="checkbox" name="utilitiesCheckboxCStat" onChange={handleChange} checked={state.expense.utilitiesCheckboxCStat}/>*/}
-                    {/*    <label htmlFor="utilitiesCheckboxCStat">Use College Station Avg per SF</label>*/}
+                    {/*    <label for="utilitiesCheckboxCStat">Use College Station Avg per SF</label>*/}
                     {/*</div>*/}
                 </div>
                 <div className={rentalCalculatorStyles.inputLabel} >
