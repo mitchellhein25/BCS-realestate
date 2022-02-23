@@ -36,7 +36,7 @@ export default function PropertyInfoSection({ state, setState }) {
                             <option value="none" selected disabled hidden>Choose Option</option>
                             {usStates.map(stateItem => {
                                 return (
-                                    <option value={stateItem.name}>{stateItem.name}</option>
+                                    <option value={stateItem.name} key={stateItem.name}>{stateItem.name}</option>
                                 )
                             })}
                         </select>
