@@ -16,7 +16,7 @@ export default function PropertyInfoSection({ state, setState }) {
     }
 
     return (
-        <div>
+        <div className={rentalCalculatorStyles.calculatorSection + " " + rentalCalculatorStyles.calculatorSectionLeft}>
             <h2 className={rentalCalculatorStyles.header}>Property Information</h2>
             <div>
                 <div className={rentalCalculatorStyles.row}>

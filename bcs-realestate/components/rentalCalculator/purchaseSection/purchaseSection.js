@@ -23,7 +23,7 @@ export default function PurchaseSection({ state, setState }) {
     }
 
     return (
-        <div>
+        <div className={rentalCalculatorStyles.calculatorSection + " " + rentalCalculatorStyles.calculatorSectionRight}>
             <h2 className={rentalCalculatorStyles.header}>Purchase</h2>
             <div className={rentalCalculatorStyles.row}>
                 <div className={rentalCalculatorStyles.inputLabel} >

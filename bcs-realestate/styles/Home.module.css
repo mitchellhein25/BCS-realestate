@@ -1,8 +1,7 @@
 .mainContainer {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Extra small devices (phones, 600px and down) */

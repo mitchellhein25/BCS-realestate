@@ -23,7 +23,7 @@ export default function RehabSection({ state, setState }) {
     }
 
     return (
-        <div>
+        <div className={rentalCalculatorStyles.calculatorSection + " " + rentalCalculatorStyles.calculatorSectionRight}>
             <div className={rentalCalculatorStyles.row}>
                 <h2 className={rentalCalculatorStyles.rehabHeader}>Rehab</h2>
             </div>

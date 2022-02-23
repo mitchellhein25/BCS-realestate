@@ -7,40 +7,68 @@
 .sectionColumnLeft {
     width: 55%;
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 .sectionColumnRight {
     width: 45%;
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 .input {
-    height: 50px;
+    height: 40px;
     border-radius: 10px;
     text-align: center;
-    font-size: 1rem;
-    max-width: 200px;
+    font-size: .85rem;
+    max-width: 175px;
 }
 
 .inputLabel {
-    margin: 10px 0;
+    margin: 5px 0;
     text-align: center;
 }
 
 .checkboxText {
-    font-size: 14px;
+    font-size: .75rem;
 }
 
 .header {
     text-align: center;
+    margin-top: 0;
 }
 
-.rehabHeader {
+.mainHeader {
     text-align: center;
-    margin-bottom: 0px;
+    color: black;
+    font-weight: 300;
+    font-size: 3rem;
+    padding: 30px;
+    margin: 0;
 }
+
+.calculatorSection {
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.calculatorSectionLeft {
+    margin-left: 50px;
+    margin-right: 25px;
+}
+
+.calculatorSectionRight {
+    margin-left: 25px;
+    margin-right: 50px;
+}
+
+    .rehabHeader {
+        text-align: center;
+        margin: 0px;
+    }
 
 .rehabLabel {
     text-align: center;
@@ -53,8 +81,11 @@
 }
 
 .resultsSection {
-    width: 80%;
+    padding: 0 10%; 
     margin: auto;
+    background-image: url("/icons/black-two-story-house.svg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .resultsHeader {
@@ -63,21 +94,34 @@
 }
 
 .resultsMainHeader {
-    font-size: 2rem;
+    font-weight: 300;
+    font-size: 3rem;
     text-align: center;
+    background-color: #500000;
+    color: white;
+    box-shadow: 0 8px 4px -4px grey;
+    padding: 10px;
 }
 
 .resultsContainer {
     text-align: center;
     font-size: 1.2rem;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    border: 1px solid black;
     padding: 20px;
     margin: 20px;
     height: fit-content;
     min-width: 290px;
+    background-color: white;
+    border-radius: 20px;
 }
 
 .expenseBreakdownItems {
     font-size: .9rem;
     text-align: left;
+}
+
+.exportButton {
+    min-width: 300px;
+    min-height: 50px;
 }

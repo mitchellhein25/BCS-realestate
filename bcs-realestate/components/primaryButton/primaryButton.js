@@ -12,8 +12,8 @@ export default function PrimaryButton({ buttonText, buttonImagePath, path, butto
                         <Image
                             src={buttonImagePath}
                             alt={buttonAltText}
-                            width={40}
-                            height={40}
+                            width={60}
+                            height={60}
                         />
                     </div> : null
                 }

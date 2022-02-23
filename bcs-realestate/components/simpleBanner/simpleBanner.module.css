@@ -1,13 +1,14 @@
 .container {
     height: auto;
-    background-color: #500000;
+    /*background-color: #500000;*/
+    /*background-color: black;*/
     padding: 3px;
-    color: white;
+    color: black;
     width: 100%;
 }
 
 .header {
-    font-weight: 100;
+    font-weight: 400;
     text-align: center;
     margin: 0;
 }

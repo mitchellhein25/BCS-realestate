@@ -16,9 +16,22 @@ export default function NavBar({ websiteTitle, links }) {
 
                 <li className={navBarStyles.li, navBarStyles.title}>
                     <Link href="/">
-                        <a className={navBarStyles.link}>{websiteTitle}</a>
+                        <div className={navBarStyles.logoSection}>
+                            <Image
+                                src="/icons/main-logo-home-icon.svg"
+                                alt="Main logo icon"
+                                width={50}
+                                height={50}
+                            />
+                            <a className={navBarStyles.link}>{websiteTitle}</a>
+                        </div>
                     </Link>
                 </li>
+                {/*<li className={navBarStyles.li, navBarStyles.title}>*/}
+                {/*    <Link href="/">*/}
+                        
+                {/*    </Link>*/}
+                {/*</li>*/}
                 <div className={navBarStyles.navLinks}>
                     {width >= breakpoint ?
                                 links.map((link) => (

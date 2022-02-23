@@ -24,7 +24,7 @@ export default function ExpenseSection({ state, setState }) {
     }
 
     return (
-        <div>
+        <div className={rentalCalculatorStyles.calculatorSection + " " + rentalCalculatorStyles.calculatorSectionLeft}>
             <h2 className={rentalCalculatorStyles.header}>Expenses</h2>
             {/* Row 1*/}
             <div className={rentalCalculatorStyles.row}>
@@ -45,8 +45,8 @@ export default function ExpenseSection({ state, setState }) {
                         />
                     </div>
                     <div className={rentalCalculatorStyles.inputLabel} >
-                        <input type="checkbox" name="propertyTaxesCheckbox" onChange={handleChangeCheckbox} />
-                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="propertyTaxesCheckbox">Use Percentage of Purchase Price</label>
+                        <input type="checkbox" name="propertyTaxesCheckbox" onChange={handleChangeCheckbox} checked={state.expense.propertyTaxesCheckbox}/>
+                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="propertyTaxesCheckbox">Use % of Purchase Price</label>
                     </div>
                 </div>
                 <div>
@@ -66,8 +66,8 @@ export default function ExpenseSection({ state, setState }) {
                         />
                     </div>
                     <div className={rentalCalculatorStyles.inputLabel} >
-                        <input type="checkbox" name="insuranceCheckbox" onChange={handleChangeCheckbox} />
-                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="insuranceCheckbox">Use Percentage of Purchase Price</label>
+                        <input type="checkbox" name="insuranceCheckbox" onChange={handleChangeCheckbox} checked={state.expense.insuranceCheckbox}/>
+                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="insuranceCheckbox">Use % of Purchase Price</label>
                     </div>
                 </div>
                 <div>
@@ -87,8 +87,8 @@ export default function ExpenseSection({ state, setState }) {
                         />
                     </div>
                     <div className={rentalCalculatorStyles.inputLabel} >
-                        <input type="checkbox" name="repairMaintenanceCheckbox" onChange={handleChangeCheckbox} />
-                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="repairMaintenanceCheckbox">Use Percentage of Purchase Price</label>
+                        <input type="checkbox" name="repairMaintenanceCheckbox" onChange={handleChangeCheckbox} checked={state.expense.repairMaintenanceCheckbox}/>
+                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="repairMaintenanceCheckbox">Use % of Purchase Price</label>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@ export default function ExpenseSection({ state, setState }) {
                         />
                     </div>
                     {/*<div>*/}
-                    {/*    <input type="checkbox" name="vacancyCheckbox" onChange={handleChangeCheckbox} />*/}
+                    {/*    <input type="checkbox" name="vacancyCheckbox" onChange={handleChangeCheckbox} checked={state.expense.vacancyCheckbox}/>*/}
                     {/*    <label for="vacancyCheckbox">Use Neighborhood Average</label>*/}
                     {/*</div>*/}
                 </div>
@@ -131,8 +131,8 @@ export default function ExpenseSection({ state, setState }) {
                         />
                     </div>
                     <div className={rentalCalculatorStyles.inputLabel} >
-                        <input type="checkbox" name="capExCheckbox" onChange={handleChangeCheckbox} />
-                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="capExCheckbox">Use Percentage of Purchase Price</label>
+                        <input type="checkbox" name="capExCheckbox" onChange={handleChangeCheckbox} checked={state.expense.capExCheckbox}/>
+                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="capExCheckbox">Use % of Purchase Price</label>
                     </div>
                 </div>
                 <div>
@@ -152,8 +152,8 @@ export default function ExpenseSection({ state, setState }) {
                         />
                     </div>
                     <div className={rentalCalculatorStyles.inputLabel} >
-                        <input type="checkbox" name="propertyManagementCheckbox" onChange={handleChangeCheckbox} />
-                        <label className={rentalCalculatorStyles.checkboxText} for="propertyManagementCheckbox">Use Percentage of Purchase Price</label>
+                        <input type="checkbox" name="propertyManagementCheckbox" onChange={handleChangeCheckbox} checked={state.expense.propertyManagementCheckbox}/>
+                        <label className={rentalCalculatorStyles.checkboxText} for="propertyManagementCheckbox">Use % of Purchase Price</label>
                     </div>
                 </div>
             </div>
@@ -175,11 +175,11 @@ export default function ExpenseSection({ state, setState }) {
                         />
                     </div>
                     {/*<div>*/}
-                    {/*    <input type="checkbox" name="utilitiesCheckboxBryan" onChange={handleChange} />*/}
+                    {/*    <input type="checkbox" name="utilitiesCheckboxBryan" onChange={handleChange} checked={state.expense.utilitiesCheckboxBryan}/>*/}
                     {/*    <label for="utilitiesCheckboxBryan">Use Bryan Avg per SF</label>*/}
                     {/*</div>*/}
                     {/*<div>*/}
-                    {/*    <input type="checkbox" name="utilitiesCheckboxCStat" onChange={handleChange} />*/}
+                    {/*    <input type="checkbox" name="utilitiesCheckboxCStat" onChange={handleChange} checked={state.expense.utilitiesCheckboxCStat}/>*/}
                     {/*    <label for="utilitiesCheckboxCStat">Use College Station Avg per SF</label>*/}
                     {/*</div>*/}
                 </div>

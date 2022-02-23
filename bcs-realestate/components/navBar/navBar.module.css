@@ -1,6 +1,7 @@
 
 .container {
     height: auto;
+    caret-color: transparent;
 }
 
 .list {
@@ -8,7 +9,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: white;
+    background-color: #500000;
     height: 100%;
     width: 100%;
     display: flex;
@@ -20,21 +21,28 @@
     display: inline-block;
 }
 
+.logoSection {
+    display: flex;
+}
+
 .link {
     display: block;
-    color: black;
+    color: white;
     text-align: center;
-    padding: 30px 16px;
+    padding: 30px 20px;
     text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 300;
 }
 
 .navLinks {
     float: right;
-    padding-right: 10px;
+    margin-right: 50px;
 }
 
 .title {
     float: left;
+    margin-left: 50px;
 }
 
 .link:hover {

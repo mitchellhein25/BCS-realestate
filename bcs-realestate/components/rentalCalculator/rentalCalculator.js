@@ -58,7 +58,7 @@ export default function RentalCalculator() {
             capExCheckbox: true,
             propertyManagement: 0,
             propertyManagementCheckbox: false,
-            utilities: 0,
+            utilities: 200,
             utilitiesCheckboxBryan: false,
             utilitiesCheckboxCStat: false,
             hoa: 0,
@@ -68,7 +68,7 @@ export default function RentalCalculator() {
 
     return (
         <div>
-            <h1 className={rentalCalculatorStyles.header}>Property Analysis Calculator</h1>
+            <h1 className={rentalCalculatorStyles.mainHeader}>Property Analysis Calculator</h1>
             <div className={rentalCalculatorStyles.sectionColumnLeft}>
                 <PropertyInfoSection state={state} setState={setState} ></PropertyInfoSection>
                 <ExpenseSection state={state} setState={setState} ></ExpenseSection>

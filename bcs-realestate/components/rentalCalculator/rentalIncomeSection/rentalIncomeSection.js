@@ -24,7 +24,7 @@ export default function RentalIncomeSection({ state, setState }) {
     }
 
     return (
-        <div>
+        <div className={rentalCalculatorStyles.calculatorSection + " " + rentalCalculatorStyles.calculatorSectionRight}>
             <h2 className={rentalCalculatorStyles.header}>Income</h2>
             <div className={rentalCalculatorStyles.row}>
                 <div>

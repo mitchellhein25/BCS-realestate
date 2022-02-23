@@ -24,7 +24,7 @@ export default function LoanDetailsSection({ state, setState }) {
     }
 
     return (
-        <div>
+        <div className={rentalCalculatorStyles.calculatorSection + " " + rentalCalculatorStyles.calculatorSectionRight}>
             <h2 className={rentalCalculatorStyles.header}>Loan Details</h2>
             <div className={rentalCalculatorStyles.row}>
                 <div className={rentalCalculatorStyles.inputLabel} >
@@ -43,7 +43,7 @@ export default function LoanDetailsSection({ state, setState }) {
                     />
                     <div className={rentalCalculatorStyles.inputLabel} >
                         <input type="checkbox" name="downPaymentCheckbox" onChange={handleChangeCheckbox} checked={state.loanDetails.downPaymentCheckbox} />
-                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="downPaymentCheckbox">Use Percentage of Purchase Price</label>
+                        <label className={rentalCalculatorStyles.checkboxText} htmlFor="downPaymentCheckbox">Use % of Purchase Price</label>
                     </div>
                 </div>
                 <div className={rentalCalculatorStyles.inputLabel} >
