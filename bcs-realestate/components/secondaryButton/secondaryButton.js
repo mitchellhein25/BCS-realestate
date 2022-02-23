@@ -1,4 +1,5 @@
 import secondaryButtonStyles from './secondaryButton.module.css'
+import Image from 'next/image'
 
 export default function SecondaryButton({ buttonText, buttonAltText, buttonImage }) {
 

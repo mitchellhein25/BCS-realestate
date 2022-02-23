@@ -54,16 +54,16 @@ export default function ResultsSection({ state, setState }) {
         return (state.expense.vacancy / 100) * state.rentalIncome.monthlyIncome;
     }
 
-    function usePurchasePricePercent(name) {
+    function purchasePricePercent(name) {
         return state.expense[name + "Checkbox"] ?
             ((state.expense[name] / 100) * state.purchase.purchasePrice) / 12 :
             parseInt(state.expense[name])
     }
 
     function calculateTotalExpenses() {
-        return calculateMortgage() + usePurchasePricePercent("insurance") + usePurchasePricePercent("propertyTaxes") +
-            usePurchasePricePercent("repairMaintenance") + parseInt(calculateVacancyAllowance()) + usePurchasePricePercent("capEx") +
-            usePurchasePricePercent("propertyManagement") + parseInt(state.expense.utilities) + parseInt(state.expense.hoa) +
+        return calculateMortgage() + purchasePricePercent("insurance") + purchasePricePercent("propertyTaxes") +
+            purchasePricePercent("repairMaintenance") + parseInt(calculateVacancyAllowance()) + purchasePricePercent("capEx") +
+            purchasePricePercent("propertyManagement") + parseInt(state.expense.utilities) + parseInt(state.expense.hoa) +
             parseInt(state.expense.other)
     }
 
@@ -165,11 +165,11 @@ export default function ResultsSection({ state, setState }) {
                         </p>
                         <div className={rentalCalculatorStyles.expenseBreakdownItems}>
                             <p>Mortgage: ${addCommas(calculateMortgage().toFixed(2))}</p>
-                            <p>Insurance: ${addCommas(usePurchasePricePercent("insurance"))}</p>
+                            <p>Insurance: ${addCommas(purchasePricePercent("insurance"))}</p>
                             <p>Utilities: ${addCommas(state.expense.utilities)}</p>
-                            <p>Taxes: ${addCommas(usePurchasePricePercent("propertyTaxes"))}</p>
+                            <p>Taxes: ${addCommas(purchasePricePercent("propertyTaxes"))}</p>
                             <p>Maintenance/CapEx: 
-                            ${addCommas(usePurchasePricePercent("repairMaintenance") + usePurchasePricePercent("capEx"))}</p>
+                            ${addCommas(purchasePricePercent("repairMaintenance") + purchasePricePercent("capEx"))}</p>
                         </div>
                     </div>
                     <div className={rentalCalculatorStyles.resultsContainer}>

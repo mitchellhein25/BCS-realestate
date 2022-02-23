@@ -36,7 +36,7 @@ export default function PropertyInfoSection({ state, setState }) {
                             <option value="none" selected disabled hidden>Choose Option</option>
                             {usStates.map(stateItem => {
                                 return (
-                                    <option value={stateItem.name}>{stateItem.name}</option>
+                                    <option value={stateItem.name} key={stateItem.name}>{stateItem.name}</option>
                                 )
                             })}
                         </select>
@@ -49,7 +49,7 @@ export default function PropertyInfoSection({ state, setState }) {
                     {/*        <option value="none" selected disabled hidden>Choose Option</option>*/}
                     {/*        {neighborhoods.map(neighborhoodItem => {*/}
                     {/*            return (*/}
-                    {/*                <option value={neighborhoodItem.name}>{neighborhoodItem.name}</option>*/}
+                    {/*                <option value={neighborhoodItem.name} key={neighborhoodItem.name}>{neighborhoodItem.name}</option>*/}
                     {/*            )*/}
                     {/*        })}*/}
                     {/*    </select>*/}
