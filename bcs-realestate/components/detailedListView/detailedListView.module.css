@@ -3,7 +3,9 @@
     align-content: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px
 }
 
 .listItem {
@@ -16,6 +18,8 @@
     border-right: none;
     box-shadow: 3px 3px 3px rgba(0,0,0,0.4);
     font-size: 1rem;
+    border-radius: 40px;
+    padding: 0 50px 15px 50px;
 }
 
 .detailContainer {
@@ -28,8 +32,14 @@
 
 .imageContainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 30%;
+}
+
+.detailItem {
+    text-align: left;
+    width: 100%;
+    margin: 5px;
+}
+
+.imageRounded {
+    border-radius: 20px;
 }

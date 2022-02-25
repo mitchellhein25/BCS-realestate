@@ -9,17 +9,27 @@ export default function DetailedListView({ itemList }) {
                 <button key={idx} className={detailedListViewStyles.listItem}>
                     <div className={detailedListViewStyles.detailContainer}>
                         <h3>{li.name}</h3>
-                        <p>{li.description}</p>
-                        {li.price ?  
-                            <h4>Price: {li.price}</h4> : null
+                        {li.details.phone ?
+                            <p className={detailedListViewStyles.detailItem}>
+                                <b>Phone</b>: {li.details.phone}</p>
+                            : null
                         }
-                        
+                        {li.details.website ?
+                            <p className={detailedListViewStyles.detailItem}>
+                                <b>Website</b>: {li.details.website}</p>
+                            : null
+                        }
+                        {li.details.address ?
+                            <p className={detailedListViewStyles.detailItem}>
+                                <b>Address</b>: {li.details.address}</p>
+                            : null
+                        }
                     </div>
                     {li.photo ?
                         <div className={detailedListViewStyles.imageContainer}>
                             <Image
                                 src={li.photo}
-                                alt={li.description}
+                                alt={li.photoDesc + " logo"}
                                 width={150}
                                 height={150}
                                 className={detailedListViewStyles.imageRounded}
