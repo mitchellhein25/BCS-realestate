@@ -1,7 +1,7 @@
 import MainLayout from '../components/mainLayout/mainLayout';
 import DetailedListView from '../components/detailedListView/detailedListView';
 import PageHeader from '../components/pageHeader/pageHeader';
-import softwaresStyles from '../styles/softwares.module.css';
+import softwaresStyles from '../styles/Softwares.module.css';
 
 export default function Softwares() {
 

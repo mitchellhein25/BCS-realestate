@@ -1,7 +1,7 @@
 import MainLayout from '../components/mainLayout/mainLayout'
 import DetailedListView from '../components/detailedListView/detailedListView'
 import PageHeader from '../components/pageHeader/pageHeader'
-import bankStyles from '../styles/banks.module.css'
+import bankStyles from '../styles/Banks.module.css'
 
 export default function Banks() {
 

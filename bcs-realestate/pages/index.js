@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import MainLayout from "../components/mainLayout/mainLayout"
 import PrimaryButton from "../components/primaryButton/primaryButton"
-import homeStyles from "../styles/home.module.css"
+import homeStyles from "../styles/Home.module.css"
 import useWindowSize from '../components/utils'
 import SimpleBanner from '../components/simpleBanner/simpleBanner'
 
