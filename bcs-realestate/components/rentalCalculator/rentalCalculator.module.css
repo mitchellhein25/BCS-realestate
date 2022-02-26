@@ -1,3 +1,24 @@
+.headerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*Header Background Icon color: #FFF2F2*/
+    background-image: url("../../public/icons/calc-header-background.svg");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.calcContainer {
+    background-image: url("../../public/images/calc-background-image.jpg");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: auto;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
 .row {
     display: flex;
     flex-direction: row;
@@ -41,7 +62,7 @@
 .mainHeader {
     text-align: center;
     color: black;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 3rem;
     padding: 30px;
     margin: 0;
@@ -52,7 +73,8 @@
     border: 1px solid black;
     border-radius: 20px;
     padding: 20px;
-    margin-top: 30px;
+    margin: 15px 0;
+    background-color: white;
 }
 
 .calculatorSectionLeft {
@@ -65,10 +87,10 @@
     margin-right: 50px;
 }
 
-    .rehabHeader {
-        text-align: center;
-        margin: 0px;
-    }
+.rehabHeader {
+    text-align: center;
+    margin: 0px;
+}
 
 .rehabLabel {
     text-align: center;
@@ -101,6 +123,7 @@
     color: white;
     box-shadow: 0 8px 4px -4px grey;
     padding: 10px;
+    margin-top: 0;
 }
 
 .resultsContainer {

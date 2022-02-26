@@ -6,6 +6,7 @@ import LoanDetailsSection from './loanDetailsSection/loanDetailsSection'
 import RentalIncomeSection from './rentalIncomeSection/rentalIncomeSection'
 import ExpenseSection from './expenseSection/expenseSection'
 import ResultsSection from './resultsSection/resultsSection'
+import PageHeader from '../pageHeader/pageHeader'
 import rentalCalculatorStyles from "./rentalCalculator.module.css"
 
 export default function RentalCalculator() {
@@ -66,20 +67,32 @@ export default function RentalCalculator() {
         }
     });
 
+    const header = "Property Analysis Calculator"
+    const subHeader = `Place the numbers for the property you are analyzing, and the outputs will 
+                        automatically change in the results section below. See if this potential investment
+                        is worth a deeper look!`
+
     return (
         <div>
-            <h1 className={rentalCalculatorStyles.mainHeader}>Property Analysis Calculator</h1>
-            <div className={rentalCalculatorStyles.sectionColumnLeft}>
-                <PropertyInfoSection state={state} setState={setState} ></PropertyInfoSection>
-                <ExpenseSection state={state} setState={setState} ></ExpenseSection>
+            <div className={rentalCalculatorStyles.headerContainer}>
+                <PageHeader
+                    header={header}
+                    subHeader={subHeader}
+                />
             </div>
-            <div className={rentalCalculatorStyles.sectionColumnRight}>
-                <PurchaseSection state={state} setState={setState} ></PurchaseSection>
-                <LoanDetailsSection state={state} setState={setState} ></LoanDetailsSection>
-                {/*<div className={rentalCalculatorStyles.sectionColumnLeft}></div>*/}
-                <RehabSection state={state} setState={setState} ></RehabSection>
-                {/*<div className={rentalCalculatorStyles.sectionColumnLeft}></div>*/}
-                <RentalIncomeSection state={state} setState={setState} ></RentalIncomeSection>
+            <div className={rentalCalculatorStyles.calcContainer}>
+                <div className={rentalCalculatorStyles.sectionColumnLeft}>
+                    <PropertyInfoSection state={state} setState={setState} ></PropertyInfoSection>
+                    <ExpenseSection state={state} setState={setState} ></ExpenseSection>
+                </div>
+                <div className={rentalCalculatorStyles.sectionColumnRight}>
+                    <PurchaseSection state={state} setState={setState} ></PurchaseSection>
+                    <LoanDetailsSection state={state} setState={setState} ></LoanDetailsSection>
+                    {/*<div className={rentalCalculatorStyles.sectionColumnLeft}></div>*/}
+                    <RehabSection state={state} setState={setState} ></RehabSection>
+                    {/*<div className={rentalCalculatorStyles.sectionColumnLeft}></div>*/}
+                    <RentalIncomeSection state={state} setState={setState} ></RentalIncomeSection>
+                </div>
             </div>
             <ResultsSection state={state} setState={setState} ></ResultsSection>
         </div>

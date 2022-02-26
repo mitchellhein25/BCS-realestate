@@ -1,5 +1,6 @@
 import MainLayout from '../components/mainLayout/mainLayout'
 import DetailedListView from '../components/detailedListView/detailedListView'
+import PageHeader from '../components/pageHeader/pageHeader'
 import bankStyles from '../styles/Banks.module.css'
 
 export default function Banks() {
@@ -96,16 +97,20 @@ export default function Banks() {
     }
     ]
 
-    const subHeader = `We know it can be hard to filter through the long list of banks you get by searching Google, so here 
+    const header = "B/CS Banks"
+    const subHeader = `We know it can be hard to filter through the long list of banks you get by searching Google, so here
                         is a list of some of our favorite and most trusted banks in the Bryan/College Station area!`
-
     return (
         <MainLayout>
             <div className={bankStyles.headerContainer}>
-                <h1 className={bankStyles.mainHeader}>B/CS Banks</h1>
-                <p className={bankStyles.subheader}>{subHeader}</p>
+                <PageHeader
+                    header={header}
+                    subHeader={subHeader}
+                />
             </div>
-            <DetailedListView itemList={banksList}></DetailedListView>
+            <div className={bankStyles.listView}>
+                <DetailedListView itemList={banksList}></DetailedListView>
+            </div>
         </MainLayout>
     )
 }

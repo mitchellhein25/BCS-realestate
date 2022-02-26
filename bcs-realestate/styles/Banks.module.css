@@ -3,22 +3,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /*Header Background Icon color: #FFF2F2*/
+    background-image: url("../public/icons/bank-header-background.svg");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: auto;
 }
 
-.mainHeader {
-    text-align: center;
-    color: black;
-    font-weight: 300;
-    font-size: 3rem;
-    padding: 30px;
-    margin: 0;
-}
-
-.subheader {
-    max-width: 70%;
-    text-align: justify;
-    font-size: 1.5rem;
-    font-weight: 200;
+.listView {
+    background-image: url("../public/images/bank-background-image.jpg");
+    background-position: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
