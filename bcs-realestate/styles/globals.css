@@ -1,8 +1,15 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), url(../public/fonts/Montserrat.ttf) format('truetype');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
 html,
 body {
     padding: 0;
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Verdana, sans-serif;
     line-height: 1.6;
     font-size: 18px;
 }
