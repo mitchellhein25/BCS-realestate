@@ -24,7 +24,7 @@ export default function DetailedListView({ itemList }) {
                         }
                         {li.details.website ?
                             <p className={detailedListViewStyles.website}>
-                                <a target="_blank" href={li.details.website}>{li.details.websiteText}</a></p>
+                                <a target="_blank" rel="noreferrer" href={li.details.website}>{li.details.websiteText}</a></p>
                             : null
                         }
                     </div>

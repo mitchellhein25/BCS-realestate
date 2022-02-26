@@ -15,7 +15,7 @@ export default function NavBar({ websiteTitle, links }) {
             <ul className={navBarStyles.list}>
 
                 <li className={navBarStyles.li, navBarStyles.title}>
-                    <Link href="/">
+                    <Link href="/" passHref>
                         <div className={navBarStyles.logoSection}>
                             <Image
                                 src="/icons/main-logo-home-icon.svg"

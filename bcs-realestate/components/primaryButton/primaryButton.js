@@ -4,7 +4,7 @@ import primaryButtonStyles from './primaryButton.module.css'
 
 export default function PrimaryButton({ buttonText, buttonImagePath, path, buttonAltText }) {
     return (
-        <Link href={path}>
+        <Link href={path} passHref>
             <button className={primaryButtonStyles.primaryButton}>
                 <p className={primaryButtonStyles.buttonText}> { buttonText }</p>
                 {buttonImagePath ?
