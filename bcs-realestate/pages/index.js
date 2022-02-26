@@ -65,11 +65,11 @@ export default function Home() {
                 <div>
                     <a href="https://www.google.com/maps/place/30.634364,-96.342782/">
                         {width <= breakpoint ?
-                            <Image
+                            <img
                                 src="https://maps.googleapis.com/maps/api/staticmap?center=30.634364,-96.342782&zoom=11&scale=1&size=300x300&maptype=roadmap&key=AIzaSyD7w_H5zEpuDjT3XhCTiiMvBhKOq5zGJhU&format=png&visual_refresh=true"
                                 alt="Google Map of Bryan-College Station, TX"
                             /> :
-                            <Image
+                            <img
                                 src="https://maps.googleapis.com/maps/api/staticmap?center=30.634364,-96.342782&zoom=12&scale=1&size=600x600&maptype=roadmap&key=AIzaSyD7w_H5zEpuDjT3XhCTiiMvBhKOq5zGJhU&format=png&visual_refresh=true"
                                 alt="Google Map of Bryan-College Station, TX"
                             />}
