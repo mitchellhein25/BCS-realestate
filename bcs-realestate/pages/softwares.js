@@ -6,73 +6,123 @@ import softwaresStyles from '../styles/softwares.module.css';
 export default function Softwares() {
 
     const softwareList = [{
-        name: 'City Bank',
+        name: 'Mint',
         image: {
-            photo: '/images/city-bank.png',
-            photoDesc: 'City Bank logo',
-            photoWidth: 125,
-            photoHeight: 125,
-        },
+            photo: '/images/mint-logo.png',
+            photoDesc: 'Mint logo',
+            photoWidth: 200,
+            photoHeight: 80,
+        },  
         details: {
-            phone: '(979) 846-7844',
-            website: 'https://www.city.bank/locations/details/mortgage-college-station-branch',
-            websiteText: 'Go to City Bank Website',
+            description: 'Personal Finance/Budget Tracking',
+            features: 'Automated Expense Tracking, Net Worth Calculations, Budget Management',
+            website: 'https://mint.intuit.com/',
+            websiteText: 'Go to Mint Website',
         }
     },
     {
-        name: '1st Alliance Mortgage',
+        name: 'Buildium',
         image: {
-            photo: '/images/1stAM-Logo.jpg',
-            photoDesc: '1st Alliance logo',
-            photoWidth: 250,
+            photo: '/images/buildium-logo.png',
+            photoDesc: 'Buildium logo',
+            photoWidth: 200,
             photoHeight: 60,
         },
         details: {
-            phone: '(713) 626-5700',
-            website: 'https://1stalliancemortgage.com/',
-            websiteText: 'Go to 1st Alliance Mortgage Website',
+            description: 'Property Management',
+            features: 'Full Lead to Lease Capabilities, Take Online Payments, Maintenance Requests, Analytics',
+            website: 'https://www.buildium.com/',
+            websiteText: 'Go to Buildium Website',
         }
     },
     {
-        name: 'Extraco',
+        name: 'QuickBooks',
         image: {
-            photo: '/images/extraco-logo.svg',
-            photoDesc: 'Extraco logo',
-            photoWidth: 250,
+            photo: '/images/quickbooks-logo.png',
+            photoDesc: 'QuickBooks logo',
+            photoWidth: 200,
             photoHeight: 60,
         },
         details: {
-            phone: '(979) 823-8810',
-            website: 'https://www.extracobanks.com/',
-            websiteText: 'Go to Extraco Bank Website',
+            description: 'Accounting',
+            features: 'Bookkeeping, Payroll, Invoice Management',
+            website: 'https://quickbooks.intuit.com/',
+            websiteText: 'Go to QuickBooks Website',
         }
     },
     {
-        name: 'Guaranty Bank & Trust',
+        name: 'Monday',
         image: {
-            photo: '/images/guaranty-logo.svg',
-            photoDesc: 'Guaranty Bank & Trust logo',
-            photoWidth: 250,
+            photo: '/images/monday-logo.png',
+            photoDesc: 'Monday logo',
+            photoWidth: 200,
+            photoHeight: 40,
+        },
+        details: {
+            description: 'Project Management',
+            features: 'Project Task Tracking, CRM, Timelines',
+            website: 'https://monday.com/',
+            websiteText: 'Go to Monday Website',
+        }
+    },
+    {
+        name: 'Zillow',
+        image: {
+            photo: '/images/zillow-logo.png',
+            photoDesc: 'Zillow logo',
+            photoWidth: 200,
+            photoHeight: 40,
+        },
+        details: {
+            description: 'Property Listing Portal',
+            features: 'Manage or Browse Real Estate Listings for Rent and for Sale',
+            website: 'https://www.zillow.com/',
+            websiteText: 'Go to Zillow Website',
+        }
+    },
+    {
+        name: 'Realtor.com',
+        image: {
+            photo: '/images/realtor.com-logo.png',
+            photoDesc: 'Realtor.com logo',
+            photoWidth: 200,
+            photoHeight: 40,
+        },
+        details: {
+            description: 'Property Listing Portal',
+            features: 'Manage or Browse Real Estate Listings for Rent and for Sale',
+            website: 'https://www.realtor.com/',
+            websiteText: 'Go to Realtor.com Website',
+        }
+    },
+    {
+        name: 'Calendly',
+        image: {
+            photo: '/images/calendly-logo.png',
+            photoDesc: 'Calendly logo',
+            photoWidth: 200,
+            photoHeight: 40,
+        },
+        details: {
+            description: 'Calendar Management',
+            features: 'Automated Scheduling Tool',
+            website: 'https://calendly.com/',
+            websiteText: 'Go to Calendly Website',
+        }
+    },
+    {
+        name: 'Everlance',
+        image: {
+            photo: '/images/everlance-logo.png',
+            photoDesc: 'Everlance logo',
+            photoWidth: 200,
             photoHeight: 60,
         },
         details: {
-            phone: '(979) 485-5880',
-            website: 'https://answers.gnty.com/index.html?query=locations+near+me&referrerPageUrl=https%3A%2F%2Fwww.gnty.com%2F',
-            websiteText: 'Go to Guaranty Bank & Trust Website',
-        }
-    },
-    {
-        name: 'USAA (Military only)',
-        image: {
-            photo: '/images/usaa-logo.png',
-            photoDesc: 'USAA logo',
-            photoWidth: 300,
-            photoHeight: 150,
-        },
-        details: {
-            phone: '(800) 531-0341',
-            website: 'https://www.usaa.com/inet/wc/bank-real-estate-mortgage-loans?wa_ref=pub_global_banking_home_mortgages_mortgages_main',
-            websiteText: 'Go to USAA Website',
+            description: 'Mile Tracking',
+            features: 'Automated Mile Tracking, Separate by Category, Tax Summary',
+            website: 'https://www.everlance.com/',
+            websiteText: 'Go to Everlance Website',
         }
     }]
 

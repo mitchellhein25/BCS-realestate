@@ -58,9 +58,9 @@
     margin: 5px;
 }
 
-.imageRounded {
+/*.imageRounded {
     border-radius: 20px;
-}
+}*/
 
 .toRow {
     display: flex;
@@ -74,4 +74,17 @@
 .website {
     text-align: center;
     margin: 5px;
+}
+
+.description {
+    margin: auto;
+    padding: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.features {
+    font-size: .85rem;
+    text-align: justify;
+    margin: 0
 }

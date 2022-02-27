@@ -17,8 +17,20 @@ export default function DetailedListView({ itemList }) {
                         {li.details.address ?
                             <div className={detailedListViewStyles.detailItem + " " + detailedListViewStyles.toRow}>
                                 <p className={detailedListViewStyles.addressNoMargin}><b>Address</b>:&nbsp;</p>
-                                <p className={detailedListViewStyles.addressNoMargin} >{li.details.address.addressLine1}<br></br>
+                                <p className={detailedListViewStyles.addressNoMargin}>{li.details.address.addressLine1}<br></br>
                                    {li.details.address.addressLine2}</p>
+                            </div>
+                            : null
+                        }
+                        {li.details.description ?
+                            <div className={detailedListViewStyles.detailItem + " " + detailedListViewStyles.toRow}>
+                                <p className={detailedListViewStyles.description}>{li.details.description}</p>
+                            </div>
+                            : null
+                        }
+                        {li.details.features ?
+                            <div className={detailedListViewStyles.detailItem + " " + detailedListViewStyles.toRow}>
+                                <p className={detailedListViewStyles.features}><b>Features</b>:&nbsp;{li.details.features}</p>
                             </div>
                             : null
                         }

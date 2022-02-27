@@ -26,13 +26,13 @@
 }
 
 .sectionColumnLeft {
-    width: 55%;
+    width: 50%;
     display: inline-block;
     vertical-align: top;
 }
 
 .sectionColumnRight {
-    width: 45%;
+    width: 50%;
     display: inline-block;
     vertical-align: top;
 }
@@ -145,6 +145,6 @@
 }
 
 .exportButton {
-    min-width: 300px;
-    min-height: 50px;
+    min-width: 300px !important;
+    min-height: 50px !important;
 }
