@@ -9,6 +9,8 @@ import ResultsSection from './resultsSection/resultsSection'
 import PageHeader from '../pageHeader/pageHeader'
 import rentalCalculatorStyles from "./rentalCalculator.module.css"
 
+export const ppText = 'Use % of PP';
+
 export default function RentalCalculator() {
     const purchasePrice = 300000;
     const [state, setState] = useState({

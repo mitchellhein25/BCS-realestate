@@ -2,15 +2,37 @@
     text-align: center;
     color: black;
     font-weight: 400;
-    font-size: 3rem;
-    padding: 30px;
     margin: 0;
+    caret-color: transparent;
 }
-
 
 .subheader {
     max-width: 70%;
     text-align: justify;
-    font-size: 1.2rem;
     font-weight: 400;
+    caret-color: transparent;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .mainHeader {
+        font-size: 2rem;
+        padding: 15px;
+    }
+
+    .subheader {
+        font-size: 1rem;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .mainHeader {
+        font-size: 3rem;
+        padding: 30px;
+    }
+
+    .subheader {
+        font-size: 1.2rem;
+    }
 }

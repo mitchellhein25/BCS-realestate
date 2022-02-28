@@ -26,15 +26,22 @@
 }
 
 .sectionColumnLeft {
-    width: 50%;
     display: inline-block;
     vertical-align: top;
 }
 
 .sectionColumnRight {
-    width: 50%;
     display: inline-block;
     vertical-align: top;
+}
+
+.inputContainer {
+    min-width: 185px;
+    min-height: 115px;
+}
+
+.inputContainerNoCheck {
+    min-width: 185px;
 }
 
 .input {
@@ -43,6 +50,7 @@
     text-align: center;
     font-size: .85rem;
     max-width: 175px;
+    border: 1px solid black;
 }
 
 .inputLabel {
@@ -77,16 +85,6 @@
     background-color: white;
 }
 
-.calculatorSectionLeft {
-    margin-left: 50px;
-    margin-right: 25px;
-}
-
-.calculatorSectionRight {
-    margin-left: 25px;
-    margin-right: 50px;
-}
-
 .rehabHeader {
     text-align: center;
     margin: 0px;
@@ -103,11 +101,10 @@
 }
 
 .resultsSection {
-    padding: 0 10%; 
-    margin: auto;
     background-image: url("/icons/black-two-story-house.svg");
     background-repeat: no-repeat;
     background-position: center;
+    margin: auto;
 }
 
 .resultsHeader {
@@ -131,8 +128,6 @@
     font-size: 1.2rem;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     border: 1px solid black;
-    padding: 20px;
-    margin: 20px;
     height: fit-content;
     min-width: 290px;
     background-color: white;
@@ -147,4 +142,106 @@
 .exportButton {
     min-width: 300px !important;
     min-height: 50px !important;
+}
+
+.smallerText {
+    font-size: .75rem;
+    padding-bottom: 7px;
+}
+
+@media only screen and (max-width: 375px) {
+    .input {
+        height: 40px;
+        max-width: 150px;
+    }
+
+    .inputContainer {
+        min-width: 0;
+        min-height: 115px;
+    }
+
+    .inputContainerNoCheck {
+        min-width: 0;
+        min-height: 115px;
+    }
+
+    .calculatorSection {
+        padding: 0;
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .calcContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sectionColumnLeft, .sectionColumnRight {
+        width: auto;
+    }
+
+    .resultsSection {
+        padding: 0;
+    }
+
+    .resultsContainer {
+        margin: 10px 0;
+        padding: 5px;
+    }
+
+    .returnsText {
+        font-size: 1rem;
+    }
+
+    .smallMargin {
+        margin: 5px 0;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .calculatorSectionLeft {
+        margin-left: 10px;
+        margin-right: 5px;
+    }
+
+    .calculatorSectionRight {
+        margin-left: 5px;
+        margin-right: 10px;
+    }
+
+    .sectionColumnLeft, .sectionColumnRight {
+        width: 50%;
+    }
+
+    .resultsRow {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .resultsSection {
+        padding: 0 10%;
+    }
+
+    .resultsContainer {
+        margin: 10px 10px;
+        padding: 20px;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+
+}
+
+@media only screen and (min-width: 1350px) {
+    .calculatorSectionLeft {
+        margin-left: 50px;
+        margin-right: 25px;
+    }
+
+    .calculatorSectionRight {
+        margin-left: 25px;
+        margin-right: 50px;
+    }
 }

@@ -21,28 +21,24 @@
     display: inline-block;
 }
 
+.title {
+    float: left;
+    margin-left: 30px;
+}
+
 .logoSection {
     display: flex;
+    cursor: pointer;
 }
 
 .link {
     display: block;
     color: white;
     text-align: center;
-    padding: 30px 20px;
+    padding: 30px 10px;
     text-decoration: none;
-    font-size: 1.2rem;
     font-weight: 300;
-}
-
-.navLinks {
-    float: right;
-    margin-right: 50px;
-}
-
-.title {
-    float: left;
-    margin-left: 50px;
+    cursor: pointer;
 }
 
 .link:hover {
@@ -50,25 +46,25 @@
     text-decoration: none;
 }
 
-/* Extra small devices (phones, 600px and down) */
+.navLinks {
+    float: right;
+    margin-right: 30px;
+}
+
 @media only screen and (max-width: 600px) {
     .title {
         font-size: 16px;
     }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    .link {
+        font-size: 1rem;
+    }
 }
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+    .link {
+        font-size: 1.2rem;
+    }
 }

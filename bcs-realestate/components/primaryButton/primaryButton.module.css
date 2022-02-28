@@ -15,8 +15,6 @@
     transition: 0.3s;
     padding: 5px;
     margin: 10px;
-    min-width: 800px;
-    min-height: 100px;
 }
 
 .primaryButton:hover {
@@ -32,4 +30,40 @@
     padding-left: 10px;
 }
 
+@media only screen and (max-width: 600px) {
+    .primaryButton {
+        min-width: 210px;
+        min-height: 30px;
+        font-size: 1rem;
+    }
 
+    .buttonImage {
+        display: none;
+    }
+
+    .buttonText {
+        text-align: center;
+        padding-right: 0;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .primaryButton {
+        min-width: 400px;
+        min-height: 50px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .primaryButton {
+        min-width: 600px;
+        min-height: 80px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .primaryButton {
+        min-width: 800px;
+        min-height: 100px;
+    }
+}

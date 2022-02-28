@@ -3,8 +3,8 @@
     align-content: center;
     justify-content: center;
     flex-direction: column;
-    width: 50%;
     margin: auto;
+    caret-color: transparent;
 }
 
 .listItem {
@@ -18,17 +18,9 @@
     box-shadow: 3px 3px 3px rgba(0,0,0,0.4);
     font-size: 1rem;
     border-radius: 40px;
-    padding: 15px 50px 15px 50px;
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: white;
-}
-
-.liHeader {
-    margin-top: 0;
-    margin-bottom: 5px;
-    font-weight: 400;
-    font-size: 1.5rem;
 }
 
 .detailContainer {
@@ -36,20 +28,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 60%;
 }
 
-.rightContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 40%;
-}
-
-.imageContainer {
-    display: flex;
-    flex-direction: column;
+.liHeader {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: 400;
+    text-align: center;
 }
 
 .detailItem {
@@ -58,10 +43,6 @@
     margin: 5px;
 }
 
-/*.imageRounded {
-    border-radius: 20px;
-}*/
-
 .toRow {
     display: flex;
     flex-direction: row;
@@ -69,11 +50,6 @@
 
 .addressNoMargin {
     margin: 0;
-}
-
-.website {
-    text-align: center;
-    margin: 5px;
 }
 
 .description {
@@ -87,4 +63,84 @@
     font-size: .85rem;
     text-align: justify;
     margin: 0
+}
+
+.website {
+    text-align: center;
+    margin: 5px;
+}
+
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 300px;
+    }
+
+    .listItem {
+        flex-direction: column;
+        padding: 10px 10px;
+    }
+
+    .detailContainer {
+        width: 100%;
+    }
+
+    .rightContainer {
+        width: 100%;
+    }
+
+    .detailItem {
+        font-size: .8rem;
+    }
+
+    .website {
+        font-size: .8rem;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .container {
+        width: 500px;
+    }
+
+    .listItem {
+        padding: 15px 50px;
+    }
+
+    .liHeader {
+        font-size: 1.1rem;
+    }
+
+    .detailContainer {
+        width: 60%;
+    }
+
+    .rightContainer {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .container {
+        width: 800px;
+    }
+
+    .liHeader {
+        font-size: 1.5rem;
+    }
+
+    .website {
+        font-size: 1rem;
+    }
 }

@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import navBarStyles from './navBar.module.css'
@@ -8,18 +8,18 @@ import useWindowSize from '../utils'
 export default function NavBar({ websiteTitle, links }) {
     const [open, setOpen] = useState(true);
     const [width, height] = useWindowSize();
-    const breakpoint = 600;
+    const breakpoint = 900;
 
     return (
         <div className={navBarStyles.container}>
             <ul className={navBarStyles.list}>
 
                 <li className={navBarStyles.li, navBarStyles.title}>
-                    <Link href="/" passHref>
+                    <Link href='/' passHref>
                         <div className={navBarStyles.logoSection}>
                             <Image
-                                src="/icons/main-logo-home-icon.svg"
-                                alt="Main logo icon"
+                                src='/icons/main-logo-home-icon.svg'
+                                alt='Main logo icon'
                                 width={50}
                                 height={50}
                             />
@@ -27,11 +27,6 @@ export default function NavBar({ websiteTitle, links }) {
                         </div>
                     </Link>
                 </li>
-                {/*<li className={navBarStyles.li, navBarStyles.title}>*/}
-                {/*    <Link href="/">*/}
-                        
-                {/*    </Link>*/}
-                {/*</li>*/}
                 <div className={navBarStyles.navLinks}>
                     {width >= breakpoint ?
                                 links.map((link) => (
@@ -46,8 +41,8 @@ export default function NavBar({ websiteTitle, links }) {
                             {open ?
                                 <div>
                                     <Image
-                                        src="/icons/hamburger-menu.svg"
-                                        alt="Mobile navigation menu button"
+                                        src='/icons/hamburger-menu.svg'
+                                        alt='Mobile navigation menu button'
                                         width={40}
                                         height={40}
                                         onClick={() => setOpen(!open)}
@@ -57,8 +52,8 @@ export default function NavBar({ websiteTitle, links }) {
                                 :
                                 <div>
                                     <Image
-                                        src="/icons/exit.svg"
-                                        alt="Exit navigation menu button"
+                                        src='/icons/exit.svg'
+                                        alt='Exit navigation menu button'
                                         width={30}
                                         height={30}
                                         onClick={() => setOpen(!open)}
