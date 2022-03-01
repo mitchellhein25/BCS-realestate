@@ -34,6 +34,18 @@ export default function DetailedListView({ itemList }) {
                             </div>
                             : null
                         }
+                        {li.details.bestFor ?
+                            <div className={detailedListViewStyles.detailItem + ' ' + detailedListViewStyles.toRow}>
+                                <p className={detailedListViewStyles.features}><b>Best For</b>:&nbsp;{li.details.bestFor}</p>
+                            </div>
+                            : null
+                        }
+                        {li.details.price ?
+                            <div className={detailedListViewStyles.detailItem + ' ' + detailedListViewStyles.toRow}>
+                                <p className={detailedListViewStyles.features}><b>Price</b>:&nbsp;{li.details.price}</p>
+                            </div>
+                            : null
+                        }
                         {li.details.website ?
                             <p className={detailedListViewStyles.website}>
                                 <a target='_blank' rel='noreferrer' href={li.details.website}>{li.details.websiteText}</a></p>

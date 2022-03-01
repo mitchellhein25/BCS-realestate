@@ -16,8 +16,41 @@ export default function Softwares() {
         details: {
             description: 'Personal Finance/Budget Tracking',
             features: 'Automated Expense Tracking, Net Worth Calculations, Budget Management',
+            bestFor: 'Budget Tracking',
             website: 'https://mint.intuit.com/',
             websiteText: 'Go to Mint Website',
+        }
+    },
+    {
+        name: 'Personal Capital',
+        image: {
+            photo: '/images/personal-capital-logo.png',
+            photoDesc: 'Personal Capital logo',
+            photoWidth: 200,
+            photoHeight: 60,
+        },
+        details: {
+            description: 'Personal Finance/Investment Tracking',
+            features: 'Automated Expense Tracking, Net Worth Calculations, Budget Management',
+            bestFor: 'Investment Management',
+            website: 'https://www.personalcapital.com/',
+            websiteText: 'Go to Personal Capital Website',
+        }
+    },
+    {
+        name: 'Avail',
+        image: {
+            photo: '/images/avail-logo.png',
+            photoDesc: 'Avail logo',
+            photoWidth: 200,
+            photoHeight: 80,
+        },
+        details: {
+            description: 'Property Management',
+            features: 'Full Lead to Lease Capabilities, Take Online Payments, Maintenance Requests, Analytics',
+            bestFor: 'Less than 5 Properties',
+            website: 'https://www.avail.co/',
+            websiteText: 'Go to Avail Website',
         }
     },
     {
@@ -31,8 +64,25 @@ export default function Softwares() {
         details: {
             description: 'Property Management',
             features: 'Full Lead to Lease Capabilities, Take Online Payments, Maintenance Requests, Analytics',
+            bestFor: 'Less than 5 - 50 Properties',
             website: 'https://www.buildium.com/',
             websiteText: 'Go to Buildium Website',
+        }
+    },
+    {
+        name: 'Appfolio',
+        image: {
+            photo: '/images/appfolio-logo.png',
+            photoDesc: 'Appfolio logo',
+            photoWidth: 200,
+            photoHeight: 60,
+        },
+        details: {
+            description: 'Property Management',
+            features: 'Full Lead to Lease Capabilities, Take Online Payments, Maintenance Requests, Analytics',
+            bestFor: 'Greater than 50 Properties',
+            website: 'https://www.appfolio.com/',
+            websiteText: 'Go to Appfolio Website',
         }
     },
     {

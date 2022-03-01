@@ -34,9 +34,9 @@ export default function RehabSection({ state, setState }) {
             </div>
             {state.rehab.rehabCheckbox ?
                 <div className={rentalCalculatorStyles.row}>
-                    <div>
+                    <div className={rentalCalculatorStyles.inputContainerNoCheck}>
                         <div className={rentalCalculatorStyles.inputLabel} >
-                            <label className={rentalCalculatorStyles.label} htmlFor="afterRepairValue">After Repair Value</label>
+                            <label className={rentalCalculatorStyles.label + ' ' + rentalCalculatorStyles.smallerText} htmlFor="afterRepairValue">After Repair Value</label>
                             <CurrencyInput
                                 type="text"
                                 className={rentalCalculatorStyles.input}
@@ -54,18 +54,20 @@ export default function RehabSection({ state, setState }) {
                         {/*    <label htmlFor="afterRepairValueCheckBox">Use neighborhood average per SF</label>*/}
                         {/*</div>*/}
                     </div>
-                    <div className={rentalCalculatorStyles.inputLabel} >
-                        <label className={rentalCalculatorStyles.label} htmlFor="repairCosts">Repair Costs</label>
-                        <CurrencyInput
-                            type="text"
-                            className={rentalCalculatorStyles.input}
-                            name="repairCosts"
-                            prefix="$"
-                            defaultValue={state.rehab.repairCosts}
-                            decimalsLimit={2}
-                            allowNegativeValue={false}
-                            onValueChange={(value, name) => handleChange(value, name)}
-                        />
+                    <div className={rentalCalculatorStyles.inputContainerNoCheck}>
+                        <div className={rentalCalculatorStyles.inputLabel} >
+                            <label className={rentalCalculatorStyles.label} htmlFor="repairCosts">Repair Costs</label>
+                            <CurrencyInput
+                                type="text"
+                                className={rentalCalculatorStyles.input}
+                                name="repairCosts"
+                                prefix="$"
+                                defaultValue={state.rehab.repairCosts}
+                                decimalsLimit={2}
+                                allowNegativeValue={false}
+                                onValueChange={(value, name) => handleChange(value, name)}
+                            />
+                        </div>
                     </div>
                 </div> : null
                 }

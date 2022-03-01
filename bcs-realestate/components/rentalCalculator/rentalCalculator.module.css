@@ -38,23 +38,37 @@
 .inputContainer {
     min-width: 185px;
     min-height: 115px;
+    box-shadow: rgb(38, 57, 77) 0px 7px 5px -5px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-top: 1px black solid;
+    border-left: 1px black solid;
+    border-right: 1px black solid;
+    padding: 5px 0;
 }
 
 .inputContainerNoCheck {
     min-width: 185px;
+    box-shadow: rgb(38, 57, 77) 0px 7px 5px -5px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-top: 1px black solid;
+    border-left: 1px black solid;
+    border-right: 1px black solid;
+    padding: 5px 0;
 }
 
 .input {
     height: 40px;
-    border-radius: 10px;
     text-align: center;
-    font-size: .85rem;
-    max-width: 175px;
-    border: 1px solid black;
+    font-size: 1rem;
+    max-width: 90%;
+    border: none;
+    text-decoration: underline;
 }
 
 .inputLabel {
-    margin: 5px 0;
+    margin: 0px;
     text-align: center;
 }
 
@@ -78,7 +92,7 @@
 
 .calculatorSection {
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     border-radius: 20px;
     padding: 20px;
     margin: 15px 0;
@@ -95,9 +109,14 @@
     margin: 0px;
 }
 
-.label {
+.label, .subLabel {
     display: block;
     margin: 0;
+}
+
+
+.subLabel {
+    font-size: .75rem;
 }
 
 .resultsSection {
@@ -129,7 +148,7 @@
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     border: 1px solid black;
     height: fit-content;
-    min-width: 290px;
+    min-width: 250px;
     background-color: white;
     border-radius: 20px;
 }
@@ -140,7 +159,7 @@
 }
 
 .exportButton {
-    min-width: 300px !important;
+    min-width: 250px !important;
     min-height: 50px !important;
 }
 
@@ -152,7 +171,7 @@
 @media only screen and (max-width: 375px) {
     .input {
         height: 40px;
-        max-width: 150px;
+        max-width: 90%;
     }
 
     .inputContainer {

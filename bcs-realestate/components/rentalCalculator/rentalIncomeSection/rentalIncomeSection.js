@@ -27,7 +27,7 @@ export default function RentalIncomeSection({ state, setState }) {
         <div className={rentalCalculatorStyles.calculatorSection + " " + rentalCalculatorStyles.calculatorSectionRight}>
             <h2 className={rentalCalculatorStyles.header}>Income</h2>
             <div className={rentalCalculatorStyles.row}>
-                <div>
+                <div className={rentalCalculatorStyles.inputContainerNoCheck}>
                     <div className={rentalCalculatorStyles.inputLabel} >
                         <label className={rentalCalculatorStyles.label} htmlFor="monthlyIncome">Monthly Income</label>
                         <CurrencyInput
@@ -47,9 +47,9 @@ export default function RentalIncomeSection({ state, setState }) {
                     {/*    <label htmlFor="monthlyIncomeCheckbox">Use neighborhood average per SF</label>*/}
                     {/*</div>*/}
                 </div>
-                <div>
+                <div className={rentalCalculatorStyles.inputContainerNoCheck}>
                     <div className={rentalCalculatorStyles.inputLabel} >
-                        <label className={rentalCalculatorStyles.label} htmlFor="appreciation">Yearly Appreciation</label>
+                        <label className={rentalCalculatorStyles.label + ' ' + rentalCalculatorStyles.smallerText} htmlFor="appreciation">Yearly Appreciation</label>
                         <CurrencyInput
                             type="text"
                             className={rentalCalculatorStyles.input}

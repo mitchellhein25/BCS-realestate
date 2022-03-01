@@ -40,16 +40,20 @@ export default function ExpenseSection({ state, setState }) {
                             className={rentalCalculatorStyles.input}
                             name='propertyTaxes'
                             prefix={state.expense.propertyTaxesCheckbox ? '' : '$'}
-                            suffix={state.expense.propertyTaxesCheckbox ? '% per year' : ' per month'}
+                            suffix={state.expense.propertyTaxesCheckbox ? '%' : ''}
                             value={state.expense.propertyTaxes}
                             decimalsLimit={2}
                             allowNegativeValue={false}
                             disableAbbreviations={true}
                             onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                         />
+                        <label className={rentalCalculatorStyles.subLabel} htmlFor='propertyTaxes'>
+                            {state.expense.propertyTaxesCheckbox ? 'per year' : 'per month'}
+                        </label>
                     </div>
                     <div className={rentalCalculatorStyles.inputLabel} >
-                        <input type='checkbox' name='propertyTaxesCheckbox' onChange={handleChangeCheckbox} checked={state.expense.propertyTaxesCheckbox} />
+                        <input type='checkbox' name='propertyTaxesCheckbox' onChange={handleChangeCheckbox}
+                            checked={state.expense.propertyTaxesCheckbox} />
                         <label className={rentalCalculatorStyles.checkboxText} htmlFor='propertyTaxesCheckbox'>{ppText}</label>
                     </div>
                 </div>
@@ -61,13 +65,16 @@ export default function ExpenseSection({ state, setState }) {
                             className={rentalCalculatorStyles.input}
                             name='insurance'
                             prefix={state.expense.insuranceCheckbox ? '' : '$'}
-                            suffix={state.expense.insuranceCheckbox ? '% per year' : ' per month'}
+                            suffix={state.expense.insuranceCheckbox ? '%' : ''}
                             value={state.expense.insurance}
                             decimalsLimit={2}
                             allowNegativeValue={false}
                             disableAbbreviations={true}
                             onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                         />
+                        <label className={rentalCalculatorStyles.subLabel} htmlFor='insurance'>
+                            {state.expense.insuranceCheckbox ? 'per year' : 'per month'}
+                        </label>
                     </div>
                     <div className={rentalCalculatorStyles.inputLabel} >
                         <input type='checkbox' name='insuranceCheckbox' onChange={handleChangeCheckbox} checked={state.expense.insuranceCheckbox} />
@@ -77,19 +84,23 @@ export default function ExpenseSection({ state, setState }) {
                 {width >= breakpoint ?
                     <div className={rentalCalculatorStyles.inputContainer}>
                         <div className={rentalCalculatorStyles.inputLabel} >
-                            <label className={rentalCalculatorStyles.label + ' ' + rentalCalculatorStyles.smallerText} htmlFor='repairMaintenance'>Repairs Maintenance</label>
+                            <label className={rentalCalculatorStyles.label + ' ' + rentalCalculatorStyles.smallerText}
+                                htmlFor='repairMaintenance'>Repairs Maintenance</label>
                             <CurrencyInput
                                 type='text'
                                 className={rentalCalculatorStyles.input}
                                 name='repairMaintenance'
                                 prefix={state.expense.repairMaintenanceCheckbox ? '' : '$'}
-                                suffix={state.expense.repairMaintenanceCheckbox ? '% per year' : ' per month'}
+                                suffix={state.expense.repairMaintenanceCheckbox ? '%' : ''}
                                 value={state.expense.repairMaintenance}
                                 decimalsLimit={2}
                                 allowNegativeValue={false}
                                 disableAbbreviations={true}
                                 onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                             />
+                            <label className={rentalCalculatorStyles.subLabel} htmlFor='repairMaintenance'>
+                                {state.expense.repairMaintenanceCheckbox ? 'per year' : 'per month'}
+                            </label>
                         </div>
                         <div className={rentalCalculatorStyles.inputLabel} >
                             <input type='checkbox' name='repairMaintenanceCheckbox' onChange={handleChangeCheckbox} checked={state.expense.repairMaintenanceCheckbox} />
@@ -114,6 +125,9 @@ export default function ExpenseSection({ state, setState }) {
                             disableAbbreviations={true}
                             onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                         />
+                        <label className={rentalCalculatorStyles.subLabel} htmlFor='vacancy'>
+                            per year
+                        </label>
                     </div>
                     {/*<div>*/}
                     {/*    <input type='checkbox' name='vacancyCheckbox' onChange={handleChangeCheckbox} checked={state.expense.vacancyCheckbox}/>*/}
@@ -128,13 +142,16 @@ export default function ExpenseSection({ state, setState }) {
                             className={rentalCalculatorStyles.input}
                             name='capEx'
                             prefix={state.expense.capExCheckbox ? '' : '$'}
-                            suffix={state.expense.capExCheckbox ? '% per year' : ' per month'}
+                            suffix={state.expense.capExCheckbox ? '%' : ''}
                             value={state.expense.capEx}
                             decimalsLimit={2}
                             allowNegativeValue={false}
                             disableAbbreviations={true}
                             onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                         />
+                        <label className={rentalCalculatorStyles.subLabel} htmlFor='capEx'>
+                            {state.expense.capExCheckbox ? 'per year' : 'per month'}
+                        </label>
                     </div>
                     <div className={rentalCalculatorStyles.inputLabel} >
                         <input type='checkbox' name='capExCheckbox' onChange={handleChangeCheckbox} checked={state.expense.capExCheckbox} />
@@ -149,14 +166,17 @@ export default function ExpenseSection({ state, setState }) {
                                 type='text'
                                 className={rentalCalculatorStyles.input}
                                 name='propertyManagement'
-                                prefix={state.expense.propertyManagement ? '' : '$'}
-                                suffix={state.expense.propertyManagement ? '% per year' : ' per month'}
+                                prefix={state.expense.propertyManagementCheckbox ? '' : '$'}
+                                suffix={state.expense.propertyManagementCheckbox ? '%' : ''}
                                 value={state.expense.propertyManagement}
                                 decimalsLimit={2}
                                 allowNegativeValue={false}
                                 disableAbbreviations={true}
                                 onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                             />
+                            <label className={rentalCalculatorStyles.subLabel} htmlFor='propertyManagement'>
+                                {state.expense.propertyManagementCheckbox ? 'per year' : 'per month'}
+                            </label>
                         </div>
                         <div className={rentalCalculatorStyles.inputLabel} >
                             <input type='checkbox' name='propertyManagementCheckbox'
@@ -182,6 +202,9 @@ export default function ExpenseSection({ state, setState }) {
                             disableAbbreviations={true}
                             onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                         />
+                        <label className={rentalCalculatorStyles.subLabel} htmlFor='utilities'>
+                            per month
+                        </label>
                     </div>
                     {/*<div>*/}
                     {/*    <input type='checkbox' name='utilitiesCheckboxBryan' onChange={handleChange} checked={state.expense.utilitiesCheckboxBryan}/>*/}
@@ -206,6 +229,9 @@ export default function ExpenseSection({ state, setState }) {
                             disableAbbreviations={true}
                             onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                         />
+                        <label className={rentalCalculatorStyles.subLabel} htmlFor='hoa'>
+                            per month
+                        </label>
                     </div>
                 </div>
                 {width >= breakpoint ?
@@ -223,6 +249,9 @@ export default function ExpenseSection({ state, setState }) {
                                 disableAbbreviations={true}
                                 onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                             />
+                            <label className={rentalCalculatorStyles.subLabel} htmlFor='other'>
+                                per month
+                            </label>
                         </div>
                     </div>: null
                 }
@@ -240,13 +269,16 @@ export default function ExpenseSection({ state, setState }) {
                                     className={rentalCalculatorStyles.input}
                                     name='repairMaintenance'
                                     prefix={state.expense.repairMaintenanceCheckbox ? '' : '$'}
-                                    suffix={state.expense.repairMaintenanceCheckbox ? '% per year' : ' per month'}
+                                    suffix={state.expense.repairMaintenanceCheckbox ? '%' : ''}
                                     value={state.expense.repairMaintenance}
                                     decimalsLimit={2}
                                     allowNegativeValue={false}
                                     disableAbbreviations={true}
                                     onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                                 />
+                                <label className={rentalCalculatorStyles.subLabel} htmlFor='repairMaintenance'>
+                                    {state.expense.repairMaintenanceCheckbox ? 'per year' : 'per month'}
+                                </label>
                             </div>
                             <div className={rentalCalculatorStyles.inputLabel} >
                                 <input type='checkbox' name='repairMaintenanceCheckbox' onChange={handleChangeCheckbox} checked={state.expense.repairMaintenanceCheckbox} />
@@ -260,14 +292,17 @@ export default function ExpenseSection({ state, setState }) {
                                     type='text'
                                     className={rentalCalculatorStyles.input}
                                     name='propertyManagement'
-                                    prefix={state.expense.propertyManagement ? '' : '$'}
-                                    suffix={state.expense.propertyManagement ? '% per year' : ' per month'}
+                                    prefix={state.expense.propertyManagementCheckbox ? '' : '$'}
+                                    suffix={state.expense.propertyManagementCheckbox ? '%' : ''}
                                     value={state.expense.propertyManagement}
                                     decimalsLimit={2}
                                     allowNegativeValue={false}
                                     disableAbbreviations={true}
                                     onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                                 />
+                                <label className={rentalCalculatorStyles.subLabel} htmlFor='propertyManagement'>
+                                    {state.expense.propertyManagementCheckbox ? 'per year' : 'per month'}
+                                </label>
                             </div>
                             <div className={rentalCalculatorStyles.inputLabel} >
                                 <input type='checkbox' name='propertyManagementCheckbox'
@@ -292,6 +327,9 @@ export default function ExpenseSection({ state, setState }) {
                                     disableAbbreviations={true}
                                     onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                                 />
+                                <label className={rentalCalculatorStyles.subLabel} htmlFor='other'>
+                                    per month
+                                </label>
                             </div>
                         </div>
                     </div>
