@@ -215,10 +215,12 @@ export default function ResultsSection({ state, setState }) {
                         <p className={rentalCalculatorStyles.smallMargin}><span style={{ color: 'blue' }}>${addCommas(state.rentalIncome.monthlyIncome)}</span></p>
                     </div>
                 </div>
-                <div className={rentalCalculatorStyles.resultsRow}>
+                <div className={rentalCalculatorStyles.row}>
+                    <div>
                     <button onClick={(e) => { toCsv() }} className={primaryButtonStyles.primaryButton + ' ' + rentalCalculatorStyles.exportButton}>
                         <p className={primaryButtonStyles.buttonText}> Export to Excel</p>
-                    </button>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

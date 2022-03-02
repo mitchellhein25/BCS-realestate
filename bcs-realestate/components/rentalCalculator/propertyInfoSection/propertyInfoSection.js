@@ -26,29 +26,16 @@ export default function PropertyInfoSection({ state, setState }) {
                     <div className={rentalCalculatorStyles.inputContainerNoCheck}>
                         <div className={rentalCalculatorStyles.inputLabel}>
                             <label className={rentalCalculatorStyles.label} htmlFor='address'>Address</label>
-                            <input className={rentalCalculatorStyles.input} type='text' name='address' placeholder='Enter Text Here'
-                                onChange={handleChange} />
-                        </div>
-                    </div>
-                    <div className={rentalCalculatorStyles.inputContainerNoCheck}>
-                        <div className={rentalCalculatorStyles.inputLabel} >
-                            <label className={rentalCalculatorStyles.label} htmlFor='city'>City</label>
-                            <input className={rentalCalculatorStyles.input} type='text' name='city' placeholder='Enter Text Here'
+                            <input className={rentalCalculatorStyles.input} type='text' name='address' placeholder='Enter Text'
                                 onChange={handleChange} />
                         </div>
                     </div>
                     {width >= breakpoint ?
                         <div className={rentalCalculatorStyles.inputContainerNoCheck}>
                             <div className={rentalCalculatorStyles.inputLabel} >
-                                <label className={rentalCalculatorStyles.label} htmlFor='state'>State</label>
-                                <select className={rentalCalculatorStyles.input} name='state' onChange={handleChange} >
-                                    <option value='none' selected disabled hidden>Choose Option</option>
-                                    {usStates.map(stateItem => {
-                                        return (
-                                            <option value={stateItem.name} key={stateItem.name}>{stateItem.name}</option>
-                                        )
-                                    })}
-                                </select>
+                                <label className={rentalCalculatorStyles.label} htmlFor='city'>City</label>
+                                <input className={rentalCalculatorStyles.input} type='text' name='city' placeholder='Enter Text'
+                                    onChange={handleChange} />
                             </div>
                         </div> : null
                     }
@@ -68,44 +55,62 @@ export default function PropertyInfoSection({ state, setState }) {
                         {/*    </select>*/}
                         {/*</div>*/}
                     {/*</div>*/}
+                    {width >= breakpoint ? null :
+                        <div className={rentalCalculatorStyles.inputContainerNoCheck}>
+                            <div className={rentalCalculatorStyles.inputLabel} >
+                                <label className={rentalCalculatorStyles.label} htmlFor='city'>City</label>
+                                <input className={rentalCalculatorStyles.input} type='text' name='city' placeholder='Enter Text'
+                                    onChange={handleChange} />
+                            </div>
+                        </div>
+                    }
                     <div className={rentalCalculatorStyles.inputContainerNoCheck}>
-                        <div className={rentalCalculatorStyles.inputLabel}>
-                            <label className={rentalCalculatorStyles.label} htmlFor='zipCode'>Zip Code</label>
-                            <input className={rentalCalculatorStyles.input} type='text' name='zipCode' placeholder='Enter Text Here'
-                            onChange={handleChange} />
+                        <div className={rentalCalculatorStyles.inputLabel} >
+                            <label className={rentalCalculatorStyles.label} htmlFor='state'>State</label>
+                            <select className={rentalCalculatorStyles.input} name='state' onChange={handleChange} >
+                                <option value='none' selected disabled hidden>Choose</option>
+                                {usStates.map(stateItem => {
+                                    return (
+                                        <option value={stateItem.name} key={stateItem.name}>{stateItem.name}</option>
+                                    )
+                                })}
+                            </select>
                         </div>
                     </div>
+                    {width >= breakpoint ? 
+                        <div className={rentalCalculatorStyles.inputContainerNoCheck}>
+                            <div className={rentalCalculatorStyles.inputLabel}>
+                                <label className={rentalCalculatorStyles.label} htmlFor='zipCode'>Zip Code</label>
+                                <input className={rentalCalculatorStyles.input} type='text' name='zipCode' placeholder='Enter Text'
+                                    onChange={handleChange} />
+                            </div>
+                        </div> : null
+                    }
                     {width >= breakpoint ?
                         <div className={rentalCalculatorStyles.inputContainerNoCheck}>
                             <div className={rentalCalculatorStyles.inputLabel} >
                                 <label className={rentalCalculatorStyles.label} htmlFor='squareFootage'>Square Footage</label>
                                 <input className={rentalCalculatorStyles.input} type='number' name='squareFootage'
-                                    placeholder='Enter Number Here' onChange={handleChange} />
+                                    placeholder='Enter Number' onChange={handleChange} />
                             </div>
-                        </div> :
-                        <div className={rentalCalculatorStyles.inputContainerNoCheck}>
-                            <div className={rentalCalculatorStyles.inputLabel} >
-                                <label className={rentalCalculatorStyles.label} htmlFor='state'>State</label>
-                                <select className={rentalCalculatorStyles.input} name='state' onChange={handleChange} >
-                                    <option value='none' selected disabled hidden>Choose Option</option>
-                                    {usStates.map(stateItem => {
-                                        return (
-                                            <option value={stateItem.name} key={stateItem.name}>{stateItem.name}</option>
-                                        )
-                                    })}
-                                </select>
-                            </div>
-                        </div>
+                        </div> : null
                     }
                 </div>
                 {width >= breakpoint ? null :
                     //Row 3
                     <div className={rentalCalculatorStyles.row}>
                         <div className={rentalCalculatorStyles.inputContainerNoCheck}>
+                            <div className={rentalCalculatorStyles.inputLabel}>
+                                <label className={rentalCalculatorStyles.label} htmlFor='zipCode'>Zip Code</label>
+                                <input className={rentalCalculatorStyles.input} type='text' name='zipCode' placeholder='Enter Text'
+                                    onChange={handleChange} />
+                            </div>
+                        </div>
+                        <div className={rentalCalculatorStyles.inputContainerNoCheck}>
                             <div className={rentalCalculatorStyles.inputLabel} >
                                 <label className={rentalCalculatorStyles.label} htmlFor='squareFootage'>Square Footage</label>
                                 <input className={rentalCalculatorStyles.input} type='number' name='squareFootage'
-                                    placeholder='Enter Number Here' onChange={handleChange} />
+                                    placeholder='Enter Number' onChange={handleChange} />
                             </div>
                         </div>
                     </div>

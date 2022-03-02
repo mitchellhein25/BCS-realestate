@@ -25,46 +25,41 @@
     justify-content: space-evenly;
 }
 
-.sectionColumnLeft {
-    display: inline-block;
-    vertical-align: top;
-}
-
-.sectionColumnRight {
-    display: inline-block;
+.sectionColumnLeft, .sectionColumnRight {
     vertical-align: top;
 }
 
 .inputContainer {
     min-width: 185px;
     min-height: 115px;
-    box-shadow: rgb(38, 57, 77) 0px 7px 5px -5px;
+    /*box-shadow: rgb(38, 57, 77) 0px 7px 5px -5px;*/
     border-radius: 10px;
     margin-bottom: 15px;
-    border-top: 1px black solid;
+    /*border-top: 1px black solid;
     border-left: 1px black solid;
-    border-right: 1px black solid;
+    border-right: 1px black solid;*/
     padding: 5px 0;
 }
 
 .inputContainerNoCheck {
     min-width: 185px;
-    box-shadow: rgb(38, 57, 77) 0px 7px 5px -5px;
+    /*box-shadow: rgb(38, 57, 77) 0px 7px 5px -5px;*/
     border-radius: 10px;
     margin-bottom: 15px;
-    border-top: 1px black solid;
+    /*border-top: 1px black solid;
     border-left: 1px black solid;
-    border-right: 1px black solid;
+    border-right: 1px black solid;*/
     padding: 5px 0;
 }
 
 .input {
     height: 40px;
     text-align: center;
-    font-size: 1rem;
     max-width: 90%;
     border: none;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+    background-color: rgb(249 228 228);
+    border-radius: 10px;
 }
 
 .inputLabel {
@@ -172,6 +167,7 @@
     .input {
         height: 40px;
         max-width: 90%;
+        font-size: .9rem;
     }
 
     .inputContainer {
@@ -188,9 +184,19 @@
         padding: 0;
         margin-top: 5px;
     }
+
+    .resultsContainer {
+        margin: 10px 5px;
+        padding: 5px;
+    }
+
+    .sectionColumnLeft, .sectionColumnRight {
+        width: auto;
+        display: block;
+    }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (min-width: 375px) {
     .calcContainer {
         display: flex;
         flex-direction: column;
@@ -198,6 +204,7 @@
 
     .sectionColumnLeft, .sectionColumnRight {
         width: auto;
+        display: block;
     }
 
     .resultsSection {
@@ -205,7 +212,7 @@
     }
 
     .resultsContainer {
-        margin: 10px 0;
+        margin: 10px 5px;
         padding: 5px;
     }
 
@@ -216,9 +223,18 @@
     .smallMargin {
         margin: 5px 0;
     }
+
+    .input {
+        font-size: 1.2rem;
+    }
 }
 
 @media only screen and (min-width: 800px) {
+    .calcContainer {
+        display: flex;
+        flex-direction: row;
+    }
+
     .calculatorSectionLeft {
         margin-left: 10px;
         margin-right: 5px;
@@ -231,6 +247,7 @@
 
     .sectionColumnLeft, .sectionColumnRight {
         width: 50%;
+        display: inline-block;
     }
 
     .resultsRow {
@@ -246,6 +263,10 @@
     .resultsContainer {
         margin: 10px 10px;
         padding: 20px;
+    }
+
+    .input {
+        font-size: 1.5rem;
     }
 }
 
