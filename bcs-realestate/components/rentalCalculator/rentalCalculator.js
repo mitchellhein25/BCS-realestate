@@ -8,10 +8,16 @@ import ExpenseSection from './expenseSection/expenseSection'
 import ResultsSection from './resultsSection/resultsSection'
 import PageHeader from '../pageHeader/pageHeader'
 import rentalCalculatorStyles from "./rentalCalculator.module.css"
+import useWindowSize from '../utils'
 
 export const ppText = 'Use % of PP';
+export const rentText = 'Use % of Rent';
+export const dpsfText = 'Use $ per SQ';
 
 export default function RentalCalculator() {
+    const [width, height] = useWindowSize();
+    const breakpoint = 800;
+
     const purchasePrice = 300000;
     const [state, setState] = useState({
         propertyInfo: {
@@ -50,17 +56,21 @@ export default function RentalCalculator() {
         },
         expense: {
             propertyTaxes: 2,
-            propertyTaxesCheckbox: true,
+            propertyTaxesCheckboxPP: true,
             insurance: 150,
-            insuranceCheckbox: false,
+            insuranceCheckboxPP: false,
             repairMaintenance: 1,
-            repairMaintenanceCheckbox: true,
+            repairMaintenanceCheckboxPP: true,
+            repairMaintenanceCheckboxRent: false,
+            repairMaintenanceCheckboxSF: false,
             vacancy: 7,
-            vacancyCheckbox: false,
+            vacancyCheckboxPP: false,
             capEx: 1,
-            capExCheckbox: true,
+            capExCheckboxPP: true,
+            capExCheckboxRent: false,
+            capExCheckboxSF: false,
             propertyManagement: 0,
-            propertyManagementCheckbox: false,
+            propertyManagementCheckboxPP: false,
             utilities: 200,
             utilitiesCheckboxBryan: false,
             utilitiesCheckboxCStat: false,
@@ -85,15 +95,18 @@ export default function RentalCalculator() {
             <div className={rentalCalculatorStyles.calcContainer}>
                 <div className={rentalCalculatorStyles.sectionColumnLeft}>
                     <PropertyInfoSection state={state} setState={setState} ></PropertyInfoSection>
-                    <ExpenseSection state={state} setState={setState} ></ExpenseSection>
+                    {width >= breakpoint ?
+                        <ExpenseSection state={state} setState={setState} ></ExpenseSection> : null
+                    }
                 </div>
                 <div className={rentalCalculatorStyles.sectionColumnRight}>
                     <PurchaseSection state={state} setState={setState} ></PurchaseSection>
                     <LoanDetailsSection state={state} setState={setState} ></LoanDetailsSection>
-                    {/*<div className={rentalCalculatorStyles.sectionColumnLeft}></div>*/}
                     <RehabSection state={state} setState={setState} ></RehabSection>
-                    {/*<div className={rentalCalculatorStyles.sectionColumnLeft}></div>*/}
                     <RentalIncomeSection state={state} setState={setState} ></RentalIncomeSection>
+                    {width >= breakpoint ? null :
+                        <ExpenseSection state={state} setState={setState} ></ExpenseSection>
+                    }
                 </div>
             </div>
             <ResultsSection state={state} setState={setState} ></ResultsSection>

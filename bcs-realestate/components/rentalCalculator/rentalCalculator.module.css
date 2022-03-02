@@ -17,6 +17,7 @@
     background-size: auto;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    padding-top: 15px;
 }
 
 .row {
@@ -29,26 +30,10 @@
     vertical-align: top;
 }
 
-.inputContainer {
+.inputContainer, .inputContainerNoCheck {
     min-width: 185px;
-    min-height: 115px;
-    /*box-shadow: rgb(38, 57, 77) 0px 7px 5px -5px;*/
     border-radius: 10px;
-    margin-bottom: 15px;
-    /*border-top: 1px black solid;
-    border-left: 1px black solid;
-    border-right: 1px black solid;*/
-    padding: 5px 0;
-}
-
-.inputContainerNoCheck {
-    min-width: 185px;
-    /*box-shadow: rgb(38, 57, 77) 0px 7px 5px -5px;*/
-    border-radius: 10px;
-    margin-bottom: 15px;
-    /*border-top: 1px black solid;
-    border-left: 1px black solid;
-    border-right: 1px black solid;*/
+    margin-bottom: 5px;
     padding: 5px 0;
 }
 
@@ -90,7 +75,7 @@
     /*border: 1px solid black;*/
     border-radius: 20px;
     padding: 20px;
-    margin: 15px 0;
+    margin: 0 0 15px 0;
     background-color: white;
 }
 
@@ -135,6 +120,7 @@
     box-shadow: 0 8px 4px -4px grey;
     padding: 10px;
     margin-top: 0;
+    margin-bottom: 0;
 }
 
 .resultsContainer {
@@ -172,12 +158,12 @@
 
     .inputContainer {
         min-width: 0;
-        min-height: 115px;
+        min-height: 105px;
     }
 
     .inputContainerNoCheck {
         min-width: 0;
-        min-height: 115px;
+        min-height: 85px;
     }
 
     .calculatorSection {
@@ -258,6 +244,7 @@
 
     .resultsSection {
         padding: 0 10%;
+        margin-top: 20px;
     }
 
     .resultsContainer {
