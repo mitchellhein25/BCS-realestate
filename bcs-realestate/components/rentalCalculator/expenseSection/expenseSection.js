@@ -7,6 +7,8 @@ import VacancyField from './expenseSectionFields/vacancyField'
 import CapExField from './expenseSectionFields/capExField'
 import PropertyManagementField from './expenseSectionFields/propertyManagementField'
 import UtilitiesField from './expenseSectionFields/utilitiesField'
+import HoaField from './expenseSectionFields/hoaField'
+import OtherField from './expenseSectionFields/otherField'
 import useWindowSize from '../../utils'
 import { ppText, rentText, dpsfText } from '../rentalCalculator'
 
@@ -108,45 +110,17 @@ export default function ExpenseSection({ state, setState }) {
                     handleChangeCheckbox={handleChangeCheckbox}
                     handleChangeCurrencyInput={handleChangeCurrencyInput}
                 />
-                <div className={rentalCalculatorStyles.inputContainer}>
-                    <div className={rentalCalculatorStyles.inputLabel} >
-                        <label className={rentalCalculatorStyles.label} htmlFor='hoa'>HOA</label>
-                        <CurrencyInput
-                            type='text'
-                            className={rentalCalculatorStyles.input}
-                            name='hoa'
-                            prefix='$'
-                            value={state.expense.hoa}
-                            decimalsLimit={2}
-                            allowNegativeValue={false}
-                            disableAbbreviations={true}
-                            onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
-                        />
-                        <label className={rentalCalculatorStyles.subLabel} htmlFor='hoa'>
-                            per month
-                        </label>
-                    </div>
-                </div>
+                <HoaField
+                    state={state}
+                    handleChangeCheckbox={handleChangeCheckbox}
+                    handleChangeCurrencyInput={handleChangeCurrencyInput}
+                />
                 {width >= breakpoint ?
-                    <div className={rentalCalculatorStyles.inputContainer}>
-                        <div className={rentalCalculatorStyles.inputLabel} >
-                            <label className={rentalCalculatorStyles.label} htmlFor='other'>Other</label>
-                            <CurrencyInput
-                                type='text'
-                                className={rentalCalculatorStyles.input}
-                                name='other'
-                                prefix='$'
-                                value={state.expense.other}
-                                decimalsLimit={2}
-                                allowNegativeValue={false}
-                                disableAbbreviations={true}
-                                onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
-                            />
-                            <label className={rentalCalculatorStyles.subLabel} htmlFor='other'>
-                                per month
-                            </label>
-                        </div>
-                    </div>: null
+                    <OtherField
+                        state={state}
+                        handleChangeCheckbox={handleChangeCheckbox}
+                        handleChangeCurrencyInput={handleChangeCurrencyInput}
+                    /> : null
                 }
             </div>
 
@@ -154,90 +128,24 @@ export default function ExpenseSection({ state, setState }) {
                 // Row 4
                 <>
                     <div className={rentalCalculatorStyles.row}>
-                        <div className={rentalCalculatorStyles.inputContainer}>
-                            <div className={rentalCalculatorStyles.inputLabel} >
-                                <label className={rentalCalculatorStyles.label + ' ' + rentalCalculatorStyles.smallerText}
-                                    htmlFor='repairMaintenance'>Repairs Maintenance</label>
-                                <CurrencyInput
-                                    type='text'
-                                    className={rentalCalculatorStyles.input}
-                                    name='repairMaintenance'
-                                    prefix={!state.expense.repairMaintenanceCheckboxPP &
-                                        !state.expense.repairMaintenanceCheckboxRent ? '$' : ''}
-                                    suffix={state.expense.repairMaintenanceCheckboxSQ ? '' : '%'}
-                                    value={state.expense.repairMaintenance}
-                                    decimalsLimit={2}
-                                    allowNegativeValue={false}
-                                    disableAbbreviations={true}
-                                    onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
-                                />
-                                <label className={rentalCalculatorStyles.subLabel} htmlFor='repairMaintenance'>
-                                    {state.expense.repairMaintenanceCheckboxPP ? 'per year' : 'per month'}
-                                </label>
-                            </div>
-                            <div className={rentalCalculatorStyles.inputLabel} >
-                                <input type='checkbox' name='repairMaintenanceCheckboxPP' onChange={handleChangeCheckbox}
-                                    checked={state.expense.repairMaintenanceCheckboxPP} />
-                                <label className={rentalCalculatorStyles.checkboxText} htmlFor='repairMaintenanceCheckboxPP'>{ppText}</label>
-                            </div>
-                            <div className={rentalCalculatorStyles.inputLabel} >
-                                <input type='checkbox' name='repairMaintenanceCheckboxRent' onChange={handleChangeCheckbox}
-                                    checked={state.expense.repairMaintenanceCheckboxRent} />
-                                <label className={rentalCalculatorStyles.checkboxText} htmlFor='repairMaintenanceCheckboxRent'>{rentText}</label>
-                            </div>
-                            <div className={rentalCalculatorStyles.inputLabel} >
-                                <input type='checkbox' name='repairMaintenanceCheckboxSQ' onChange={handleChangeCheckbox}
-                                    checked={state.expense.repairMaintenanceCheckboxSQ} />
-                                <label className={rentalCalculatorStyles.checkboxText} htmlFor='repairMaintenanceCheckboxSQ'>{dpsfText}</label>
-                            </div>
-                        </div>
-                        <div className={rentalCalculatorStyles.inputContainer}>
-                            <div className={rentalCalculatorStyles.inputLabel} >
-                                <label className={rentalCalculatorStyles.label + ' ' + rentalCalculatorStyles.smallerText} htmlFor='propertyManagement'>Property Management</label>
-                                <CurrencyInput
-                                    type='text'
-                                    className={rentalCalculatorStyles.input}
-                                    name='propertyManagement'
-                                    prefix={state.expense.propertyManagementCheckbox ? '' : '$'}
-                                    suffix={state.expense.propertyManagementCheckbox ? '%' : ''}
-                                    value={state.expense.propertyManagement}
-                                    decimalsLimit={2}
-                                    allowNegativeValue={false}
-                                    disableAbbreviations={true}
-                                    onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
-                                />
-                                <label className={rentalCalculatorStyles.subLabel} htmlFor='propertyManagement'>
-                                    {state.expense.propertyManagementCheckbox ? 'per year' : 'per month'}
-                                </label>
-                            </div>
-                            <div className={rentalCalculatorStyles.inputLabel} >
-                                <input type='checkbox' name='propertyManagementCheckbox'
-                                    onChange={handleChangeCheckbox} checked={state.expense.propertyManagementCheckbox} />
-                                <label className={rentalCalculatorStyles.checkboxText} htmlFor='propertyManagementCheckbox'>{ppText}</label>
-                            </div>
-                        </div>
+                        <RepairMaintenanceField
+                            state={state}
+                            handleChangeCheckbox={handleChangeCheckbox}
+                            handleChangeCurrencyInput={handleChangeCurrencyInput}
+                        />
+                        <PropertyManagementField
+                            state={state}
+                            handleChangeCheckbox={handleChangeCheckbox}
+                            handleChangeCurrencyInput={handleChangeCurrencyInput}
+                        />
                     </div>
                     {/*Row 5*/}
                     <div className={rentalCalculatorStyles.row}>
-                        <div className={rentalCalculatorStyles.inputContainerNoCheck}>
-                            <div className={rentalCalculatorStyles.inputLabel} >
-                                <label className={rentalCalculatorStyles.label} htmlFor='other'>Other</label>
-                                <CurrencyInput
-                                    type='text'
-                                    className={rentalCalculatorStyles.input}
-                                    name='other'
-                                    prefix='$'
-                                    value={state.expense.other}
-                                    decimalsLimit={2}
-                                    allowNegativeValue={false}
-                                    disableAbbreviations={true}
-                                    onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
-                                />
-                                <label className={rentalCalculatorStyles.subLabel} htmlFor='other'>
-                                    per month
-                                </label>
-                            </div>
-                        </div>
+                        <OtherField
+                            state={state}
+                            handleChangeCheckbox={handleChangeCheckbox}
+                            handleChangeCurrencyInput={handleChangeCurrencyInput}
+                        />
                     </div>
                 </>
             }
