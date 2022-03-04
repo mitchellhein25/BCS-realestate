@@ -1,5 +1,9 @@
-import { usStates } from '../../../staticData/states'
-import { neighborhoods } from '../../../staticData/neighborhoods'
+import AddressField from './propertyInfoSectionFields/addressField'
+import CityField from './propertyInfoSectionFields/cityField'
+import StateField from './propertyInfoSectionFields/stateField'
+import ZipCodeField from './propertyInfoSectionFields/zipCodeField'
+import SquareFootageField from './propertyInfoSectionFields/squareFootageField'
+import NeighborhoodField from './propertyInfoSectionFields/neighborhoodField'
 import rentalCalculatorStyles from './../rentalCalculator.module.css'
 import useWindowSize from '../../utils'
 
@@ -23,96 +27,48 @@ export default function PropertyInfoSection({ state, setState }) {
             <div>
                 {/*Row 1*/}
                 <div className={rentalCalculatorStyles.row}>
-                    <div className={rentalCalculatorStyles.inputContainerNoCheck}>
-                        <div className={rentalCalculatorStyles.inputLabel}>
-                            <label className={rentalCalculatorStyles.label} htmlFor='address'>Address</label>
-                            <input className={rentalCalculatorStyles.input} type='text' name='address' placeholder='Enter Text'
-                                onChange={handleChange} />
-                        </div>
-                    </div>
+                    <AddressField
+                        handleChange={handleChange}
+                    />
                     {width >= breakpoint ?
-                        <div className={rentalCalculatorStyles.inputContainerNoCheck}>
-                            <div className={rentalCalculatorStyles.inputLabel} >
-                                <label className={rentalCalculatorStyles.label} htmlFor='city'>City</label>
-                                <input className={rentalCalculatorStyles.input} type='text' name='city' placeholder='Enter Text'
-                                    onChange={handleChange} />
-                            </div>
-                        </div> : null
+                        <CityField
+                            handleChange={handleChange}
+                        /> : null
                     }
                 </div>
                 {/*Row 2*/}
                 <div className={rentalCalculatorStyles.row}>
-                    {/*<div className={rentalCalculatorStyles.inputContainer}>*/}
-                        {/*<div className={rentalCalculatorStyles.inputLabel}>*/}
-                        {/*    <label className={rentalCalculatorStyles.label} htmlFor='neighborhood'>Neighborhood</label>*/}
-                        {/*    <select className={rentalCalculatorStyles.input} name='neighborhood' onChange={handleChange}>*/}
-                        {/*        <option value='none' selected disabled hidden>Choose Option</option>*/}
-                        {/*        {neighborhoods.map(neighborhoodItem => {*/}
-                        {/*            return (*/}
-                        {/*                <option value={neighborhoodItem.name} key={neighborhoodItem.name}>{neighborhoodItem.name}</option>*/}
-                        {/*            )*/}
-                        {/*        })}*/}
-                        {/*    </select>*/}
-                        {/*</div>*/}
-                    {/*</div>*/}
+                    {/*<NeighborhoodField*/}
+                    {/*    handleChange={handleChange}*/}
+                    {/*/>*/}
                     {width >= breakpoint ? null :
-                        <div className={rentalCalculatorStyles.inputContainerNoCheck}>
-                            <div className={rentalCalculatorStyles.inputLabel} >
-                                <label className={rentalCalculatorStyles.label} htmlFor='city'>City</label>
-                                <input className={rentalCalculatorStyles.input} type='text' name='city' placeholder='Enter Text'
-                                    onChange={handleChange} />
-                            </div>
-                        </div>
+                        <CityField
+                            handleChange={handleChange}
+                        />
                     }
-                    <div className={rentalCalculatorStyles.inputContainerNoCheck}>
-                        <div className={rentalCalculatorStyles.inputLabel} >
-                            <label className={rentalCalculatorStyles.label} htmlFor='state'>State</label>
-                            <select className={rentalCalculatorStyles.input} name='state' onChange={handleChange} >
-                                <option value='none' selected disabled hidden>Choose</option>
-                                {usStates.map(stateItem => {
-                                    return (
-                                        <option value={stateItem.name} key={stateItem.name}>{stateItem.name}</option>
-                                    )
-                                })}
-                            </select>
-                        </div>
-                    </div>
+                    <StateField
+                        handleChange={handleChange}
+                    />
                     {width >= breakpoint ? 
-                        <div className={rentalCalculatorStyles.inputContainerNoCheck}>
-                            <div className={rentalCalculatorStyles.inputLabel}>
-                                <label className={rentalCalculatorStyles.label} htmlFor='zipCode'>Zip Code</label>
-                                <input className={rentalCalculatorStyles.input} type='text' name='zipCode' placeholder='Enter Text'
-                                    onChange={handleChange} />
-                            </div>
-                        </div> : null
+                        <ZipCodeField
+                            handleChange={handleChange}
+                        /> : null
                     }
                     {width >= breakpoint ?
-                        <div className={rentalCalculatorStyles.inputContainerNoCheck}>
-                            <div className={rentalCalculatorStyles.inputLabel} >
-                                <label className={rentalCalculatorStyles.label} htmlFor='squareFootage'>Square Footage</label>
-                                <input className={rentalCalculatorStyles.input} type='number' name='squareFootage'
-                                    placeholder='Enter Number' onChange={handleChange} />
-                            </div>
-                        </div> : null
+                        <SquareFootageField
+                            handleChange={handleChange}
+                        /> : null
                     }
                 </div>
                 {width >= breakpoint ? null :
                     //Row 3
                     <div className={rentalCalculatorStyles.row}>
-                        <div className={rentalCalculatorStyles.inputContainerNoCheck}>
-                            <div className={rentalCalculatorStyles.inputLabel}>
-                                <label className={rentalCalculatorStyles.label} htmlFor='zipCode'>Zip Code</label>
-                                <input className={rentalCalculatorStyles.input} type='text' name='zipCode' placeholder='Enter Text'
-                                    onChange={handleChange} />
-                            </div>
-                        </div>
-                        <div className={rentalCalculatorStyles.inputContainerNoCheck}>
-                            <div className={rentalCalculatorStyles.inputLabel} >
-                                <label className={rentalCalculatorStyles.label} htmlFor='squareFootage'>Square Footage</label>
-                                <input className={rentalCalculatorStyles.input} type='number' name='squareFootage'
-                                    placeholder='Enter Number' onChange={handleChange} />
-                            </div>
-                        </div>
+                        <ZipCodeField
+                            handleChange={handleChange}
+                        />
+                        <SquareFootageField
+                            handleChange={handleChange}
+                        />
                     </div>
                 }
             </div>

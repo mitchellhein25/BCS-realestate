@@ -1,5 +1,4 @@
 import rentalCalculatorStyles from './../rentalCalculator.module.css'
-import CurrencyInput from 'react-currency-input-field';
 import PropertyTaxesField from './expenseSectionFields/propertyTaxesField'
 import InsuranceField from './expenseSectionFields/insuranceField'
 import RepairMaintenanceField from './expenseSectionFields/repairMaintenanceField'
@@ -10,7 +9,6 @@ import UtilitiesField from './expenseSectionFields/utilitiesField'
 import HoaField from './expenseSectionFields/hoaField'
 import OtherField from './expenseSectionFields/otherField'
 import useWindowSize from '../../utils'
-import { ppText, rentText, dpsfText } from '../rentalCalculator'
 
 export default function ExpenseSection({ state, setState }) {
     const [width, height] = useWindowSize();
