@@ -1,13 +1,13 @@
 import rentalCalculatorStyles from '../../rentalCalculator.module.css'
 
-export default function SquareFootageField({ handleChange }) {
+export default function SquareFootageField({ state, handleChange }) {
 
     return (
         <div className={rentalCalculatorStyles.inputContainerNoCheck}>
             <div className={rentalCalculatorStyles.inputLabel} >
                 <label className={rentalCalculatorStyles.label} htmlFor='squareFootage'>Square Footage</label>
-                <input className={rentalCalculatorStyles.input} type='number' name='squareFootage'
-                    placeholder='Enter Number' onChange={handleChange} />
+                <input className={rentalCalculatorStyles.input} name='squareFootage'
+                    value={state.propertyInfo.squareFootage} onChange={handleChange} />
             </div>
         </div>
     )

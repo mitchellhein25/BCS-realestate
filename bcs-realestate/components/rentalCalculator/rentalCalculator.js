@@ -26,7 +26,7 @@ export default function RentalCalculator() {
             state: "",
             zipCode: "",
             neighborhood: "",
-            squareFootage: 0,
+            squareFootage: 2600,
         },
         purchase: {
             purchasePrice: purchasePrice,

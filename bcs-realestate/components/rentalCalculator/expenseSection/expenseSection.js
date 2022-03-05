@@ -74,7 +74,7 @@ export default function ExpenseSection({ state, setState }) {
                     handleChangeCurrencyInput={handleChangeCurrencyInput}
                 />
                 {width >= breakpoint ?
-                    <RepairMaintenanceField
+                    <VacancyField
                         state={state}
                         handleChangeCheckbox={handleChangeCheckbox}
                         handleChangeCurrencyInput={handleChangeCurrencyInput}
@@ -83,7 +83,7 @@ export default function ExpenseSection({ state, setState }) {
             </div>
             {/* Row 2*/}
             <div className={rentalCalculatorStyles.row}>
-                <VacancyField
+                <RepairMaintenanceField
                     state={state}
                     handleChangeCheckbox={handleChangeCheckbox}
                     handleChangeCurrencyInput={handleChangeCurrencyInput}
@@ -126,7 +126,7 @@ export default function ExpenseSection({ state, setState }) {
                 // Row 4
                 <>
                     <div className={rentalCalculatorStyles.row}>
-                        <RepairMaintenanceField
+                        <VacancyField
                             state={state}
                             handleChangeCheckbox={handleChangeCheckbox}
                             handleChangeCurrencyInput={handleChangeCurrencyInput}

@@ -56,6 +56,7 @@ export default function PropertyInfoSection({ state, setState }) {
                     }
                     {width >= breakpoint ?
                         <SquareFootageField
+                            state={state}
                             handleChange={handleChange}
                         /> : null
                     }
@@ -67,6 +68,7 @@ export default function PropertyInfoSection({ state, setState }) {
                             handleChange={handleChange}
                         />
                         <SquareFootageField
+                            state={state}
                             handleChange={handleChange}
                         />
                     </div>

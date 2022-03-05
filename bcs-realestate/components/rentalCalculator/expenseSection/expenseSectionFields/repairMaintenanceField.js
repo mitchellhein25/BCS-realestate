@@ -14,9 +14,9 @@ export default function RepairMaintenanceField({ state, handleChangeCheckbox, ha
                     className={rentalCalculatorStyles.input}
                     name='repairMaintenance'
                     prefix={!state.expense.repairMaintenanceCheckboxPP &
-                        !state.expense.repairMaintenanceCheckboxRent &
-                        state.expense.repairMaintenanceCheckboxSF ? '$' : ''}
-                    suffix={state.expense.repairMaintenanceCheckboxSF ? '' : '%'}
+                        !state.expense.repairMaintenanceCheckboxRent ? '$' : ''}
+                    suffix={!state.expense.repairMaintenanceCheckboxPP &
+                        !state.expense.repairMaintenanceCheckboxRent  ? '' : '%'}
                     value={state.expense.repairMaintenance}
                     decimalsLimit={2}
                     allowNegativeValue={false}
@@ -24,7 +24,8 @@ export default function RepairMaintenanceField({ state, handleChangeCheckbox, ha
                     onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                 />
                 <label className={rentalCalculatorStyles.subLabel} htmlFor='repairMaintenance'>
-                    {state.expense.repairMaintenanceCheckboxPP ? 'per year' : 'per month'}
+                    {state.expense.repairMaintenanceCheckboxPP | state.expense.repairMaintenanceCheckboxSF ?
+                        'per year' : 'per month'}
                 </label>
             </div>
             <div className={rentalCalculatorStyles.inputLabel} >
@@ -37,11 +38,13 @@ export default function RepairMaintenanceField({ state, handleChangeCheckbox, ha
                     checked={state.expense.repairMaintenanceCheckboxRent} />
                 <label className={rentalCalculatorStyles.checkboxText} htmlFor='repairMaintenanceCheckboxRent'>{rentText}</label>
             </div>
-            <div className={rentalCalculatorStyles.inputLabel} >
-                <input type='checkbox' name='repairMaintenanceCheckboxSF' onChange={handleChangeCheckbox}
-                    checked={state.expense.repairMaintenanceCheckboxSF} />
-                <label className={rentalCalculatorStyles.checkboxText} htmlFor='repairMaintenanceCheckboxSF'>{dpsfText}</label>
-            </div>
+            { !isNaN(parseInt(state.propertyInfo.squareFootage)) ?
+                <div className={rentalCalculatorStyles.inputLabel} >
+                    <input type='checkbox' name='repairMaintenanceCheckboxSF' onChange={handleChangeCheckbox}
+                        checked={state.expense.repairMaintenanceCheckboxSF} />
+                    <label className={rentalCalculatorStyles.checkboxText} htmlFor='repairMaintenanceCheckboxSF'>{dpsfText}</label>
+                </div> : null
+            }
         </div>
     )
 }

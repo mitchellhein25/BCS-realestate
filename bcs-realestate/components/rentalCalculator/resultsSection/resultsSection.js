@@ -56,16 +56,29 @@ export default function ResultsSection({ state, setState }) {
         return (state.expense.vacancy / 100) * state.rentalIncome.monthlyIncome;
     }
 
-    function purchasePricePercent(name) {
-        return state.expense[name + 'Checkbox'] ?
-            ((state.expense[name] / 100) * state.purchase.purchasePrice) / 12 :
-            parseInt(state.expense[name])
+    function checkboxFilter(name) {
+        var result = parseInt(state.expense[name])
+        if (state.expense[name + 'CheckboxPP']) {
+            result = ((state.expense[name] / 100) * state.purchase.purchasePrice) / 12;
+        }
+        if (state.expense[name + 'CheckboxRent']) {
+            result = (state.expense[name] / 100) * state.rentalIncome.monthlyIncome;
+        }
+        if (state.expense[name + 'CheckboxSF']) {
+            result = (state.expense[name] * state.propertyInfo.squareFootage) / 12;
+        }
+        return result;
     }
 
     function calculateTotalExpenses() {
-        return calculateMortgage() + purchasePricePercent('insurance') + purchasePricePercent('propertyTaxes') +
-            purchasePricePercent('repairMaintenance') + parseInt(calculateVacancyAllowance()) + purchasePricePercent('capEx') +
-            purchasePricePercent('propertyManagement') + parseInt(state.expense.utilities) + parseInt(state.expense.hoa) +
+        console.log("insurance: ", checkboxFilter('insurance'))
+        console.log("propertyTaxes: ", checkboxFilter('propertyTaxes'))
+        console.log("repairMaintenance: ", checkboxFilter('repairMaintenance'))
+        console.log("propertyManagement: ", checkboxFilter('propertyManagement'))
+        console.log("capEx: ", checkboxFilter('capEx'))
+        return calculateMortgage() + checkboxFilter('insurance') + checkboxFilter('propertyTaxes') +
+            checkboxFilter('repairMaintenance') + parseInt(calculateVacancyAllowance()) + checkboxFilter('capEx') +
+            checkboxFilter('propertyManagement') + parseInt(state.expense.utilities) + parseInt(state.expense.hoa) +
             parseInt(state.expense.other)
     }
 
@@ -186,11 +199,12 @@ export default function ResultsSection({ state, setState }) {
                         </p>
                         <div className={rentalCalculatorStyles.expenseBreakdownItems}>
                             <p className={rentalCalculatorStyles.smallMargin}>Mortgage: ${addCommas(calculateMortgage().toFixed(2))}</p>
-                            <p className={rentalCalculatorStyles.smallMargin}>Insurance: ${addCommas(purchasePricePercent('insurance'))}</p>
-                            <p className={rentalCalculatorStyles.smallMargin}>Utilities: ${addCommas(state.expense.utilities)}</p>
-                            <p className={rentalCalculatorStyles.smallMargin}>Taxes: ${addCommas(purchasePricePercent('propertyTaxes'))}</p>
+                            <p className={rentalCalculatorStyles.smallMargin}>Insurance: ${addCommas(checkboxFilter('insurance').toFixed(2))}</p>
+                            <p className={rentalCalculatorStyles.smallMargin}>Utilities: ${addCommas(state.expense.utilities.toFixed(2))}</p>
+                            <p className={rentalCalculatorStyles.smallMargin}>Taxes: ${addCommas(checkboxFilter('propertyTaxes').toFixed(2))}</p>
+                            <p className={rentalCalculatorStyles.smallMargin}>Vacancy: ${addCommas(parseInt(calculateVacancyAllowance()).toFixed(2))}</p>
                             <p className={rentalCalculatorStyles.smallMargin}>Maintenance/CapEx:
-                            ${addCommas(purchasePricePercent('repairMaintenance') + purchasePricePercent('capEx'))}</p>
+                            ${addCommas((checkboxFilter('repairMaintenance') + checkboxFilter('capEx')).toFixed(2))}</p>
                         </div>
                     </div>
                     {width >= breakpoint ? 

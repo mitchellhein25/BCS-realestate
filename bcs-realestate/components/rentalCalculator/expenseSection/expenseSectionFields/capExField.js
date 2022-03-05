@@ -3,7 +3,7 @@ import CurrencyInput from 'react-currency-input-field';
 import { ppText, rentText, dpsfText } from '../../rentalCalculator'
 
 export default function CapExField({ state, handleChangeCheckbox, handleChangeCurrencyInput }) {
-
+    console.log(parseInt(state.propertyInfo.squareFootage))
     return (
         <div className={rentalCalculatorStyles.inputContainer}>
             <div className={rentalCalculatorStyles.inputLabel} >
@@ -13,9 +13,9 @@ export default function CapExField({ state, handleChangeCheckbox, handleChangeCu
                     className={rentalCalculatorStyles.input}
                     name='capEx'
                     prefix={!state.expense.capExCheckboxPP &
-                        !state.expense.capExCheckboxRent &
-                        state.expense.capExCheckboxSF ? '$' : ''}
-                    suffix={state.expense.capExCheckboxSF ? '' : '%'}
+                        !state.expense.capExCheckboxRent ? '$' : ''}
+                    suffix={!state.expense.capExCheckboxPP &
+                        !state.expense.capExCheckboxRent ? '' : '%'}
                     value={state.expense.capEx}
                     decimalsLimit={2}
                     allowNegativeValue={false}
@@ -23,7 +23,8 @@ export default function CapExField({ state, handleChangeCheckbox, handleChangeCu
                     onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                 />
                 <label className={rentalCalculatorStyles.subLabel} htmlFor='capEx'>
-                    {state.expense.capExCheckbox ? 'per year' : 'per month'}
+                    {state.expense.capExCheckboxPP | state.expense.capExCheckboxSF ?
+                        'per year' : 'per month'}
                 </label>
             </div>
             <div className={rentalCalculatorStyles.inputLabel} >
@@ -34,10 +35,12 @@ export default function CapExField({ state, handleChangeCheckbox, handleChangeCu
                 <input type='checkbox' name='capExCheckboxRent' onChange={handleChangeCheckbox} checked={state.expense.capExCheckboxRent} />
                 <label className={rentalCalculatorStyles.checkboxText} htmlFor='capExCheckbox'>{rentText}</label>
             </div>
-            <div className={rentalCalculatorStyles.inputLabel} >
-                <input type='checkbox' name='capExCheckboxSF' onChange={handleChangeCheckbox} checked={state.expense.capExCheckboxSF} />
-                <label className={rentalCalculatorStyles.checkboxText} htmlFor='capExCheckbox'>{dpsfText}</label>
-            </div>
+            { !isNaN(parseInt(state.propertyInfo.squareFootage)) ?
+                <div className={rentalCalculatorStyles.inputLabel} >
+                    <input type='checkbox' name='capExCheckboxSF' onChange={handleChangeCheckbox} checked={state.expense.capExCheckboxSF} />
+                    <label className={rentalCalculatorStyles.checkboxText} htmlFor='capExCheckbox'>{dpsfText}</label>
+                </div> : null
+            }
         </div>
     )
 }
