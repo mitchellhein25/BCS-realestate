@@ -1,59 +1,42 @@
 import * as XLSX from 'xlsx';
 import rentalCalculatorStyles from '../rentalCalculator.module.css'
 import primaryButtonStyles from '../../primaryButton/primaryButton.module.css'
+import {
+    downPayment, cashFlow, repairCosts, MonthlyExpensesTotalOverYears, cashInvested,
+    afterRepairValue, appreciationFactor, calculateReturn, calculateMortgage, calculateVacancyAllowance
+}
+    from './resultsMethods'
 import useWindowSize from '../../utils'
 
 export default function ResultsSection({ state, setState }) {
     const [width, height] = useWindowSize();
     const breakpoint = 1000;
 
-    function downPayment() {
-        return state.loanDetails.downPaymentCheckbox ?
-            ((state.loanDetails.downPayment / 100) * state.purchase.purchasePrice) :
-            state.loanDetails.downPayment;
-    }
-    function calculateReturn(cashOnCash, numYears) {
+    function calculateReturnForResults(cashOnCash, numYears) {
         // Total Cash Flow
-        const cashFlow = (state.rentalIncome.monthlyIncome - calculateTotalExpenses()) * 12 * numYears;
+        const totalCashFlow = cashFlow(state.rentalIncome.monthlyIncome, calculateTotalExpenses(), numYears);
 
         // Cash Invested
-        const repairCosts = state.rehab.rehabCheckbox ? parseInt(state.rehab.repairCosts) : 0;
-        const expensesTimesYears = calculateTotalExpenses() * 12 * numYears;
-        const cashInvested = expensesTimesYears + repairCosts + parseInt(state.purchase.closingCosts);
+        const repairCostAmount = repairCosts(state.rehab.rehabCheckbox, parseInt(state.rehab.repairCosts));
+        const expensesTimesYears = MonthlyExpensesTotalOverYears(calculateTotalExpenses(), numYears);
+        const totalCashInvested = cashInvested(expensesTimesYears, repairCostAmount, parseInt(state.purchase.closingCosts))
 
         // New Property Value
-        const afterRepairValue = state.rehab.rehabCheckbox ? state.rehab.afterRepairValue : state.purchase.purchasePrice;
-        const totalAppreciation = (1 + (state.rentalIncome.appreciation / 100)) ** numYears;
-        const newPropertyValue = afterRepairValue * totalAppreciation;
+        const arv = afterRepairValue(state.rehab.rehabCheckbox, state.rehab.afterRepairValue, state.purchase.purchasePrice);
+        const totalAppreciation = appreciationFactor(state.rentalIncome.appreciation, numYears)
+        const newPropertyValue = arv * totalAppreciation;
 
         // Equity
-        const amountOwedOnLoan = state.purchase.purchasePrice - downPayment();
-        const equity = newPropertyValue - amountOwedOnLoan - repairCosts;
+        const downPaymentAmount = downPayment(state.loanDetails.downPaymentCheckbox, state.loanDetails.downPayment, state.purchase.purchasePrice);
+        const amountOwedOnLoan = state.purchase.purchasePrice - downPaymentAmount;
+        const equity = newPropertyValue - amountOwedOnLoan - repairCostAmount;
 
-        // Cash on Cash: Cash Flow / Total Cash Invested
-        // Total Return: Cash Flow + Equity / Total Cash Invested
-        if (cashOnCash) {
-            return ((cashFlow / cashInvested) * 100).toFixed(2);
-        } else {
-            return (((cashFlow + equity) / cashInvested) * 100).toFixed(2);
-        }
+        return calculateReturn(cashOnCash, totalCashFlow, totalCashInvested, equity)
     }
 
-    // M = P ( i(1 + i)^n ) / ( (1 + i)^n - 1 )
-    //   P = principal loan amount
-    //   i = monthly interest rate
-    //   n = number of months required to repay the loan
-    function calculateMortgage() {
-        const principal = state.purchase.purchasePrice - downPayment();
-        const interestRate = (state.loanDetails.interestRate/100)/12;
-        const months = state.loanDetails.loanLength * 12;
-        const numerator = principal * (interestRate * ((1 + interestRate) ** months));
-        const denominator = ((1 + interestRate) ** months) - 1;
-        return numerator / denominator;
-    }
-
-    function calculateVacancyAllowance() {
-        return (state.expense.vacancy / 100) * state.rentalIncome.monthlyIncome;
+    function calculateMortgageForResults() {
+        const calcDownPayment = downPayment(state.loanDetails.downPaymentCheckbox, state.loanDetails.downPayment, state.purchase.purchasePrice);
+        return calculateMortgage(state.purchase.purchasePrice, calcDownPayment, state.loanDetails.interestRate, state.loanDetails.loanLength)
     }
 
     function checkboxFilter(name) {
@@ -71,14 +54,9 @@ export default function ResultsSection({ state, setState }) {
     }
 
     function calculateTotalExpenses() {
-        console.log("insurance: ", checkboxFilter('insurance'))
-        console.log("propertyTaxes: ", checkboxFilter('propertyTaxes'))
-        console.log("repairMaintenance: ", checkboxFilter('repairMaintenance'))
-        console.log("propertyManagement: ", checkboxFilter('propertyManagement'))
-        console.log("capEx: ", checkboxFilter('capEx'))
-        return calculateMortgage() + checkboxFilter('insurance') + checkboxFilter('propertyTaxes') +
-            checkboxFilter('repairMaintenance') + parseInt(calculateVacancyAllowance()) + checkboxFilter('capEx') +
-            checkboxFilter('propertyManagement') + parseInt(state.expense.utilities) + parseInt(state.expense.hoa) +
+        return calculateMortgageForResults() + checkboxFilter('insurance') + checkboxFilter('propertyTaxes') +
+            checkboxFilter('repairMaintenance') + parseInt(calculateVacancyAllowance(state.expense.vacancy, state.rentalIncome.monthlyIncome)) +
+            checkboxFilter('capEx') + checkboxFilter('propertyManagement') + parseInt(state.expense.utilities) + parseInt(state.expense.hoa) +
             parseInt(state.expense.other)
     }
 
@@ -92,41 +70,41 @@ export default function ResultsSection({ state, setState }) {
             'City': state.propertyInfo.city,
             'State': state.propertyInfo.state,
             'Zip Code': state.propertyInfo.zipCode,
-            'Square Footage': state.propertyInfo.squareFootage,
-            'Purchase Price': state.purchase.purchasePrice,
-            '1 Year Cash on Cash Return': calculateReturn(true, 1),
-            '5 Year Cash on Cash Return': calculateReturn(true, 5),
-            '10 Year Cash on Cash Return': calculateReturn(true, 10),
-            '1 Year Total Return': calculateReturn(false, 1),
-            '5 Year Total Return': calculateReturn(false, 5),
-            '10 Year Total Return': calculateReturn(false, 10),
-            'Total Monthly Expenses': calculateTotalExpenses().toFixed(2),
-            'Monthly Income': state.rentalIncome.monthlyIncome,
-            'Monthly Cash Flow': (state.rentalIncome.monthlyIncome - calculateTotalExpenses()).toFixed(2),
-            'Yearly Cash Flow': ((state.rentalIncome.monthlyIncome - calculateTotalExpenses()) * 12).toFixed(2),
-            'Mortgage': calculateMortgage().toFixed(2),
-            'Insurance': state.expense.insurance,
-            'Utilities': state.expense.utilities,
-            'Property Taxes': state.expense.propertyTaxes,
-            'Repairs & Maintenance': state.expense.repairMaintenance,
-            'Closing Costs': state.purchase.closingCosts,
-            'Down Payment': state.loanDetails.downPayment,
-            'Interest Rate': state.loanDetails.interestRate,
-            'Loan Length': state.loanDetails.loanLength,
-            'After Repair Value': state.rehab.afterRepairValue,
-            'Repair Costs': state.rehab.repairCosts,
-            'Monthly Rental Income': state.rentalIncome.monthlyIncome,
-            'Appreciation': state.rentalIncome.appreciation,
-            'Vacancy': state.expense.vacancy,
-            'Capital Expenditures': state.expense.capEx,
-            'Property Management': state.expense.propertyManagement,
-            'HOA': state.expense.hoa,
-            'Other Expenses': state.expense.other,
+            'Square Footage (Sq. Ft)': state.propertyInfo.squareFootage,
+            'Purchase Price ($)': state.purchase.purchasePrice,
+            '1 Year Cash on Cash Return (%)': calculateReturnForResults(true, 1).toFixed(2),
+            '5 Year Cash on Cash Return (%)': calculateReturnForResults(true, 5).toFixed(2),
+            '10 Year Cash on Cash Return (%)': calculateReturnForResults(true, 10).toFixed(2),
+            '1 Year Total Return (%)': calculateReturnForResults(false, 1).toFixed(2),
+            '5 Year Total Return (%)': calculateReturnForResults(false, 5).toFixed(2),
+            '10 Year Total Return (%)': calculateReturnForResults(false, 10).toFixed(2),
+            'Total Monthly Expenses ($/mo)': calculateTotalExpenses().toFixed(2),
+            'Monthly Income ($/mo)': state.rentalIncome.monthlyIncome,
+            'Monthly Cash Flow ($/mo)': (state.rentalIncome.monthlyIncome - calculateTotalExpenses()).toFixed(2),
+            'Yearly Cash Flow ($/yr)': ((state.rentalIncome.monthlyIncome - calculateTotalExpenses()) * 12).toFixed(2),
+            'Mortgage ($/mo)': calculateMortgageForResults().toFixed(2),
+            'Insurance ($/mo)': checkboxFilter('insurance'),
+            'Utilities ($/mo)': state.expense.utilities,
+            'Property Taxes ($/mo)': checkboxFilter('propertyTaxes'),
+            'Repairs & Maintenance ($/mo)': checkboxFilter('repairMaintenance'),
+            'Closing Costs ($)': state.purchase.closingCosts,
+            'Down Payment ($)': downPayment(state.loanDetails.downPaymentCheckbox, state.loanDetails.downPayment, state.purchase.purchasePrice).toFixed(2),
+            'Interest Rate (%)': state.loanDetails.interestRate,
+            'Loan Length (yrs)': state.loanDetails.loanLength,
+            'After Repair Value ($)': state.rehab.afterRepairValue,
+            'Repair Costs ($)': state.rehab.repairCosts,
+            'Monthly Rental Income ($/mo)': state.rentalIncome.monthlyIncome,
+            'Appreciation (%/yr)': state.rentalIncome.appreciation,
+            'Vacancy (%)': state.expense.vacancy,
+            'Capital Expenditures ($/mo)': checkboxFilter('capEx'),
+            'Property Management ($/mo)': checkboxFilter('propertyManagement'),
+            'HOA ($/mo)': state.expense.hoa,
+            'Other Expenses ($/mo)': state.expense.other,
         }]
         let workSheet = XLSX.utils.json_to_sheet(propertyArray);
         var workBook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workBook, workSheet, state.zip + ' Results');
-        XLSX.writeFile(workBook, state.zip + '_Results.xlsx');
+        XLSX.writeFile(workBook, state.propertyInfo.address + '_Results.xlsx');
     }
 
     return (
@@ -137,36 +115,36 @@ export default function ResultsSection({ state, setState }) {
                     <div className={rentalCalculatorStyles.resultsContainer}>
                         <h3 className={rentalCalculatorStyles.resultsHeader}>Cash on Cash Return</h3>
                         <p className={rentalCalculatorStyles.returnsText + ' ' + rentalCalculatorStyles.smallMargin}><b>1 Year:</b>&nbsp;&nbsp;&nbsp;
-                            <span style={calculateReturn(true, 1) >= 0 ?
-                                { color: 'green' } : { color: 'red' }}>{calculateReturn(true, 1)}
+                            <span style={calculateReturnForResults(true, 1) >= 0 ?
+                                { color: 'green' } : { color: 'red' }}>{calculateReturnForResults(true, 1).toFixed(2)}
                             </span>%
                         </p>
                         <p className={rentalCalculatorStyles.returnsText + ' ' + rentalCalculatorStyles.smallMargin}><b>5 Year:</b>&nbsp;&nbsp;&nbsp;
-                            <span style={calculateReturn(true, 5) >= 0 ?
-                                { color: 'green' } : { color: 'red' }}>{calculateReturn(true, 5)}
+                            <span style={calculateReturnForResults(true, 5) >= 0 ?
+                                { color: 'green' } : { color: 'red' }}>{calculateReturnForResults(true, 5).toFixed(2)}
                             </span>%
                         </p>
                         <p className={rentalCalculatorStyles.returnsText + ' ' + rentalCalculatorStyles.smallMargin}><b>10 Year:</b>&nbsp;&nbsp;&nbsp;
-                            <span style={calculateReturn(true, 10) >= 0 ?
-                                { color: 'green' } : { color: 'red' }}>{calculateReturn(true, 10)}
+                            <span style={calculateReturnForResults(true, 10) >= 0 ?
+                                { color: 'green' } : { color: 'red' }}>{calculateReturnForResults(true, 10).toFixed(2)}
                             </span>%
                         </p>
                     </div>
                     <div className={rentalCalculatorStyles.resultsContainer}>
                         <h3 className={rentalCalculatorStyles.resultsHeader}>Total Return</h3>
                         <p className={rentalCalculatorStyles.returnsText + ' ' + rentalCalculatorStyles.smallMargin}><b>1 Year:</b>&nbsp;&nbsp;&nbsp;
-                            <span style={calculateReturn(false, 1) >= 0 ?
-                                { color: 'green' } : { color: 'red' }}>{calculateReturn(false, 1)}
+                            <span style={calculateReturnForResults(false, 1) >= 0 ?
+                                { color: 'green' } : { color: 'red' }}>{calculateReturnForResults(false, 1).toFixed(2)}
                             </span>%
                         </p>
                         <p className={rentalCalculatorStyles.returnsText + ' ' + rentalCalculatorStyles.smallMargin}><b>5 Year:</b>&nbsp;&nbsp;&nbsp;
-                            <span style={calculateReturn(false, 5) >= 0 ?
-                                { color: 'green' } : { color: 'red' }}>{calculateReturn(false, 5)}
+                            <span style={calculateReturnForResults(false, 5) >= 0 ?
+                                { color: 'green' } : { color: 'red' }}>{calculateReturnForResults(false, 5).toFixed(2)}
                             </span>%
                         </p>
                         <p className={rentalCalculatorStyles.returnsText + ' ' + rentalCalculatorStyles.smallMargin}><b>10 Year:</b>&nbsp;&nbsp;&nbsp;
-                            <span style={calculateReturn(false, 10) >= 0 ?
-                                { color: 'green' } : { color: 'red' }}>{calculateReturn(false, 10)}
+                            <span style={calculateReturnForResults(false, 10) >= 0 ?
+                                { color: 'green' } : { color: 'red' }}>{calculateReturnForResults(false, 10).toFixed(2)}
                             </span>%
                         </p>
                     </div>
@@ -176,13 +154,13 @@ export default function ResultsSection({ state, setState }) {
                         <div className={rentalCalculatorStyles.resultsContainer}>
                             <h3 className={rentalCalculatorStyles.resultsHeader}>Cash Flow</h3>
                             <p className={rentalCalculatorStyles.smallMargin}>
-                                <span style={calculateReturn(false, 1) >= 0 ?
+                                <span style={calculateReturnForResults(false, 1) >= 0 ?
                                     { color: 'green' } : { color: 'red' }}>
                                     ${addCommas((state.rentalIncome.monthlyIncome - calculateTotalExpenses()).toFixed(2))}
                                 </span> per month
                                 </p>
                             <p className={rentalCalculatorStyles.smallMargin}>
-                                <span style={calculateReturn(false, 1) >= 0 ?
+                                <span style={calculateReturnForResults(false, 1) >= 0 ?
                                     { color: 'green' } : { color: 'red' }}>
                                     ${addCommas(((state.rentalIncome.monthlyIncome - calculateTotalExpenses()) * 12).toFixed(2))}
                                 </span> per year
@@ -198,11 +176,13 @@ export default function ResultsSection({ state, setState }) {
                             </span>
                         </p>
                         <div className={rentalCalculatorStyles.expenseBreakdownItems}>
-                            <p className={rentalCalculatorStyles.smallMargin}>Mortgage: ${addCommas(calculateMortgage().toFixed(2))}</p>
+                            <p className={rentalCalculatorStyles.smallMargin}>Mortgage: ${addCommas(calculateMortgageForResults().toFixed(2))}</p>
                             <p className={rentalCalculatorStyles.smallMargin}>Insurance: ${addCommas(checkboxFilter('insurance').toFixed(2))}</p>
                             <p className={rentalCalculatorStyles.smallMargin}>Utilities: ${addCommas(state.expense.utilities.toFixed(2))}</p>
                             <p className={rentalCalculatorStyles.smallMargin}>Taxes: ${addCommas(checkboxFilter('propertyTaxes').toFixed(2))}</p>
-                            <p className={rentalCalculatorStyles.smallMargin}>Vacancy: ${addCommas(parseInt(calculateVacancyAllowance()).toFixed(2))}</p>
+                            <p className={rentalCalculatorStyles.smallMargin}>Vacancy:
+                                ${addCommas(parseInt(calculateVacancyAllowance(state.expense.vacancy, state.rentalIncome.monthlyIncome)).toFixed(2))}
+                            </p>
                             <p className={rentalCalculatorStyles.smallMargin}>Maintenance/CapEx:
                             ${addCommas((checkboxFilter('repairMaintenance') + checkboxFilter('capEx')).toFixed(2))}</p>
                         </div>
@@ -211,13 +191,13 @@ export default function ResultsSection({ state, setState }) {
                         <div className={rentalCalculatorStyles.resultsContainer}>
                             <h3 className={rentalCalculatorStyles.resultsHeader}>Cash Flow</h3>
                             <p className={rentalCalculatorStyles.smallMargin}>
-                                <span style={calculateReturn(false, 1) >= 0 ?
+                                <span style={calculateReturnForResults(false, 1) >= 0 ?
                                     { color: 'green' } : { color: 'red' }}>
                                     ${addCommas((state.rentalIncome.monthlyIncome - calculateTotalExpenses()).toFixed(2))}
                                 </span> per month
                             </p>
                             <p className={rentalCalculatorStyles.smallMargin}>
-                                <span style={calculateReturn(false, 1) >= 0 ?
+                                <span style={calculateReturnForResults(false, 1) >= 0 ?
                                     { color: 'green' } : { color: 'red' }}>
                                     ${addCommas(((state.rentalIncome.monthlyIncome - calculateTotalExpenses()) * 12).toFixed(2))}
                                 </span> per year

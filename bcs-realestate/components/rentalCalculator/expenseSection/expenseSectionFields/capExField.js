@@ -3,7 +3,7 @@ import CurrencyInput from 'react-currency-input-field';
 import { ppText, rentText, dpsfText } from '../../rentalCalculator'
 
 export default function CapExField({ state, handleChangeCheckbox, handleChangeCurrencyInput }) {
-    console.log(parseInt(state.propertyInfo.squareFootage))
+    //console.log(parseInt(state.propertyInfo.squareFootage))
     return (
         <div className={rentalCalculatorStyles.inputContainer}>
             <div className={rentalCalculatorStyles.inputLabel} >

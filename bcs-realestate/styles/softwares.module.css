@@ -11,9 +11,7 @@
 }
 
 .listView {
-    background-image: url("../public/images/softwares-background.jpg");
-    background-size: cover;
-    background-position: center;
+    background: url("../public/images/softwares-background-2.jpg") no-repeat center center fixed;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }

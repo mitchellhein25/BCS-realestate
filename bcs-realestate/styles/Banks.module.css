@@ -11,8 +11,7 @@
 }
 
 .listView {
-    background-image: url("../public/images/bank-background-image.jpg");
-    background-position: center;
+    background: url("../public/images/bank-background-image.jpg") no-repeat center center fixed;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
