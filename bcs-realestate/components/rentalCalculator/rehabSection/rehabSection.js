@@ -1,4 +1,4 @@
-import AfterRepairValueField from './rehabSectionFields/AfterRepairValueField'
+import AfterRepairValueField from './rehabSectionFields/afterRepairValueField'
 import RepairCostsField from './rehabSectionFields/repairCostsField'
 import rentalCalculatorStyles from "./../rentalCalculator.module.css"
 
