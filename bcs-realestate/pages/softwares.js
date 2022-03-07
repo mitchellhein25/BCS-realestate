@@ -64,7 +64,7 @@ export default function Softwares() {
         details: {
             description: 'Property Management',
             features: 'Full Lead to Lease Capabilities, Take Online Payments, Maintenance Requests, Analytics',
-            bestFor: 'Less than 5 - 50 Properties',
+            bestFor: '5 - 50 Properties',
             website: 'https://www.buildium.com/',
             websiteText: 'Go to Buildium Website',
         }
