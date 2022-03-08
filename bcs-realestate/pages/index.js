@@ -1,10 +1,10 @@
 import MainLayout from '../components/mainLayout/mainLayout'
 import PrimaryButton from '../components/primaryButton/primaryButton'
-import homeStyles from '../styles/Home.module.css'
 import useWindowSize from '../components/utils'
 import SimpleBanner from '../components/simpleBanner/simpleBanner'
 import PageHeader from '../components/pageHeader/pageHeader'
 import NewsletterSignup from '../components/newsletterSignUp/newsletterSignUp'
+import homeStyles from '../styles/Home.module.css'
 
 export default function Home() {
     const [width, height] = useWindowSize();
@@ -31,7 +31,7 @@ including neighborhood data tools, property rehab resources, and more!`
                     {/*    buttonAltText='Rehab resources navigation button'>*/}
                     {/*</PrimaryButton>*/}
                 </div>
-                <div>
+                <div className={homeStyles.margin}>
                     <PrimaryButton
                         buttonText='Run a Property Analysis'
                         buttonImagePath='/icons/two-story-house.svg'
@@ -39,7 +39,7 @@ including neighborhood data tools, property rehab resources, and more!`
                         buttonAltText='Property analysis navigation button'>
                     </PrimaryButton>
                 </div>
-                <div>
+                <div className={homeStyles.margin}>
                     <PrimaryButton
                         buttonText='Find a Bank'
                         buttonImagePath='/icons/bank.svg'
@@ -47,7 +47,7 @@ including neighborhood data tools, property rehab resources, and more!`
                         buttonAltText='Banks navigation button'>
                     </PrimaryButton>
                 </div>
-                <div>
+                <div className={homeStyles.margin}>
                     <PrimaryButton
                         buttonText='Find a Software'
                         buttonImagePath='/icons/software.svg'

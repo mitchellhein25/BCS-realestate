@@ -12,10 +12,7 @@
     flex-direction: column;
     padding: 0px;
     color: white;
-}
-
-.padding {
-    padding: 0 30px;
+    text-align: center;
 }
 
 .imageRounded {
@@ -26,11 +23,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 35%
 }
 
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
     .container {
         display: flex;
         place-content: center;
@@ -47,14 +45,28 @@
         margin-top: 10px;
         margin-bottom: 0;
     }
+
+    .padding {
+        padding: 0 10px;
+    }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+.mobileImagesRow {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.mobileImage {
+    margin: 0 10px;
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 750px) {
+    .padding {
+        padding: 0 30px;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
