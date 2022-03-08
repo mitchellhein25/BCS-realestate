@@ -1,13 +1,17 @@
 .container {
+    background-color: #500000;
     display: flex;
     place-content: center;
     padding: 5px 0 20px 0;
 }
 
 .topContainer {
+    background-color: #500000;
     display: flex;
-    place-content: center;
+    /*place-content: center;*/
+    flex-direction: column;
     padding: 0px;
+    color: white;
 }
 
 .padding {

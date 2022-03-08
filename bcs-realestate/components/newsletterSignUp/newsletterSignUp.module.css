@@ -1,0 +1,48 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.input {
+    height: 40px;
+    text-align: center;
+    max-width: 90%;
+    border: none;
+    /*text-decoration: underline;*/
+    background-color: rgb(249 228 228);
+    border-radius: 10px;
+}
+
+.label {
+    display: block;
+    margin: 0px;
+}
+
+.inputLabel {
+    margin: 0px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 375px) {
+    .input {
+        height: 40px;
+        max-width: 90%;
+        font-size: .9rem;
+    }
+}
+
+
+@media only screen and(min - width: 375px) {
+    .input {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .input {
+        font-size: 1.5rem;
+    }
+}
+
+

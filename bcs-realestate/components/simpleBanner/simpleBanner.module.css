@@ -1,9 +1,11 @@
 .container {
     height: auto;
     /*background-color: #500000;*/
-    /*background-color: black;*/
+    /*background-color: #DCaE96;*/
+    /*background-color: #008080;*/
+    background-color: black;
     padding: 3px;
-    color: black;
+    color: white;
     width: 100%;
 }
 

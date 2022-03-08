@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Footer from '../footer/footer'
 import schwartzBannerStyles from './schwartzBanner.module.css'
 
 export const schwartzBannerText = "Powered by Greg Schwartz Realty and Precision Apartments"
@@ -7,11 +8,8 @@ export const schwartzBannerText = "Powered by Greg Schwartz Realty and Precision
 export default function SchwartzBanner() {
     return (
         <div>
-            <div className={schwartzBannerStyles.topContainer}>
-                <p className={schwartzBannerStyles.noMargin}>{schwartzBannerText}</p>
-            </div>
             <div className={schwartzBannerStyles.container}>
-                <div className={schwartzBannerStyles.padding}>
+                <div className={schwartzBannerStyles.padding, schwartzBannerStyles.vertCenter}>
                     <Image
                         src="/images/gregHeadshot.jpg"
                         alt="Greg Schwartz headshot"
@@ -19,6 +17,10 @@ export default function SchwartzBanner() {
                         height={150}
                         className={schwartzBannerStyles.imageRounded}
                     />
+                </div>
+                <div className={schwartzBannerStyles.topContainer}>
+                        <p className={schwartzBannerStyles.noMargin}>{schwartzBannerText}</p>
+                        <Footer/>
                 </div>
                 <div className={schwartzBannerStyles.padding, schwartzBannerStyles.vertCenter}>
                     <Image

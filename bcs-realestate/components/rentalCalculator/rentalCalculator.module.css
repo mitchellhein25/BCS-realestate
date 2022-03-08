@@ -12,6 +12,7 @@
 
 .calcContainer {
     background: url("../../public/images/calc-background-image.jpg") no-repeat center center fixed;
+    background-size: cover;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     padding-top: 15px;
