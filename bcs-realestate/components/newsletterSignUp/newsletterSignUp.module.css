@@ -32,6 +32,7 @@
 .label {
     display: block;
     margin: 0px;
+    font-size: 1.2rem;
 }
 
 .inputLabel {
@@ -58,7 +59,6 @@
     margin: 10px;
     width: 120px;
     height: 40px;
-    font-size: 1rem;
     margin-top: 10px;
 }
 
@@ -106,7 +106,7 @@
 
 @media only screen and (min-width: 800px) {
     .input {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .button {

@@ -14,6 +14,7 @@ export default function Home() {
 the web for the tools and resources you need to invest in real estate in the area, we have curated this site to include everything you need. From local
 banks to helpful softwares to a property analysis calculator, look no further for your real estate investor needs. We have much more to come as well,
 including neighborhood data tools, property rehab resources, and more!`
+
     return (
         <MainLayout>
             <div className={homeStyles.headerContainer}>
