@@ -1,11 +1,7 @@
-////import * as XLSX from 'xlsx';
-////import { parse } from 'json2csv'
-//import { writeFileSync } from "fs";
-//import { createTransport } from 'nodemailer';
-//import { write } from "xlsx/xlsx.mjs";
+import { parse } from 'json2csv'
 import { useState } from 'react'
 import newsletterSignUpStyles from './newsletterSignUp.module.css'
-//import { send } from 'emailjs-com';
+import axios from 'axios';
 
 export default function NewsletterSignup() {
     const [state, setState] = useState({
@@ -23,40 +19,21 @@ export default function NewsletterSignup() {
 
     async function onSubmit(e) {
         e.preventDefault();
-        //var serviceId = 'service_hln4q9v';
-        //var templateId = 'template_acno9bv'
-        var filename = "contact.xlsx";
-        //let workSheet = XLSX.utils.json_to_sheet([state]);
-        //var workBook = XLSX.utils.book_new();
-        //XLSX.utils.book_append_sheet(workBook, workSheet, "Contact");
-        //XLSX.writeFile(workBook, state.propertyInfo.address + '_Results.xlsx');
-        //const buf = write(workbook, { type: "buffer", bookType: "xlsx" });
-        //const workbook = writeFileSync(filename, buf);
-
-        //const csv = parse([state], ['firstName', 'lastName', 'email']);
-
-        //const transporter = createTransport({
-        //    host: 'smtp.gmail.com',
-        //    port: '465',
-        //    secure: true,
-        //    auth: {
-        //        user: 'heindevelopment@gmail.com',
-        //        pass: 'aXH43!2dpH4L0',
-        //    },
-        //});
-        //const mailOptions = {
-        //    from: 'heindevelopment@gmail.com',
-        //    to: ['mitchelldalehein25@gmail.com'],
-        //    subject: 'Test',
-        //    text: 'Test body',
-        //    attachments: [
-        //        {
-        //            filename,
-        //            content: csv,
-        //        },
-        //    ],
-        //};
-        //await transporter.sendMail(mailOptions);
+        let csvJson = [{
+            'First Name': state.firstName,
+            'Last Name': state.lastName,
+            'Primary personal email': state.email,
+        }]
+        const csv = parse(csvJson, ['', '', '']);
+        console.log(csv);
+        try {
+            let res = await axios.post('/api/mail', { 'csv': csv });
+            console.log(res);
+            console.log('Success!');
+        } catch (error) {
+            console.log('An error occurred.Please try again.');
+            console.log(error);
+        }
     }
 
     return (
