@@ -47,7 +47,7 @@ A CSV file is attached, prepared for import into KW Command.`,
         res.status(200).json({ result });
     }
     catch (error) {
-        res.status(400).json({ error: 'Failed to send email.' });
+        res.status(400).json({ error: 'Failed to send email.\n' + error });
         
     }
 }
