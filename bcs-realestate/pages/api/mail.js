@@ -21,13 +21,14 @@ export default async function sendMail(req, res) {
         const mailOptions = {
             from: 'heindevelopment@gmail.com',
             to: 'gregschwartz@kw.com',
-            subject: 'New Newsletter Subscriber from bcsrei.com: ' + req.body.csvJson[0]['First Name'] + req.body.csvJson[0]['Last Name'],
+            //to: 'mitchelldalehein25@gmail.com',
+            subject: 'New Newsletter Subscriber from bcsrei.com: ' + req.body.csvJson[0]['First Name'] + ' ' + req.body.csvJson[0]['Last Name'],
             text: `Hello Greg,
 
 You got a new subscriber for your multifamily newsletter from bcsrei.com.
 
 
-Name: ` + req.body.csvJson[0]['First Name'] + req.body.csvJson[0]['Last Name'] +
+Name: ` + req.body.csvJson[0]['First Name'] + ' ' + req.body.csvJson[0]['Last Name'] +
 `
 
 Email: ` + req.body.csvJson[0]['Primary personal email'] +

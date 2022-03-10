@@ -5,15 +5,15 @@ import SchwartzBanner from '../../components/schwartzBanner/schwartzBanner'
 import SimpleBanner from '../simpleBanner/simpleBanner'
 
 export const links = [
-    { name: "Home", link: "/" },
-    //{ name: "Rehab", link: "/rehab" },
-    { name: "Banks", link: "/banks" },
-    { name: "Software", link: "/softwares" },
-    { name: "Property Analysis", link: "/property-analysis" }
+    //{ name: 'Home', link: '/' },
+    //{ name: 'Rehab', link: '/rehab' },
+    { name: 'Property Analysis', link: '/property-analysis' },
+    { name: 'Banks', link: '/banks' },
+    { name: 'Software', link: '/softwares' },
 ]
 
-export const websiteTitle = "Bryan-College Station Real Estate";
-export const pageTitle = "BCS Real Estate";
+export const websiteTitle = 'Bryan-College Station Real Estate';
+export const pageTitle = 'BCS Real Estate';
 
 export const bannerTitle1 = 'Everything you need to invest in BCS real estate!';
 
