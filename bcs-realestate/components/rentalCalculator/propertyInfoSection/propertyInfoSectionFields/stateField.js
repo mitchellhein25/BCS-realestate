@@ -7,8 +7,8 @@ export default function StateField({ handleChange }) {
         <div className={rentalCalculatorStyles.inputContainerNoCheck}>
             <div className={rentalCalculatorStyles.inputLabel} >
                 <label className={rentalCalculatorStyles.label} htmlFor='state'>State</label>
-                <select className={rentalCalculatorStyles.input} name='state' onChange={handleChange} >
-                    <option value='none' defaultValue selected disabled hidden>Choose</option>
+                <select className={rentalCalculatorStyles.input} name='state' onChange={handleChange} defaultValue='Choose'>
+                    <option disabled hidden>Choose</option>
                     {usStates.map(stateItem => {
                         return (
                             <option value={stateItem.name} key={stateItem.name}>{stateItem.name}</option>

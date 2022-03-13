@@ -65,8 +65,9 @@ describe('Results Methods tests', () => {
         const expensesTimesYears = 100;
         const repairCostAmount = 200;
         const closingCosts = 300;
-        const result = 600;
-        expect(cashInvested(expensesTimesYears, repairCostAmount, closingCosts)).toBe(result);
+        const downPayment = 200;
+        const result = 800;
+        expect(cashInvested(expensesTimesYears, repairCostAmount, closingCosts, downPayment)).toBe(result);
     });
 
     it('afterRepairValue: Box CHECKED', () => {
@@ -90,6 +91,14 @@ describe('Results Methods tests', () => {
         const numYears = 6;
         const result = "1.27";
         expect(appreciationFactor(appreciation, numYears).toFixed(2)).toBe(result);
+    });
+
+    it('valueAfterAppreciation', () => {
+        const appreciation = 4;
+        const numYears = 6;
+        const purchasePrice = 100000
+        const result = "126531.90";
+        expect((appreciationFactor(appreciation, numYears) * purchasePrice).toFixed(2)).toBe(result);
     });
 
     it('calculateReturn: cashOnCash = true', () => {

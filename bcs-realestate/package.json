@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.26.0",
     "dotenv": "^16.0.0",
+    "google-spreadsheet": "^3.2.0",
     "json2csv": "^5.0.7",
     "next": "12.0.8",
     "nodemailer": "^6.7.2",

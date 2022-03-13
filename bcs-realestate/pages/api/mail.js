@@ -2,7 +2,6 @@ import { createTransport } from 'nodemailer';
 import { parse } from 'json2csv'
 require("dotenv").config();
 
-
 export default async function sendMail(req, res) {
     try {
         const csv = parse(req.body.csvJson);

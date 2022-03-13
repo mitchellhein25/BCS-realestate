@@ -50,22 +50,26 @@ export default function NewsletterSignup() {
             return;
         }
 
-        let csvJson = [{
-            'First Name': state.firstName,
-            'Last Name': state.lastName,
-            'Primary personal email': state.email,
-        }]
-        //const csv = parse(csvJson);
+        //let csvJson = [{
+        //    'First Name': state.firstName,
+        //    'Last Name': state.lastName,
+        //    'Primary personal email': state.email,
+        //}]
+        ////const csv = parse(csvJson);
         try {
-            let res = await axios.post('/api/mail', { 'csvJson': csvJson });
-            //console.log('Sign up successful!');
+            //let res = await axios.post('/api/mail', { 'csvJson': csvJson });
+            let object = {
+                firstName: state.firstName,
+                lastName: state.lastName,
+                email: state.email,
+            }
+
+            let res = await axios.post('/api/appendGoogleSheet', state);
             setState({
                 ...state,
                 submitted: true
             })
         } catch (error) {
-            //console.log('An error occurred. Please try again.');
-            //console.log(error);
             setState({
                 ...state,
                 error: true

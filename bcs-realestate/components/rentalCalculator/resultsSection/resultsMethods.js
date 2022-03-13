@@ -14,8 +14,8 @@ export function MonthlyExpensesTotalOverYears(expenses, numYears) {
     return expenses * 12 * numYears;
 }
 
-export function cashInvested(expensesTimesYears, repairCostAmount, closingCosts) {
-    return expensesTimesYears + repairCostAmount + closingCosts;
+export function cashInvested(expensesTimesYears, repairCostAmount, closingCosts, downPayment) {
+    return expensesTimesYears + repairCostAmount + closingCosts + downPayment;
 }
 
 export function afterRepairValue(rehabCheckbox, arv, purchasePrice) {

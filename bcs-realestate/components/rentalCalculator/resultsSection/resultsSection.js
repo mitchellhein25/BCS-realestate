@@ -17,9 +17,10 @@ export default function ResultsSection({ state, setState }) {
         const totalCashFlow = cashFlow(state.rentalIncome.monthlyIncome, calculateTotalExpenses(), numYears);
 
         // Cash Invested
+        const downPaymentAmount = downPayment(state.loanDetails.downPaymentCheckbox, state.loanDetails.downPayment, state.purchase.purchasePrice);
         const repairCostAmount = repairCosts(state.rehab.rehabCheckbox, parseInt(state.rehab.repairCosts));
         const expensesTimesYears = MonthlyExpensesTotalOverYears(calculateTotalExpenses(), numYears);
-        const totalCashInvested = cashInvested(expensesTimesYears, repairCostAmount, parseInt(state.purchase.closingCosts))
+        const totalCashInvested = cashInvested(expensesTimesYears, repairCostAmount, parseInt(state.purchase.closingCosts), downPaymentAmount)
 
         // New Property Value
         const arv = afterRepairValue(state.rehab.rehabCheckbox, state.rehab.afterRepairValue, state.purchase.purchasePrice);
@@ -27,9 +28,8 @@ export default function ResultsSection({ state, setState }) {
         const newPropertyValue = arv * totalAppreciation;
 
         // Equity
-        const downPaymentAmount = downPayment(state.loanDetails.downPaymentCheckbox, state.loanDetails.downPayment, state.purchase.purchasePrice);
         const amountOwedOnLoan = state.purchase.purchasePrice - downPaymentAmount;
-        const equity = newPropertyValue - amountOwedOnLoan - repairCostAmount;
+        const equity = newPropertyValue - amountOwedOnLoan;
 
         return calculateReturn(cashOnCash, totalCashFlow, totalCashInvested, equity)
     }
@@ -178,7 +178,7 @@ export default function ResultsSection({ state, setState }) {
                         <div className={rentalCalculatorStyles.expenseBreakdownItems}>
                             <p className={rentalCalculatorStyles.smallMargin}>Mortgage: ${addCommas(calculateMortgageForResults().toFixed(2))}</p>
                             <p className={rentalCalculatorStyles.smallMargin}>Insurance: ${addCommas(checkboxFilter('insurance').toFixed(2))}</p>
-                            <p className={rentalCalculatorStyles.smallMargin}>Utilities: ${addCommas(state.expense.utilities.toFixed(2))}</p>
+                            <p className={rentalCalculatorStyles.smallMargin}>Utilities: ${addCommas(parseInt(state.expense.utilities).toFixed(2))}</p>
                             <p className={rentalCalculatorStyles.smallMargin}>Taxes: ${addCommas(checkboxFilter('propertyTaxes').toFixed(2))}</p>
                             <p className={rentalCalculatorStyles.smallMargin}>Vacancy:
                                 ${addCommas(parseInt(calculateVacancyAllowance(state.expense.vacancy, state.rentalIncome.monthlyIncome)).toFixed(2))}

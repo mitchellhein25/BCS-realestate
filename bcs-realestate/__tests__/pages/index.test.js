@@ -9,7 +9,7 @@ describe('Home page load', () => {
         render(<Home />)
 
         const heading = screen.getByRole('heading', {
-            name: /Everything you need to invest in BCS real estate!/i,
+            name: /Bryan-College Station Real Estate Investing/i,
         })
 
         expect(heading).toBeInTheDocument()
