@@ -35,12 +35,17 @@ export default function CapExField({ state, handleChangeCheckbox, handleChangeCu
                 <input type='checkbox' name='capExCheckboxRent' onChange={handleChangeCheckbox} checked={state.expense.capExCheckboxRent} />
                 <label className={rentalCalculatorStyles.checkboxText} htmlFor='capExCheckbox'>{rentText}</label>
             </div>
-            { !isNaN(parseInt(state.propertyInfo.squareFootage)) ?
-                <div className={rentalCalculatorStyles.inputLabel} >
-                    <input type='checkbox' name='capExCheckboxSF' onChange={handleChangeCheckbox} checked={state.expense.capExCheckboxSF} />
-                    <label className={rentalCalculatorStyles.checkboxText} htmlFor='capExCheckbox'>{dpsfText}</label>
-                </div> : null
-            }
+            <div className={rentalCalculatorStyles.inputLabel} >
+                <input type='checkbox' name='capExCheckboxSF' onChange={handleChangeCheckbox} checked={state.expense.capExCheckboxSF} />
+                <label className={rentalCalculatorStyles.checkboxText} htmlFor='capExCheckbox'>{dpsfText}</label>
+                {isNaN(parseInt(state.propertyInfo.squareFootage)) && state.expense.capExCheckboxSF ?
+                    <span className={rentalCalculatorStyles.checkboxText} style={{ color: 'red' }}>
+                        <br></br>Please enter Square Footage or select different checkbox.
+                    </span>
+                    : null
+                }
+            </div>
+            
         </div>
     )
 }

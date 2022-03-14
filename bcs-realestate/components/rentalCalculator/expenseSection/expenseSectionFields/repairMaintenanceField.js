@@ -38,13 +38,17 @@ export default function RepairMaintenanceField({ state, handleChangeCheckbox, ha
                     checked={state.expense.repairMaintenanceCheckboxRent} />
                 <label className={rentalCalculatorStyles.checkboxText} htmlFor='repairMaintenanceCheckboxRent'>{rentText}</label>
             </div>
-            { !isNaN(parseInt(state.propertyInfo.squareFootage)) ?
-                <div className={rentalCalculatorStyles.inputLabel} >
-                    <input type='checkbox' name='repairMaintenanceCheckboxSF' onChange={handleChangeCheckbox}
-                        checked={state.expense.repairMaintenanceCheckboxSF} />
-                    <label className={rentalCalculatorStyles.checkboxText} htmlFor='repairMaintenanceCheckboxSF'>{dpsfText}</label>
-                </div> : null
-            }
+            <div className={rentalCalculatorStyles.inputLabel} >
+                <input type='checkbox' name='repairMaintenanceCheckboxSF' onChange={handleChangeCheckbox}
+                    checked={state.expense.repairMaintenanceCheckboxSF} />
+                <label className={rentalCalculatorStyles.checkboxText} htmlFor='repairMaintenanceCheckboxSF'>{dpsfText}</label>
+                {isNaN(parseInt(state.propertyInfo.squareFootage)) && state.expense.repairMaintenanceCheckboxSF?
+                    <span className={rentalCalculatorStyles.checkboxText} style={{ color: 'red' }}>
+                        <br></br>Please enter Square Footage or select different checkbox.
+                    </span>
+                    : null
+                }
+            </div>
         </div>
     )
 }

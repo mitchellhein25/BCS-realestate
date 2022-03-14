@@ -44,6 +44,7 @@ export default function RentalCalculator() {
         loanDetails: {
             downPayment: 5,
             downPaymentCheckbox: true,
+            // Due to how CurrencyInputs are processed, these have to be a list to check for undefineds
             interestRate: 4,
             loanLength: 30
         },

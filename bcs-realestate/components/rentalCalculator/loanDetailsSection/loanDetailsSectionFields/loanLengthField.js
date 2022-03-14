@@ -17,6 +17,9 @@ export default function LoanLengthField({ state, handleChangeCurrencyInput }) {
                     allowNegativeValue={false}
                     onValueChange={(value, name) => handleChangeCurrencyInput(value, name)}
                 />
+                { isNaN(parseInt(state.loanDetails.loanLength)) ?
+                    <p style={{ color: 'red' }}>Please enter a Loan Length.</p> : null
+                }
             </div>
         </div>
     )

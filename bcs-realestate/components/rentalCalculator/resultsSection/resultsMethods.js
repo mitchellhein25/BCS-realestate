@@ -41,6 +41,9 @@ export function calculateReturn(cashOnCash, totalCashFlow, totalCashInvested, eq
 //   i = monthly interest rate
 //   n = number of months required to repay the loan
 export function calculateMortgage(purchasePrice, downPayment, interestRate, loanLength) {
+    if (isNaN(parseInt(interestRate)) || isNaN(parseInt(loanLength))) {
+        return 0;
+    }
     const principal = purchasePrice - downPayment;
     const interestPerMonth = (interestRate / 100) / 12;
     const months = loanLength * 12;

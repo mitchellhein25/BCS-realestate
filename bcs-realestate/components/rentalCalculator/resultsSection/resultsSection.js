@@ -176,7 +176,11 @@ export default function ResultsSection({ state, setState }) {
                             </span>
                         </p>
                         <div className={rentalCalculatorStyles.expenseBreakdownItems}>
-                            <p className={rentalCalculatorStyles.smallMargin}>Mortgage: ${addCommas(calculateMortgageForResults().toFixed(2))}</p>
+                            <p className={rentalCalculatorStyles.smallMargin}>Mortgage: ${
+                                isNaN(parseInt(state.loanDetails.interestRate)) || isNaN(parseInt(state.loanDetails.loanLength)) ?
+                                <span style={{ color: 'red' }}>Please fill out all loan details.</span> :
+                                addCommas(calculateMortgageForResults().toFixed(2))
+                            }</p>
                             <p className={rentalCalculatorStyles.smallMargin}>Insurance: ${addCommas(checkboxFilter('insurance').toFixed(2))}</p>
                             <p className={rentalCalculatorStyles.smallMargin}>Utilities: ${addCommas(parseInt(state.expense.utilities).toFixed(2))}</p>
                             <p className={rentalCalculatorStyles.smallMargin}>Taxes: ${addCommas(checkboxFilter('propertyTaxes').toFixed(2))}</p>
