@@ -2,7 +2,7 @@ import * as XLSX from 'xlsx';
 import rentalCalculatorStyles from '../rentalCalculator.module.css'
 import primaryButtonStyles from '../../primaryButton/primaryButton.module.css'
 import {
-    downPayment, cashFlow, repairCosts, MonthlyExpensesTotalOverYears, cashInvested,
+    downPayment, closingCosts, cashFlow, repairCosts, MonthlyExpensesTotalOverYears, cashInvested,
     afterRepairValue, appreciationFactor, calculateReturn, calculateMortgage, calculateVacancyAllowance
 }
     from './resultsMethods'
@@ -17,10 +17,11 @@ export default function ResultsSection({ state, setState }) {
         const totalCashFlow = cashFlow(state.rentalIncome.monthlyIncome, calculateTotalExpenses(), numYears);
 
         // Cash Invested
-        const downPaymentAmount = downPayment(state.loanDetails.downPaymentCheckbox, state.loanDetails.downPayment, state.purchase.purchasePrice);
+        const downPaymentAmount = downPayment(state.loanDetails.downPaymentCheckbox, parseInt(state.loanDetails.downPayment), state.purchase.purchasePrice);
         const repairCostAmount = repairCosts(state.rehab.rehabCheckbox, parseInt(state.rehab.repairCosts));
         const expensesTimesYears = MonthlyExpensesTotalOverYears(calculateTotalExpenses(), numYears);
-        const totalCashInvested = cashInvested(expensesTimesYears, repairCostAmount, parseInt(state.purchase.closingCosts), downPaymentAmount)
+        const closingCostsTotal = closingCosts(state.purchase.closingCostsCheckboxPP, parseInt(state.purchase.closingCosts), state.purchase.purchasePrice);
+        const totalCashInvested = cashInvested(expensesTimesYears, repairCostAmount, closingCostsTotal, downPaymentAmount)
 
         // New Property Value
         const arv = afterRepairValue(state.rehab.rehabCheckbox, state.rehab.afterRepairValue, state.purchase.purchasePrice);
@@ -56,8 +57,10 @@ export default function ResultsSection({ state, setState }) {
     function calculateTotalExpenses() {
         return calculateMortgageForResults() + checkboxFilter('insurance') + checkboxFilter('propertyTaxes') +
             checkboxFilter('repairMaintenance') + parseInt(calculateVacancyAllowance(state.expense.vacancy, state.rentalIncome.monthlyIncome)) +
-            checkboxFilter('capEx') + checkboxFilter('propertyManagement') + parseInt(state.expense.utilities) + parseInt(state.expense.hoa) +
-            parseInt(state.expense.other)
+            checkboxFilter('capEx') + checkboxFilter('propertyManagement') +
+            (isNaN(parseInt(state.expense.utilities)) ? 0 : parseInt(state.expense.utilities)) +
+            (isNaN(parseInt(state.expense.hoa)) ? 0 : parseInt(state.expense.hoa)) +
+            (isNaN(parseInt(state.expense.other)) ? 0 : parseInt(state.expense.other))
     }
 
     function addCommas(num) {

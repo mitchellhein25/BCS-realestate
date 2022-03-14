@@ -16,9 +16,9 @@ export default function PurchaseSection({ state, setState }) {
     function handleChangeCheckbox(e) {
         setState(prevState => ({
             ...prevState,
-            expense: {
-                ...prevState.expense,
-                [e.target.name]: !state.expense[e.target.name]
+            purchase: {
+                ...prevState.purchase,
+                [e.target.name]: !state.purchase[e.target.name]
             }
         }))
     }

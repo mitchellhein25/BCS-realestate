@@ -32,7 +32,7 @@ export default function RentalCalculator() {
             purchasePrice: purchasePrice,
             purchasePriceCheckBox: false,
             closingCosts: 6000,
-            closingCostsCheckBox: false
+            closingCostsCheckboxPP: false
 
         },
         rehab: {

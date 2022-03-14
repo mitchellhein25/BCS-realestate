@@ -2,11 +2,18 @@ export function downPayment(checkbox, downPayment, purchasePrice) {
     return checkbox ? ((downPayment / 100) * purchasePrice) : downPayment;
 }
 
+export function closingCosts(checkbox, closingCosts, purchasePrice) {
+    return checkbox ? ((closingCosts / 100) * purchasePrice) : closingCosts;
+}
+
 export function cashFlow(monthlyIncome, expenses, numYears) {
     return (monthlyIncome - expenses) * 12 * numYears;
 }
 
 export function repairCosts(rehabCheckbox, repairCostAmount) {
+    if (isNaN(parseInt(repairCostAmount))) {
+        return 0;
+    }
     return rehabCheckbox ? repairCostAmount : 0;
 }
 
@@ -15,6 +22,7 @@ export function MonthlyExpensesTotalOverYears(expenses, numYears) {
 }
 
 export function cashInvested(expensesTimesYears, repairCostAmount, closingCosts, downPayment) {
+    closingCosts = isNaN(parseInt(closingCosts)) ? 0 : closingCosts;
     return expensesTimesYears + repairCostAmount + closingCosts + downPayment;
 }
 
