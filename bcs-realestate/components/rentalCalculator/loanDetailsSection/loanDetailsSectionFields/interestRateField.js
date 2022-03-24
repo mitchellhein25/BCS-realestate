@@ -2,7 +2,6 @@ import rentalCalculatorStyles from '../../rentalCalculator.module.css'
 import CurrencyInput from 'react-currency-input-field';
 
 export default function InterestRateField({ state, handleChangeCurrencyInput }) {
-    console.log(state.loanDetails.interestRate);
     return (
         <div className={rentalCalculatorStyles.inputContainerNoCheck}>
             <div className={rentalCalculatorStyles.inputLabel} >

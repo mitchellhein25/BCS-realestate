@@ -11,7 +11,7 @@ export function cashFlow(monthlyIncome, expenses, numYears) {
 }
 
 export function repairCosts(rehabCheckbox, repairCostAmount) {
-    if (isNaN(parseInt(repairCostAmount))) {
+    if (isNaN(parseFloat(repairCostAmount))) {
         return 0;
     }
     return rehabCheckbox ? repairCostAmount : 0;
@@ -22,7 +22,7 @@ export function MonthlyExpensesTotalOverYears(expenses, numYears) {
 }
 
 export function cashInvested(expensesTimesYears, repairCostAmount, closingCosts, downPayment) {
-    closingCosts = isNaN(parseInt(closingCosts)) ? 0 : closingCosts;
+    closingCosts = isNaN(parseFloat(closingCosts)) ? 0 : closingCosts;
     return expensesTimesYears + repairCostAmount + closingCosts + downPayment;
 }
 
@@ -49,7 +49,7 @@ export function calculateReturn(cashOnCash, totalCashFlow, totalCashInvested, eq
 //   i = monthly interest rate
 //   n = number of months required to repay the loan
 export function calculateMortgage(purchasePrice, downPayment, interestRate, loanLength) {
-    if (isNaN(parseInt(interestRate)) || isNaN(parseInt(loanLength))) {
+    if (isNaN(parseFloat(interestRate)) || isNaN(parseFloat(loanLength))) {
         return 0;
     }
     const principal = purchasePrice - downPayment;

@@ -11,16 +11,15 @@ import useWindowSize from '../../utils'
 export default function ResultsSection({ state, setState }) {
     const [width, height] = useWindowSize();
     const breakpoint = 1000;
-
     function calculateReturnForResults(cashOnCash, numYears) {
         // Total Cash Flow
         const totalCashFlow = cashFlow(state.rentalIncome.monthlyIncome, calculateTotalExpenses(), numYears);
 
         // Cash Invested
-        const downPaymentAmount = downPayment(state.loanDetails.downPaymentCheckbox, parseInt(state.loanDetails.downPayment), state.purchase.purchasePrice);
-        const repairCostAmount = repairCosts(state.rehab.rehabCheckbox, parseInt(state.rehab.repairCosts));
+        const downPaymentAmount = downPayment(state.loanDetails.downPaymentCheckbox, parseFloat(state.loanDetails.downPayment), state.purchase.purchasePrice);
+        const repairCostAmount = repairCosts(state.rehab.rehabCheckbox, parseFloat(state.rehab.repairCosts));
         const expensesTimesYears = MonthlyExpensesTotalOverYears(calculateTotalExpenses(), numYears);
-        const closingCostsTotal = closingCosts(state.purchase.closingCostsCheckboxPP, parseInt(state.purchase.closingCosts), state.purchase.purchasePrice);
+        const closingCostsTotal = closingCosts(state.purchase.closingCostsCheckboxPP, parseFloat(state.purchase.closingCosts), state.purchase.purchasePrice);
         const totalCashInvested = cashInvested(expensesTimesYears, repairCostAmount, closingCostsTotal, downPaymentAmount)
 
         // New Property Value
@@ -41,7 +40,7 @@ export default function ResultsSection({ state, setState }) {
     }
 
     function checkboxFilter(name) {
-        var result = parseInt(state.expense[name])
+        var result = parseFloat(state.expense[name])
         if (state.expense[name + 'CheckboxPP']) {
             result = ((state.expense[name] / 100) * state.purchase.purchasePrice) / 12;
         }
@@ -56,11 +55,11 @@ export default function ResultsSection({ state, setState }) {
 
     function calculateTotalExpenses() {
         return calculateMortgageForResults() + checkboxFilter('insurance') + checkboxFilter('propertyTaxes') +
-            checkboxFilter('repairMaintenance') + parseInt(calculateVacancyAllowance(state.expense.vacancy, state.rentalIncome.monthlyIncome)) +
+            checkboxFilter('repairMaintenance') + parseFloat(calculateVacancyAllowance(state.expense.vacancy, state.rentalIncome.monthlyIncome)) +
             checkboxFilter('capEx') + checkboxFilter('propertyManagement') +
-            (isNaN(parseInt(state.expense.utilities)) ? 0 : parseInt(state.expense.utilities)) +
-            (isNaN(parseInt(state.expense.hoa)) ? 0 : parseInt(state.expense.hoa)) +
-            (isNaN(parseInt(state.expense.other)) ? 0 : parseInt(state.expense.other))
+            (isNaN(parseFloat(state.expense.utilities)) ? 0 : parseFloat(state.expense.utilities)) +
+            (isNaN(parseFloat(state.expense.hoa)) ? 0 : parseFloat(state.expense.hoa)) +
+            (isNaN(parseFloat(state.expense.other)) ? 0 : parseFloat(state.expense.other))
     }
 
     function addCommas(num) {
@@ -157,13 +156,13 @@ export default function ResultsSection({ state, setState }) {
                         <div className={rentalCalculatorStyles.resultsContainer}>
                             <h3 className={rentalCalculatorStyles.resultsHeader}>Cash Flow</h3>
                             <p className={rentalCalculatorStyles.smallMargin}>
-                                <span style={calculateReturnForResults(false, 1) >= 0 ?
+                                <span style={state.rentalIncome.monthlyIncome - calculateTotalExpenses() >= 0 ?
                                     { color: 'green' } : { color: 'red' }}>
                                     ${addCommas((state.rentalIncome.monthlyIncome - calculateTotalExpenses()).toFixed(2))}
                                 </span> per month
                                 </p>
                             <p className={rentalCalculatorStyles.smallMargin}>
-                                <span style={calculateReturnForResults(false, 1) >= 0 ?
+                                <span style={(state.rentalIncome.monthlyIncome - calculateTotalExpenses()) * 12 >= 0 ?
                                     { color: 'green' } : { color: 'red' }}>
                                     ${addCommas(((state.rentalIncome.monthlyIncome - calculateTotalExpenses()) * 12).toFixed(2))}
                                 </span> per year
@@ -180,15 +179,15 @@ export default function ResultsSection({ state, setState }) {
                         </p>
                         <div className={rentalCalculatorStyles.expenseBreakdownItems}>
                             <p className={rentalCalculatorStyles.smallMargin}>Mortgage: ${
-                                isNaN(parseInt(state.loanDetails.interestRate)) || isNaN(parseInt(state.loanDetails.loanLength)) ?
+                                isNaN(parseFloat(state.loanDetails.interestRate)) || isNaN(parseFloat(state.loanDetails.loanLength)) ?
                                 <span style={{ color: 'red' }}>Please fill out all loan details.</span> :
                                 addCommas(calculateMortgageForResults().toFixed(2))
                             }</p>
                             <p className={rentalCalculatorStyles.smallMargin}>Insurance: ${addCommas(checkboxFilter('insurance').toFixed(2))}</p>
-                            <p className={rentalCalculatorStyles.smallMargin}>Utilities: ${addCommas(parseInt(state.expense.utilities).toFixed(2))}</p>
+                            <p className={rentalCalculatorStyles.smallMargin}>Utilities: ${addCommas(parseFloat(state.expense.utilities).toFixed(2))}</p>
                             <p className={rentalCalculatorStyles.smallMargin}>Taxes: ${addCommas(checkboxFilter('propertyTaxes').toFixed(2))}</p>
                             <p className={rentalCalculatorStyles.smallMargin}>Vacancy:
-                                ${addCommas(parseInt(calculateVacancyAllowance(state.expense.vacancy, state.rentalIncome.monthlyIncome)).toFixed(2))}
+                                ${addCommas(parseFloat(calculateVacancyAllowance(state.expense.vacancy, state.rentalIncome.monthlyIncome)).toFixed(2))}
                             </p>
                             <p className={rentalCalculatorStyles.smallMargin}>Maintenance/CapEx:
                             ${addCommas((checkboxFilter('repairMaintenance') + checkboxFilter('capEx')).toFixed(2))}</p>
@@ -198,13 +197,13 @@ export default function ResultsSection({ state, setState }) {
                         <div className={rentalCalculatorStyles.resultsContainer}>
                             <h3 className={rentalCalculatorStyles.resultsHeader}>Cash Flow</h3>
                             <p className={rentalCalculatorStyles.smallMargin}>
-                                <span style={calculateReturnForResults(false, 1) >= 0 ?
+                                <span style={state.rentalIncome.monthlyIncome - calculateTotalExpenses() >= 0 ?
                                     { color: 'green' } : { color: 'red' }}>
                                     ${addCommas((state.rentalIncome.monthlyIncome - calculateTotalExpenses()).toFixed(2))}
                                 </span> per month
                             </p>
                             <p className={rentalCalculatorStyles.smallMargin}>
-                                <span style={calculateReturnForResults(false, 1) >= 0 ?
+                                <span style={(state.rentalIncome.monthlyIncome - calculateTotalExpenses())*12 >= 0 ?
                                     { color: 'green' } : { color: 'red' }}>
                                     ${addCommas(((state.rentalIncome.monthlyIncome - calculateTotalExpenses()) * 12).toFixed(2))}
                                 </span> per year
