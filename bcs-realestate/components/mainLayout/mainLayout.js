@@ -24,6 +24,7 @@ export default function MainLayout({ children }) {
             <NavBar websiteTitle={websiteTitle} links={links}></NavBar>
             <Head>
                 <title>{pageTitle}</title>
+                <link rel="shortcut icon" href="/icons/favicon.svg" />
             </Head>
             <main>{children}</main>
             <SchwartzBanner> </SchwartzBanner>
