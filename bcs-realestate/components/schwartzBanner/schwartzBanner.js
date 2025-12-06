@@ -4,7 +4,7 @@ import Footer from '../footer/footer'
 import schwartzBannerStyles from './schwartzBanner.module.css'
 import useWindowSize from '../utils'
 
-export const schwartzBannerText = "Powered by Greg Schwartz Realty and Precision Apartments"
+export const schwartzBannerText = "Powered by general Real estate agent and Precision Apartments"
 
 export default function SchwartzBanner() {
     const [width, height] = useWindowSize();
@@ -16,8 +16,8 @@ export default function SchwartzBanner() {
                 { width >= breakpoint ?
                     <div className={schwartzBannerStyles.padding + ' ' + schwartzBannerStyles.vertCenter}>
                         <Image
-                            src="/images/gregHeadshot.jpg"
-                            alt="Greg Schwartz headshot"
+                            src="/icons/main-logo-home-icon.svg"
+                            alt="Real estate agent icon"
                             width={150}
                             height={150}
                             className={schwartzBannerStyles.imageRounded}
@@ -30,8 +30,8 @@ export default function SchwartzBanner() {
                         <div className={schwartzBannerStyles.mobileImagesRow}>
                             <div className={schwartzBannerStyles.mobileImage}>
                                 <Image
-                                    src="/images/gregHeadshot.jpg"
-                                    alt="Greg Schwartz headshot"
+                                    src="/icons/main-logo-home-icon.svg"
+                                    alt="Real estate agent icon"
                                     width={90}
                                     height={90}
                                     className={schwartzBannerStyles.imageRounded}

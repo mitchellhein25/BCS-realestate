@@ -22,7 +22,7 @@ export default async function sendMail(req, res) {
             to: 'gregschwartz@kw.com',
             //to: 'mitchelldalehein25@gmail.com',
             subject: 'New Newsletter Subscriber from bcsrei.com: ' + req.body.csvJson[0]['First Name'] + ' ' + req.body.csvJson[0]['Last Name'],
-            text: `Hello Greg,
+            text: `Hello Real estate agent,
 
 You got a new subscriber for your multifamily newsletter from bcsrei.com.
 

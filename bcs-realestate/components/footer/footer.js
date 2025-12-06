@@ -3,7 +3,7 @@ import Image from 'next/image'
 import footerStyles from './footer.module.css'
 
 export const bpLink = "https://biggerpockets.com/users/gregschwartz"
-export const bpText = "Bigger Pockets - Greg Schwartz"
+export const bpText = "Bigger Pockets - Real estate agent"
 export const precisionApartmentsLink = "http://precisionapartments.managebuilding.com/"
 export const precisionApartmentsText = "Precision Apartments"
 
